@@ -61,3 +61,6 @@ Thumbs.db.meta
 
 # VS Code
 *.vscode
+
+# Clone
+Pandemonium_clone*
