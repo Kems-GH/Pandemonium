@@ -1,18 +1,20 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class SpawnEnemy : NetworkBehaviour
 {
     public GameObject enemyPrefab;
 
-    void Start()
+    public override void OnNetworkSpawn()
     {
         StartCoroutine(SpawnEnemyCoroutine());
     }
 
     IEnumerator SpawnEnemyCoroutine()
     {
-        Instantiate(enemyPrefab, this.transform);
+        GameObject enemyGameObject = Instantiate(enemyPrefab, this.transform);
+        enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
         yield return new WaitForSeconds(4f);
         StartCoroutine(SpawnEnemyCoroutine());
     }

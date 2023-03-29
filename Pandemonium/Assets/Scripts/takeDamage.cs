@@ -1,21 +1,12 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 
-public class takeDamage : MonoBehaviour
+public class takeDamage : NetworkBehaviour
 {
     [SerializeField]
     private int health = 100;
     private bool canTakeDamage = true;
-
-    private void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("Stay");
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Debug.Log("Exit");
-    }
 
     void OnCollisionEnter(Collision collision)
     {

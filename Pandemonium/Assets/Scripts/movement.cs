@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Unity.Netcode;
 
-public class movement : MonoBehaviour
+public class movement : NetworkBehaviour
 {
     [SerializeField]
     private NavMeshAgent agent;
     private Transform heart;
     private bool BegunPath = false;
 
-    void Start()
+    public override void OnNetworkSpawn()
     {
         heart = GameObject.FindGameObjectWithTag("Heart").transform;
 
