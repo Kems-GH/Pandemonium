@@ -351,7 +351,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6777512346600555552}
   - component: {fileID: 6777512346600555555}
-  - component: {fileID: 3405430156118771345}
   m_Layer: 0
   m_Name: OculusTouchForQuest2RightModel
   m_TagString: Untagged
@@ -398,20 +397,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3405430156118771345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777512346600555553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 6777512346600555555}
 --- !u!1 &6777512346643137238
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6777512346928541011}
   - component: {fileID: 6777512346928541010}
-  - component: {fileID: 3264520412798970321}
   m_Layer: 0
   m_Name: OculusTouchForQuest2LeftModel
   m_TagString: Untagged
@@ -835,20 +819,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3264520412798970321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777512346928541008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 6777512346928541010}
 --- !u!1 &6777512346964482643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1818,8 @@ GameObject:
   - component: {fileID: 8306751612901952214}
   - component: {fileID: 901853879630965350}
   - component: {fileID: -487891512004254486}
+  - component: {fileID: 2204958673940134934}
+  - component: {fileID: 628144306606158375}
   m_Layer: 0
   m_Name: OVRControllerVisualRight
   m_TagString: Hand
@@ -1941,6 +1913,41 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!95 &2204958673940134934
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777512347548848596}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &628144306606158375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777512347548848596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 6777512346600555555}
 --- !u!1 &6777512347631095381
 GameObject:
   m_ObjectHideFlags: 0
