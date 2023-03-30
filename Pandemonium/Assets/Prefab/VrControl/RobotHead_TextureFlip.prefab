@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 2574522016291621555}
   - component: {fileID: 5879415701201071855}
   - component: {fileID: 8449186311370499860}
-  - component: {fileID: 1303881864310777234}
+  - component: {fileID: 8242246278834031676}
   m_Layer: 0
   m_Name: RobotHead_TextureFlip
   m_TagString: Untagged
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5b684b61c7d2e4bb031f3963ebb4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _head: {fileID: 0}
 --- !u!114 &8449186311370499860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +321,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1303881864310777234
+--- !u!114 &8242246278834031676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,7 +330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2574522016291591827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1

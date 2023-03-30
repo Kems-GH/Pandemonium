@@ -31,6 +31,7 @@ public class GameManager : NetworkBehaviour {
         Transform handLeft = Instantiate(HandVisualsLeftPrefab);
         Transform handRight = Instantiate(HandVisualsRightPrefab);
         Transform head = Instantiate(HeadPrefab);
+        
         controllerLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
         controllerRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
         handLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);

@@ -4,7 +4,7 @@ using Unity.Netcode;
 
 public class NetworkVisualHead : NetworkBehaviour
 {
-    private Transform _head;
+    public Transform _head;
 
     private void Start()
     {

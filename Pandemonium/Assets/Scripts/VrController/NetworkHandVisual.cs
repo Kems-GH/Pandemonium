@@ -91,6 +91,8 @@ namespace Oculus.Interaction
 
         public void UpdateSkeleton()
         {
+            if (!IsOwner) return;
+            
             if (!Hand.IsTrackedDataValid)
             {
                 if (IsVisible || ForceOffVisibility)
