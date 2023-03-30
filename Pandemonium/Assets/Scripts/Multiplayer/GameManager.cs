@@ -9,6 +9,7 @@ public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform OVRControllerVisualRightPrefab;
     [SerializeField] private Transform HandVisualsLeftPrefab;
     [SerializeField] private Transform HandVisualsRightPrefab;
+    [SerializeField] private Transform HeadPrefab;
 
     public static GameManager Instance;
 
@@ -27,9 +28,13 @@ public class GameManager : NetworkBehaviour {
         var clientId = serverRpcParams.Receive.SenderClientId;
         Transform controllerLeft = Instantiate(OVRControllerVisualLeftPrefab);
         Transform controllerRight = Instantiate(OVRControllerVisualRightPrefab);
-        // Transform handLeft = Instantiate(HandVisualsLeftPrefab);
-        // Transform handRight = Instantiate(HandVisualsRightPrefab);
+        Transform handLeft = Instantiate(HandVisualsLeftPrefab);
+        Transform handRight = Instantiate(HandVisualsRightPrefab);
+        Transform head = Instantiate(HeadPrefab);
         controllerLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
         controllerRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        handLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        handRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        head.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
     }
 }

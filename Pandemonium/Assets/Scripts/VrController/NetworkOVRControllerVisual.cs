@@ -27,11 +27,11 @@ namespace Oculus.Interaction.Input.Visuals
 
         protected virtual void Start()
         {
-            Debug.Log("owner : " + IsOwner);
             if (!IsOwner) return;
 
             _controller = GameObject.FindGameObjectWithTag(tagParent).GetComponent<MonoBehaviour>();
             Controller = _controller as IController;
+
             this.BeginStart(ref _started);
             this.AssertField(Controller, nameof(Controller));
             this.AssertField(_ovrControllerHelper, nameof(_ovrControllerHelper));
@@ -45,9 +45,6 @@ namespace Oculus.Interaction.Input.Visuals
                     break;
             }
             this.EndStart(ref _started);
-        }
-        private void Update() {
-            Debug.Log(Controller);
         }
 
         protected virtual void OnEnable()

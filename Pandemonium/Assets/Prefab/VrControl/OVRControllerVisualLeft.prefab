@@ -923,9 +923,9 @@ MonoBehaviour:
   SyncRotAngleX: 1
   SyncRotAngleY: 1
   SyncRotAngleZ: 1
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
@@ -1064,6 +1064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058831761716565059}
   - component: {fileID: 1058831761716565058}
+  - component: {fileID: 4668794232005334967}
   m_Layer: 0
   m_Name: OculusTouchForQuest2LeftModel
   m_TagString: Untagged
@@ -1110,6 +1111,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4668794232005334967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058831761716565060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 1058831761716565058}
 --- !u!1 &1058831761759548437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058831762079023197}
   - component: {fileID: 1058831762079023196}
+  - component: {fileID: 78513289594478399}
   m_Layer: 0
   m_Name: OculusTouchForQuest2RightModel
   m_TagString: Untagged
@@ -1834,6 +1850,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &78513289594478399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058831762079023198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 1058831762079023196}
 --- !u!1 &1058831762192114389
 GameObject:
   m_ObjectHideFlags: 0

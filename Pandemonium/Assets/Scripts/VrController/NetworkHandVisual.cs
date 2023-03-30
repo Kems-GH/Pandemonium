@@ -59,7 +59,8 @@ namespace Oculus.Interaction
             if (!IsOwner ) return;
 
 
-            Hand = GameObject.FindGameObjectWithTag(tagParent).GetComponent<IHand>();
+            _hand = GameObject.FindGameObjectWithTag(tagParent).GetComponent<MonoBehaviour>();
+            Hand = _hand as IHand;
 
             this.BeginStart(ref _started);
             this.AssertField(Hand, nameof(Hand));
