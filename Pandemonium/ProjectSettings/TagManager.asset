@@ -7,6 +7,10 @@ TagManager:
   - SamplesInfoPanel
   - Heart
   - Hand
+  - LeftHand
+  - RightHand
+  - LeftController
+  - RightController
   layers:
   - Default
   - TransparentFX

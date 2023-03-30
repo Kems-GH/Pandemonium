@@ -123,6 +123,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &14818580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5330597504943202784, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 202292515
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038650, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381374902164038651, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5330597504943202784, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+    - {fileID: 6320817898055025648, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
 --- !u!1 &91096795
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,15 +556,15 @@ PrefabInstance:
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.PlayerPrefab
       value: 
-      objectReference: {fileID: 7381374902164038651, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 7381374902164038651, guid: 48a44fda025cff54db2e45dee78c83ef, type: 3}
+      objectReference: {fileID: 6588653927243880251, guid: 219d5188ad1232a4c9e9ad663c25bd6b, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].Prefab
       value: 
@@ -513,7 +576,39 @@ PrefabInstance:
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[3].Prefab
       value: 
-      objectReference: {fileID: 548444072863447833, guid: d1feb720decb7f949b07535353b92941, type: 3}
+      objectReference: {fileID: 1356691218900970355, guid: e32c0132acdf37e49a95afd2d53669d9, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[4].Prefab
+      value: 
+      objectReference: {fileID: 4337591833076522517, guid: 1f82316cd30919246a72ebf5e1c73604, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[5].Prefab
+      value: 
+      objectReference: {fileID: 1058831761688883477, guid: 5ab86e905a1d075499f9242922f09ac5, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].Prefab
+      value: 
+      objectReference: {fileID: 6777512347548848596, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Override
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].Override
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].OverridingTargetPrefab
+      value: 
+      objectReference: {fileID: 4337591833076522517, guid: 1f82316cd30919246a72ebf5e1c73604, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 6588653927243880251, guid: 219d5188ad1232a4c9e9ad663c25bd6b, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 6777512347548848596, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
     - target: {fileID: 5482760424619577447, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: m_ProtocolType
       value: 1
@@ -550,6 +645,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joinCodeInputField: {fileID: 2020025235}
+  OVRControllerVisualLeftPrefab: {fileID: 1058831761688883476, guid: 5ab86e905a1d075499f9242922f09ac5, type: 3}
+  OVRControllerVisualRightPrefab: {fileID: 6777512347548848599, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
+  HandVisualsLeftPrefab: {fileID: 1356691218900970352, guid: e32c0132acdf37e49a95afd2d53669d9, type: 3}
+  HandVisualsRightPrefab: {fileID: 4337591833076522514, guid: 1f82316cd30919246a72ebf5e1c73604, type: 3}
 --- !u!1 &619858158
 GameObject:
   m_ObjectHideFlags: 0
