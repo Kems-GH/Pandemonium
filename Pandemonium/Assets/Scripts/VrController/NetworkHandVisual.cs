@@ -54,17 +54,12 @@ namespace Oculus.Interaction
             }
         }
 
-        protected virtual void Start()
+        public override void OnNetworkSpawn()
         {
-            // if (!IsOwner ) return;
+            if (!IsOwner ) return;
 
 
-            GameObject parent = GameObject.FindGameObjectWithTag(tagParent);
-            // if (parent != null)
-            // {
-            //     this.transform.parent.parent = parent.transform;
-            // }
-            Hand = parent.GetComponent<IHand>();
+            Hand = GameObject.FindGameObjectWithTag(tagParent).GetComponent<IHand>();
 
             this.BeginStart(ref _started);
             this.AssertField(Hand, nameof(Hand));

@@ -8,7 +8,10 @@ public class SpawnEnemy : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        StartCoroutine(SpawnEnemyCoroutine());
+        if (IsServer)
+        {
+            StartCoroutine(SpawnEnemyCoroutine());
+        }
     }
 
     IEnumerator SpawnEnemyCoroutine()
