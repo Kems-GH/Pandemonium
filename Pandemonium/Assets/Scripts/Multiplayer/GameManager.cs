@@ -24,17 +24,17 @@ public class GameManager : NetworkBehaviour {
     [ServerRpc(RequireOwnership = false)]
     public void SpawnPlayerServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        var clientId = serverRpcParams.Receive.SenderClientId;
-        Transform controllerLeft = Instantiate(OVRControllerVisualLeftPrefab);
-        Transform controllerRight = Instantiate(OVRControllerVisualRightPrefab);
-        Transform handLeft = Instantiate(HandVisualsLeftPrefab);
-        Transform handRight = Instantiate(HandVisualsRightPrefab);
-        Transform head = Instantiate(HeadPrefab);
+        // var clientId = serverRpcParams.Receive.SenderClientId;
+        // Transform controllerLeft = Instantiate(OVRControllerVisualLeftPrefab);
+        // Transform controllerRight = Instantiate(OVRControllerVisualRightPrefab);
+        // Transform handLeft = Instantiate(HandVisualsLeftPrefab);
+        // Transform handRight = Instantiate(HandVisualsRightPrefab);
+        // Transform head = Instantiate(HeadPrefab);
         
-        controllerLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
-        controllerRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
-        handLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
-        handRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
-        head.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        // controllerLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        // controllerRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        // handLeft.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        // handRight.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        // head.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
     }
 }
