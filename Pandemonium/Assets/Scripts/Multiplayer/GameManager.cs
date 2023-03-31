@@ -24,7 +24,6 @@ public class GameManager : NetworkBehaviour {
     [ServerRpc(RequireOwnership = false)]
     public void SpawnPlayerServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        Debug.Log("SpawnPlayerServerRpc");
         var clientId = serverRpcParams.Receive.SenderClientId;
         Transform controllerLeft = Instantiate(OVRControllerVisualLeftPrefab);
         Transform controllerRight = Instantiate(OVRControllerVisualRightPrefab);

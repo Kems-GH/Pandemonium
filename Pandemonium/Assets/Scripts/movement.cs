@@ -5,8 +5,7 @@ using Unity.Netcode;
 
 public class movement : NetworkBehaviour
 {
-    [SerializeField]
-    private NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
     private Transform heart;
     private bool BegunPath = false;
 
