@@ -57,6 +57,8 @@ namespace Oculus.Interaction.Locomotion
 
         protected virtual void Start()
         {
+            _handler = FindObjectOfType<PlayerLocomotor>();
+            Handler = _handler as ILocomotionEventHandler;
             this.BeginStart(ref _started);
             this.AssertCollectionField(Broadcasters, nameof(Broadcasters));
             this.AssertField(Handler, nameof(Handler));

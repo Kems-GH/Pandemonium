@@ -1,10 +1,30 @@
+/*
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ * All rights reserved.
+ *
+ * Licensed under the Oculus SDK License Agreement (the "License");
+ * you may not use the Oculus SDK except in compliance with the License,
+ * which is provided at the time of installation or download, or which
+ * otherwise accompanies this software in either electronic or hard copy form.
+ *
+ * You may obtain a copy of the License at
+ *
+ * https://developer.oculus.com/licenses/oculussdk/
+ *
+ * Unless required by applicable law or agreed to in writing, the Oculus SDK
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Oculus.Interaction.Input
 {
-    public interface IOVRCameraRigRef
+    public interface OldIOVRCameraRigRef
     {
         OVRCameraRig CameraRig { get; }
         /// <summary>
@@ -30,7 +50,7 @@ namespace Oculus.Interaction.Input
     /// initialized correctly and ready to use.
     /// </summary>
     [DefaultExecutionOrder(-90)]
-    public class OVRCameraRigRef : MonoBehaviour, IOVRCameraRigRef
+    public class OldOVRCameraRigRef : MonoBehaviour, OldIOVRCameraRigRef
     {
         [Header("Configuration")]
         [SerializeField]
@@ -39,15 +59,15 @@ namespace Oculus.Interaction.Input
         [SerializeField]
         private bool _requireOvrHands = true;
 
-        public OVRCameraRig CameraRig;
+        public OVRCameraRig CameraRig => _ovrCameraRig;
 
         private OVRHand _leftHand;
         private OVRHand _rightHand;
-        public OVRHand LeftHand;
-        public OVRHand RightHand;
+        public OVRHand LeftHand => GetHandCached(ref _leftHand, _ovrCameraRig.leftHandAnchor);
+        public OVRHand RightHand => GetHandCached(ref _rightHand, _ovrCameraRig.rightHandAnchor);
 
-        public Transform LeftController;
-        public Transform RightController;
+        public Transform LeftController => _ovrCameraRig.leftControllerAnchor;
+        public Transform RightController => _ovrCameraRig.rightControllerAnchor;
 
         public event Action<bool> WhenInputDataDirtied = delegate { };
 
@@ -55,28 +75,8 @@ namespace Oculus.Interaction.Input
 
         private bool _isLateUpdate;
 
-        OVRCameraRig IOVRCameraRigRef.CameraRig => CameraRig;
-
-        OVRHand IOVRCameraRigRef.LeftHand => LeftHand;
-
-        OVRHand IOVRCameraRigRef.RightHand => RightHand;
-
-        Transform IOVRCameraRigRef.LeftController => LeftController;
-
-        Transform IOVRCameraRigRef.RightController => RightController;
-
         protected virtual void Start()
         {
-            _ovrCameraRig = FindObjectOfType<OVRCameraRig>();
-
-            CameraRig = _ovrCameraRig;
-
-            LeftHand = GetHandCached(ref _leftHand, _ovrCameraRig.leftHandAnchor);
-            RightHand = GetHandCached(ref _rightHand, _ovrCameraRig.rightHandAnchor);
-
-            LeftController = _ovrCameraRig.leftControllerAnchor;
-            RightController = _ovrCameraRig.rightControllerAnchor;
-
             this.BeginStart(ref _started);
             this.AssertField(_ovrCameraRig, nameof(_ovrCameraRig));
             this.EndStart(ref _started);

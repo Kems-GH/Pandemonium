@@ -12,6 +12,7 @@ TagManager:
   - LeftController
   - RightController
   - Trap
+  - VRCameraRig
   layers:
   - Default
   - TransparentFX
