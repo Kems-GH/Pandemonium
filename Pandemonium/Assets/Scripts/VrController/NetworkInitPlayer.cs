@@ -20,20 +20,5 @@ public class NetworkInitPlayer : NetworkBehaviour
             
         }
 
-        foreach (var component in GetComponentsInChildren<Camera>())
-        {
-            Debug.Log("toDisabel : " + component.GetType().Name);
-
-            component.enabled = false;
-
-        }
-
-        foreach (var component in GetComponentsInChildren<AudioListener>())
-        {
-            Debug.Log("toDisabel : " + component.GetType().Name);
-
-            Destroy(component);
-
-        }
     }
 }

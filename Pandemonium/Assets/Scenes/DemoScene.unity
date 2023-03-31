@@ -626,12 +626,72 @@ PrefabInstance:
       objectReference: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.size
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 872511305585524961, guid: da6f4e831f798484aa77104589b16fa6, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 6533881909380971629, guid: f1317dbb5210591478b9efc37ad76314, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 433119479144800303, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[4].Prefab
+      value: 
+      objectReference: {fileID: 2574522016291591827, guid: 12c67ad927a20294a96dc33abed3911f, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[5].Prefab
+      value: 
+      objectReference: {fileID: 9119892841693336774, guid: 96c20612667ac1c46a046b526ca05d39, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].Prefab
+      value: 
+      objectReference: {fileID: 6386686638868088660, guid: aab645bfa652c6d47bba752c7874ec3e, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[7].Prefab
+      value: 
+      objectReference: {fileID: 1058831761688883477, guid: 5ab86e905a1d075499f9242922f09ac5, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[8].Prefab
       value: 
-      objectReference: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
+      objectReference: {fileID: 6777512347548848596, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].OverridingTargetPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].OverridingTargetPrefab
+      value: 
+      objectReference: {fileID: 4337591833076522517, guid: 1f82316cd30919246a72ebf5e1c73604, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 6588653927243880251, guid: 219d5188ad1232a4c9e9ad663c25bd6b, type: 3}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[7].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[8].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 6777512347548848596, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
 --- !u!114 &612041121 stripped
