@@ -1060,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8371098856202009801, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.770355
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8371098856202009801, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2028,14 +2028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrapDemo
       objectReference: {fileID: 0}
-    - target: {fileID: 4917076391747869286, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4917076391747869286, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4917076391747869287, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2084,16 +2076,8 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 500426992
       objectReference: {fileID: 0}
-    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: SyncScaleX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: SyncScaleY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: SyncScaleZ
+    - target: {fileID: 5060950800825326726, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: AlwaysReplicateAsRoot
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
