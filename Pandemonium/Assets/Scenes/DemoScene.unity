@@ -511,10 +511,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4917076391747869286, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4917076391747869287, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -558,6 +554,10 @@ PrefabInstance:
     - target: {fileID: 4917076391747869287, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060950800825326726, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4004960925
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
@@ -643,19 +643,19 @@ PrefabInstance:
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[2].Prefab
       value: 
-      objectReference: {fileID: 6533881909380971629, guid: f1317dbb5210591478b9efc37ad76314, type: 3}
+      objectReference: {fileID: 4917076391747869281, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[3].Prefab
       value: 
-      objectReference: {fileID: 433119479144800303, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
+      objectReference: {fileID: 6533881909380971629, guid: f1317dbb5210591478b9efc37ad76314, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[4].Prefab
       value: 
-      objectReference: {fileID: 2574522016291591827, guid: 12c67ad927a20294a96dc33abed3911f, type: 3}
+      objectReference: {fileID: 433119479144800303, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[5].Prefab
       value: 
-      objectReference: {fileID: 4917076391747869281, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      objectReference: {fileID: 2574522016291591827, guid: 12c67ad927a20294a96dc33abed3911f, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[6].Prefab
       value: 
@@ -774,25 +774,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &812708299 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4917076391747869281, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
-  m_PrefabInstance: {fileID: 4917076391484697514}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &812708304
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812708299}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &838786274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1504,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5060950800825326726, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2768830587
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
 --- !u!1 &2020025233
@@ -2093,6 +2078,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4917076391747869287, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060950800825326726, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 500426992
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: SyncScaleX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: SyncScaleY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928581007925178542, guid: d59976d188d234f47af58dc7130b3e8e, type: 3}
+      propertyPath: SyncScaleZ
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
