@@ -625,6 +625,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: NetworkConfig.RecycleNetworkIds
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -692,6 +696,10 @@ PrefabInstance:
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[8].SourcePrefabToOverride
       value: 
       objectReference: {fileID: 6777512347548848596, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
+    - target: {fileID: 5482760424619577447, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
+      propertyPath: m_ProtocolType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
 --- !u!114 &612041121 stripped
