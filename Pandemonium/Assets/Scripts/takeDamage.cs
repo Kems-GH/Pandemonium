@@ -17,16 +17,21 @@ public class takeDamage : NetworkBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("object: " + collision.gameObject.name + " Heals: " + health);
+        if (!IsServer) return;
+
         if(collision.transform.CompareTag("Trap") && canTakeDamage)
         {
             TakeDamage(50);
         }
-
+        if(collision.transform.CompareTag("Heart"))
+        {
+            TakeDamage(100);
+        }
         if (collision.transform.CompareTag("Hand") && canTakeDamage)
         {
-            TakeDamage(10);
+            TakeDamage(50);
         }
+
     }
 
     private void TakeDamage(int damage)
@@ -45,10 +50,7 @@ public class takeDamage : NetworkBehaviour
 
     IEnumerator ChangeTakeDamage()
     {
-        
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         this.canTakeDamage = true;
-        
-        
     }
 }

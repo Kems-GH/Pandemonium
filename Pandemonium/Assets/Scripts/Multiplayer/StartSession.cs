@@ -14,9 +14,6 @@ public class StartSession : MonoBehaviour
     private UnityTransport transport;
     public TMPro.TMP_InputField joinCodeInputField;
 
-    
-
-
     // Start is called before the first frame update
     void Start()
     {

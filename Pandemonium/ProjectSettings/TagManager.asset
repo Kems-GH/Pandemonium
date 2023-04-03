@@ -7,17 +7,13 @@ TagManager:
   - SamplesInfoPanel
   - Heart
   - Hand
-  - LeftHand
-  - RightHand
-  - LeftController
-  - RightController
   - Trap
   - VRCameraRig
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

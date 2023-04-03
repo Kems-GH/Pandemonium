@@ -8,17 +8,18 @@ public class SpawnEnemy : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (IsServer)
-        {
-            StartCoroutine(SpawnEnemyCoroutine());
-        }
+        if (!IsServer) return;
+
+        StartCoroutine(SpawnEnemyCoroutine());
     }
 
     IEnumerator SpawnEnemyCoroutine()
     {
         GameObject enemyGameObject = Instantiate(enemyPrefab, this.transform);
         enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
+        
         yield return new WaitForSeconds(4f);
+
         StartCoroutine(SpawnEnemyCoroutine());
     }
 }

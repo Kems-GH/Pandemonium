@@ -14,5 +14,6 @@ public class GrabEvent : NetworkBehaviour
     public void ChangeOwnershipServerRpc(ServerRpcParams serverRpcParams = default)
     {
         var clientId = serverRpcParams.Receive.SenderClientId;
-        this.gameObject.GetComponent<NetworkObject>().ChangeOwnership(clientId);}
+        this.gameObject.GetComponent<NetworkObject>().ChangeOwnership(clientId);
+    }
 }
