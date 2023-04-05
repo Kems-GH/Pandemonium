@@ -3,7 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class takeDamage : NetworkBehaviour
+public class EnemyTakeDamage : NetworkBehaviour
 {
     [SerializeField] private int health = 100;
 

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using Unity.Netcode;
 
-public class movement : NetworkBehaviour
+public class EnemyMovement : NetworkBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     private Transform heart;
