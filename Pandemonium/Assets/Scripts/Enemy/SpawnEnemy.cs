@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class SpawnEnemy : NetworkBehaviour
 {
-    public GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
 
     public override void OnNetworkSpawn()
     {
-        if (!IsServer) return;
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
-        StartCoroutine(SpawnEnemyCoroutine());
+        InvokeRepeating(nameof(SpawnEnemyInstance), 0.2f, 4f);
     }
 
-    IEnumerator SpawnEnemyCoroutine()
+    void SpawnEnemyInstance()
     {
-        GameObject enemyGameObject = Instantiate(enemyPrefab, this.transform);
-        enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
-        
-        yield return new WaitForSeconds(4f);
-
-        StartCoroutine(SpawnEnemyCoroutine());
+        if(GameManager.Instance.GetNbEnemy() < 5)
+        {
+            GameManager.Instance.AddEnnemy();
+            GameObject enemyGameObject = Instantiate(enemyPrefab, this.transform);
+            enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
+        }
     }
 }

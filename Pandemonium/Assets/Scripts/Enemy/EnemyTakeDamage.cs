@@ -17,16 +17,18 @@ public class EnemyTakeDamage : NetworkBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (!IsServer) return;
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
         if(collision.transform.CompareTag("Trap") && canTakeDamage)
         {
             TakeDamage(50);
         }
-        if(collision.transform.CompareTag("Heart"))
+
+        if (collision.transform.CompareTag("Heart"))
         {
             TakeDamage(100);
         }
+
         if (collision.transform.CompareTag("Hand") && canTakeDamage)
         {
             TakeDamage(50);
@@ -43,6 +45,7 @@ public class EnemyTakeDamage : NetworkBehaviour
 
         if (health <= 0)
         {
+            GameManager.Instance.RemoveEnemy();
             this.GetComponent<NetworkObject>().Despawn(true);
         }
         StartCoroutine(ChangeTakeDamage());

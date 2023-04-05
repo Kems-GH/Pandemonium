@@ -9,6 +9,10 @@ TagManager:
   - Hand
   - Trap
   - VRCameraRig
+  - RightHand
+  - LeftController
+  - LeftHand
+  - RightController
   layers:
   - Default
   - TransparentFX
@@ -16,8 +20,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Heart
   - 
   - 
   - 

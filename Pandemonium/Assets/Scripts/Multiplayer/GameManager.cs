@@ -6,8 +6,13 @@ using UnityEngine;
 
 public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform HeadPrefab;
+    [SerializeField] private int maxEnemyOnMap;
+
 
     public static GameManager Instance;
+
+    private int nbEnemy = 0;
+    private bool isSolo = true;
 
     private void Awake() {
         Instance = this;
@@ -15,6 +20,27 @@ public class GameManager : NetworkBehaviour {
 
     public override void OnNetworkSpawn() {
         SpawnPlayerServerRpc();
+        isSolo = false;
+    }
+
+    public bool IsSolo()
+    {
+        return isSolo;
+    }
+
+    public void AddEnnemy()
+    {
+        this.nbEnemy++;
+    }
+
+    public void RemoveEnemy()
+    {
+        this.nbEnemy--;
+    }
+
+    public int GetNbEnemy()
+    {
+        return nbEnemy;
     }
 
     [ServerRpc(RequireOwnership = false)]

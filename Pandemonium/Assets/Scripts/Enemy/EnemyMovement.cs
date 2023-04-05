@@ -5,36 +5,69 @@ using Unity.Netcode;
 
 public class EnemyMovement : NetworkBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private LayerMask layerMaskPlayer;
+    [SerializeField] private LayerMask layerMaskHeart;
+
+    private Collider[] collidersPlayer;
+    private NavMeshAgent agent;
     private Transform heart;
-    private bool BegunPath = false;
+    private HeartHealth heartHealth;
+    private bool isNearHeart = false;
 
     public override void OnNetworkSpawn()
     {
         heart = GameObject.FindGameObjectWithTag("Heart").transform;
+        agent = GetComponent<NavMeshAgent>();
 
-        StartCoroutine(AgentMovement());
+        StartCoroutine(GoToHeart());
     }
 
-    private void Update()
+    void Update()
     {
-        if (!agent.pathPending)
+        if(!IsServer && !GameManager.Instance.IsSolo()) return;
+        
+        collidersPlayer = Physics.OverlapSphere(this.transform.position, 5, layerMaskPlayer);
+
+        if (collidersPlayer.Length > 0)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            ChasePlayer(collidersPlayer[0]);
+        }
+        else
+        {
+            StartCoroutine(GoToHeart());
+        }
+
+        if (Vector3.Distance(this.heart.transform.position, this.transform.position) < 2.1f)
+        {
+            Debug.Log("Near Heart");
+            this.heartHealth = this.heart.GetComponent<HeartHealth>();
+            
+            if(!IsInvoking(nameof(AttackHeart)))
             {
-                if ((!agent.hasPath || agent.velocity.sqrMagnitude <= 0.5f) && BegunPath)
-                {
-                    Destroy(this.gameObject);
-                }
+                InvokeRepeating(nameof(AttackHeart), 0.1f, 3f);
             }
+        }
+        else
+        {
+            isNearHeart = false;
         }
     }
 
-    IEnumerator AgentMovement()
+    void ChasePlayer(Collider player)
+    {
+        agent.SetDestination(player.transform.position);
+    }
+
+    void AttackHeart()
+    {
+        Debug.Log("Attack Heart");
+        this.heartHealth.TakeDamage(5);
+    }
+
+
+    IEnumerator GoToHeart()
     {
         yield return new WaitForSeconds(1f);
-        Vector3 newPos = new Vector3(this.heart.position.x, this.transform.position.y, this.heart.position.z);
-        agent.SetDestination(newPos);
-        BegunPath = true;
+        agent.SetDestination(this.heart.transform.position);
     }
 }
