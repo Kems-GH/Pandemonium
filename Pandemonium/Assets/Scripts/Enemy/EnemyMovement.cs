@@ -13,6 +13,7 @@ public class EnemyMovement : NetworkBehaviour
     private Transform heart;
     private HeartHealth heartHealth;
     private bool isNearHeart = false;
+    private bool isChasingPlayer = false;
 
     public override void OnNetworkSpawn()
     {
@@ -24,15 +25,23 @@ public class EnemyMovement : NetworkBehaviour
 
     void Update()
     {
-        if(!IsServer && !GameManager.Instance.IsSolo()) return;
-        
+
         collidersPlayer = Physics.OverlapSphere(this.transform.position, 5, layerMaskPlayer);
 
         if (collidersPlayer.Length > 0)
         {
-            ChasePlayer(collidersPlayer[0]);
+            isChasingPlayer = true;
+            ChasePlayerServerRpc(collidersPlayer[0].transform.position);
         }
         else
+        {
+            isChasingPlayer = false;
+        }
+        
+
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        if (!isChasingPlayer)
         {
             StartCoroutine(GoToHeart());
         }
@@ -53,9 +62,10 @@ public class EnemyMovement : NetworkBehaviour
         }
     }
 
-    void ChasePlayer(Collider player)
+    [ServerRpc(RequireOwnership = false)]
+    void ChasePlayerServerRpc(Vector3 player)
     {
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(player);
     }
 
     void AttackHeart()

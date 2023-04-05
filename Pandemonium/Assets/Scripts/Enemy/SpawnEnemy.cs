@@ -15,6 +15,7 @@ public class SpawnEnemy : NetworkBehaviour
 
     void SpawnEnemyInstance()
     {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
         if(GameManager.Instance.GetNbEnemy() < 5)
         {
             GameManager.Instance.AddEnnemy();

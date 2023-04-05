@@ -12,7 +12,7 @@ public class GameManager : NetworkBehaviour {
     public static GameManager Instance;
 
     private int nbEnemy = 0;
-    private bool isSolo = true;
+    [SerializeField] private bool isSolo = true;
 
     private void Awake() {
         Instance = this;
