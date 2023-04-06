@@ -2186,6 +2186,26 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: m_Volume
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a25aae154954c234ebb6c64dd36e8e5e, type: 3}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8371098856202009801, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
       propertyPath: m_RootOrder
       value: 9
