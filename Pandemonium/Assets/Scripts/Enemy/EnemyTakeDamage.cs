@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class EnemyTakeDamage : NetworkBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] private NetworkVariable<int> health = new NetworkVariable<int>(100);
 
     [SerializeField] private Slider slider;
     private bool canTakeDamage = true;
 
     private void Start()
     {
-        slider.value = health;
+        UpdateSlider();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        health.OnValueChanged += (int oldValue, int newValue) => { UpdateSlider(); };
     }
 
     void OnTriggerEnter(Collider collision)
@@ -38,17 +43,27 @@ public class EnemyTakeDamage : NetworkBehaviour
 
     private void TakeDamage(int damage)
     {
-        health -= damage;
-        
-        slider.value = health;
+        health.Value -= damage;
+
+        UpdateSlider();
         this.canTakeDamage = false;
 
-        if (health <= 0)
+        if (health.Value <= 0)
         {
-            GameManager.Instance.RemoveEnemy();
-            this.GetComponent<NetworkObject>().Despawn(true);
+            Die();
         }
         StartCoroutine(ChangeTakeDamage());
+    }
+
+    void Die()
+    {
+        GameManager.Instance.RemoveEnemy();
+        this.GetComponent<NetworkObject>().Despawn(true);
+    }
+
+    void UpdateSlider()
+    {
+        slider.value = health.Value;
     }
 
     IEnumerator ChangeTakeDamage()
