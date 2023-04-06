@@ -48,7 +48,6 @@ public class EnemyMovement : NetworkBehaviour
 
         if (Vector3.Distance(this.heart.transform.position, this.transform.position) < 2.1f)
         {
-            Debug.Log("Near Heart");
             this.heartHealth = this.heart.GetComponent<HeartHealth>();
             
             if(!IsInvoking(nameof(AttackHeart)))
@@ -70,7 +69,6 @@ public class EnemyMovement : NetworkBehaviour
 
     void AttackHeart()
     {
-        Debug.Log("Attack Heart");
         this.heartHealth.TakeDamage(5);
     }
 

@@ -19,7 +19,11 @@ public class SpawnEnemy : NetworkBehaviour
         if(GameManager.Instance.GetNbEnemy() < 5)
         {
             GameManager.Instance.AddEnnemy();
-            GameObject enemyGameObject = Instantiate(enemyPrefab, this.transform);
+            Vector3 randPos = Random.insideUnitSphere * 3;
+            // We create a new Vector3 to keep the y value
+            Vector3 pos = new Vector3(randPos.x + transform.position.x, transform.position.y, randPos.z + transform.position.z);
+
+            GameObject enemyGameObject = Instantiate(enemyPrefab, pos, transform.rotation);
             enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
         }
     }
