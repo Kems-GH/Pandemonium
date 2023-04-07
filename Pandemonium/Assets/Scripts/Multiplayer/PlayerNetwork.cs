@@ -34,7 +34,7 @@ public class PlayerNetwork : NetworkBehaviour {
         };
     }
 
-    private void  Update() {
+    private void Update() {
         if (!IsOwner) return;
 
         if (Input.GetKeyDown(KeyCode.T)) {

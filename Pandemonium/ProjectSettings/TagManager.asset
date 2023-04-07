@@ -5,15 +5,23 @@ TagManager:
   serializedVersion: 2
   tags:
   - SamplesInfoPanel
+  - Heart
+  - Hand
+  - Trap
+  - VRCameraRig
+  - RightHand
+  - LeftController
+  - LeftHand
+  - RightController
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Heart
   - 
   - 
   - 
