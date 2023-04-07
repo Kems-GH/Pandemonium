@@ -17,9 +17,13 @@ public class Enemy : NetworkBehaviour
     private bool isChasingPlayer = false;
     private NetworkVariable<int> health = new NetworkVariable<int>(100);
 
+    private const float distanceNearHeart = 2.1f;
+    private const float speedAttack = 3f;
+    private const float timeForFirstAttack = 0.1f;
+
     private void Update()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        // if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
         CheckNearPlayer();
         CheckNearHeart();
@@ -104,13 +108,13 @@ public class Enemy : NetworkBehaviour
         }
 
 
-        if (Vector3.Distance(this.heart.transform.position, this.transform.position) < 2.1f)
+        if (Vector3.Distance(this.heart.transform.position, this.transform.position) < distanceNearHeart)
         {
             this.heartHealth = this.heart.GetComponent<HeartHealth>();
 
             if (!IsInvoking(nameof(AttackHeart)))
             {
-                InvokeRepeating(nameof(AttackHeart), 0.1f, 3f);
+                InvokeRepeating(nameof(AttackHeart), timeForFirstAttack, speedAttack);
             }
         }
     }
@@ -120,6 +124,8 @@ public class Enemy : NetworkBehaviour
      */
     private void AttackHeart()
     {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
         this.heartHealth.TakeDamage(damageInflicted);
     }
 
