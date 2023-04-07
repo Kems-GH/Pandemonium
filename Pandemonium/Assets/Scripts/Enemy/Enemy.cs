@@ -23,9 +23,9 @@ public class Enemy : NetworkBehaviour
 
     private void Update()
     {
-        // if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
         CheckNearPlayer();
+
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
         CheckNearHeart();
 
         if (!isChasingPlayer)
