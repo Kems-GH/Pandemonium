@@ -4,7 +4,7 @@ public class NetworkInitPlayer : NetworkBehaviour
 {
     private void Start() {
 
-        if (IsOwner) return;
+        if (IsOwner || GameManager.Instance.IsSolo()) return;
         
         // Disable all components on the player object
         // except for the NetworkObject and NetworkTransform

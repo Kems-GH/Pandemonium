@@ -28,6 +28,11 @@ public class GameManager : NetworkBehaviour {
         return isSolo;
     }
 
+    public bool SetSolo(bool isSolo)
+    {
+        return isSolo;
+    }
+
     public void AddEnnemy()
     {
         this.nbEnemy++;
