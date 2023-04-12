@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395ebd2148c538c4780dcea79741e5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joinCodeInputField: {fileID: 1643958354}
+  joinCode: {fileID: 1643958354}
   toDelete: {fileID: 2094878445}
   btnHost: {fileID: 821148959}
   btnClient: {fileID: 2075455864}
@@ -1396,6 +1396,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
@@ -1409,6 +1413,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7910265734445537468, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371098856195265805, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
+      propertyPath: isInsightPassthroughEnabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8371098856202009801, guid: 9dbc9aca78e74a641b535220f1284f8f, type: 3}
@@ -1831,7 +1839,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643958352}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2684,7 +2692,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 248260281}
         m_TargetAssemblyTypeName: StartSession, Assembly-CSharp
-        m_MethodName: JoinSession
+        m_MethodName: EnterCode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

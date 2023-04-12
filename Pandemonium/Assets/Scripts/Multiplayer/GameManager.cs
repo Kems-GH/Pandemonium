@@ -20,7 +20,6 @@ public class GameManager : NetworkBehaviour {
 
     public override void OnNetworkSpawn() {
         SpawnPlayerServerRpc();
-        isSolo = false;
     }
 
     public bool IsSolo()
@@ -28,9 +27,11 @@ public class GameManager : NetworkBehaviour {
         return isSolo;
     }
 
-    public bool SetSolo(bool isSolo)
+    public GameManager SetSolo(bool isSolo)
     {
-        return isSolo;
+        this.isSolo = isSolo;
+
+        return this;
     }
 
     public void AddEnnemy()
@@ -38,9 +39,13 @@ public class GameManager : NetworkBehaviour {
         this.nbEnemy++;
     }
 
-    public void RemoveEnemy()
+    public bool RemoveEnemy()
     {
+        if (this.nbEnemy <= 0)
+            return false;
+
         this.nbEnemy--;
+        return true;
     }
 
     public int GetNbEnemy()

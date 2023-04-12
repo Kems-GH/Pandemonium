@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1142419901555515376}
   m_RootOrder: 0
@@ -65,6 +66,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5671431997716857503}
   m_RootOrder: 1
@@ -95,6 +97,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4917829, y: 1, z: 0.254855}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1270405811640892760}
   m_Father: {fileID: 5671431997716857503}
@@ -129,6 +132,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1142419901555515376}
   - {fileID: 3051129225537410085}
@@ -150,16 +154,13 @@ MonoBehaviour:
   trackingEnabled: 1
   connectionRequired: 1
   showUntracked: 0
-  useCustomModel: 0
   keyboardQueryFlags: 2
   presentation: 0
-  allowRuntimeTextureQuality: 0
   textureFiltering: 2
   mipmapBias: -0.3
   PassthroughBorderMultiplier: 0.2
   keyboardModelShader: {fileID: 4800000, guid: 31d0aa80bfd61974cb31771e0a522854, type: 3}
-  keyboardModelAlphaBlendShader: {fileID: 4800000, guid: d2d85b7dbb1832e4bb13239ecd555f29,
-    type: 3}
+  keyboardModelAlphaBlendShader: {fileID: 4800000, guid: d2d85b7dbb1832e4bb13239ecd555f29, type: 3}
   KeyLabelModeShader: {fileID: 4800000, guid: d2d85b7dbb1832e4bb13239ecd555f29, type: 3}
   PassthroughShader: {fileID: 4800000, guid: 8120257754b48344b8a1a0961bad0c46, type: 3}
   projectedPassthroughRoot: {fileID: 1142419901555515376}
@@ -180,10 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f856490bcef82364d9770bece066fcf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftHandPresence: {fileID: 6473791250914920026, guid: 9aaa891e0ba205049a65645fcd08743a,
-    type: 3}
-  RightHandPresence: {fileID: 994359214384669428, guid: f87c1bb867ed6194ea69c0d3a05a6209,
-    type: 3}
+  LeftHandPresence: {fileID: 6473791250914920026, guid: 9aaa891e0ba205049a65645fcd08743a, type: 3}
+  RightHandPresence: {fileID: 994359214384669428, guid: f87c1bb867ed6194ea69c0d3a05a6209, type: 3}
   KeyboardTracker: {fileID: 1726274527906839442}
   HandsMaterial: {fileID: 2100000, guid: e5efaaa7295b60c4b99c88ff76db4d0c, type: 2}
 --- !u!114 &365103210938825357
@@ -198,16 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555725d48e9051a4bb6b8d45178c2fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectionSurfaceType: 1
+  projectionSurfaceType: 0
   overlayType: 1
   compositionDepth: 1
   hidden: 0
   overridePerLayerColorScaleAndOffset: 0
   colorScale: {x: 1, y: 1, z: 1, w: 1}
   colorOffset: {x: 0, y: 0, z: 0, w: 0}
-  overrideBlendFactors: 0
-  srcBlendFactor: 2
-  dstBlendFactor: 3
   colorMapEditorType_: 0
   colorMapEditorGradient:
     serializedVersion: 2
@@ -241,6 +237,8 @@ MonoBehaviour:
   colorMapEditorContrast: 0
   colorMapEditorBrightness: 0
   colorMapEditorPosterize: 0
+  colorMapEditorSaturation: 0
+  serializedSurfaceGeometry: []
   textureOpacity_: 1
   edgeRenderingEnabled_: 0
   edgeColor_: {r: 1, g: 1, b: 1, a: 1}
