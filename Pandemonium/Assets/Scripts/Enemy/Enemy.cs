@@ -1,6 +1,5 @@
 using UnityEngine;
 using Unity.Netcode;
-using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
@@ -20,6 +19,8 @@ public class Enemy : NetworkBehaviour
     private const float distanceNearHeart = 2.1f;
     private const float speedAttack = 3f;
     private const float timeForFirstAttack = 0.1f;
+
+    protected int goldEarnedAfterDeath = 0;
 
     private void Update()
     {
@@ -49,7 +50,7 @@ public class Enemy : NetworkBehaviour
     {
         this.health.Value -= damage;
 
-        if(health.Value < 0)
+        if(health.Value <= 0)
         {
             Die();
         }
@@ -61,6 +62,7 @@ public class Enemy : NetworkBehaviour
     private void Die()
     {
         GameManager.Instance.RemoveEnemy();
+        GoldManager.instance.AddGold(goldEarnedAfterDeath);
         this.GetComponent<NetworkObject>().Despawn(true);
     }
 
