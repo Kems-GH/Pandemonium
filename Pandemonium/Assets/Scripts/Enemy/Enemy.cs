@@ -1,6 +1,5 @@
 using UnityEngine;
 using Unity.Netcode;
-using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
@@ -20,6 +19,14 @@ public class Enemy : NetworkBehaviour
     private const float distanceNearHeart = 2.1f;
     private const float speedAttack = 3f;
     private const float timeForFirstAttack = 0.1f;
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.CompareTag("Hand"))
+        {
+            this.TakeDamage((int) collider.gameObject.GetComponent<IWeapon>().GetDamage());
+        }
+    }
 
     private void Update()
     {
@@ -49,7 +56,7 @@ public class Enemy : NetworkBehaviour
     {
         this.health.Value -= damage;
 
-        if(health.Value < 0)
+        if(health.Value <= 0)
         {
             Die();
         }
