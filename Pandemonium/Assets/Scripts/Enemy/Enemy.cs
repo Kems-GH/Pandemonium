@@ -22,9 +22,11 @@ public class Enemy : NetworkBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.CompareTag("Hand"))
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        if (collider.CompareTag("Hand"))
         {
-            this.TakeDamage((int) collider.gameObject.GetComponent<IWeapon>().GetDamage());
+            this.TakeDamage((int) collider.gameObject.GetComponent<IWeapon>().GetAmountDamage());
         }
     }
 
@@ -67,6 +69,7 @@ public class Enemy : NetworkBehaviour
      */
     private void Die()
     {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
         GameManager.Instance.RemoveEnemy();
         this.GetComponent<NetworkObject>().Despawn(true);
     }

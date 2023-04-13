@@ -1,4 +1,4 @@
 interface IWeapon
 {
-    public float GetDamage();
+    public float GetAmountDamage();
 }

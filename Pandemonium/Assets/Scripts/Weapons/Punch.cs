@@ -6,7 +6,7 @@ public class Punch : MonoBehaviour, IWeapon
 {
     [SerializeField] private float damage;
 
-    float IWeapon.GetDamage()
+    float IWeapon.GetAmountDamage()
     {
         return damage;
     }
