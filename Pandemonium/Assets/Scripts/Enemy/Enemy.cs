@@ -14,7 +14,7 @@ public class Enemy : NetworkBehaviour
     private Transform heart;
     private HeartHealth heartHealth;
     private bool isChasingPlayer = false;
-    private NetworkVariable<int> health = new NetworkVariable<int>(100);
+    private readonly NetworkVariable<int> health = new NetworkVariable<int>(100);
 
     private const float distanceNearHeart = 2.1f;
     private const float speedAttack = 3f;

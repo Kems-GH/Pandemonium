@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour, IWeapon
 {
-    [SerializeField] private float damage;
+    private readonly float damage = 25;
 
     float IWeapon.GetAmountDamage()
     {
