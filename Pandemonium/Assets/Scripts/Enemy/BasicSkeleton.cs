@@ -1,4 +1,4 @@
 public class BasicSkeleton : Enemy
 {
-   // Create function specific to this type of Enemy
+    protected override int goldEarnedAfterDeath { get; } = 5;
 }
