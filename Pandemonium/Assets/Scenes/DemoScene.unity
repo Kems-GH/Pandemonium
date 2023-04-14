@@ -1301,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[3].Prefab
       value: 
-      objectReference: {fileID: 6533881909380971629, guid: f1317dbb5210591478b9efc37ad76314, type: 3}
+      objectReference: {fileID: 7171837862800594896, guid: ec122be3a36ef4246b2b2f4cda39fa39, type: 3}
     - target: {fileID: 5482760424619577446, guid: bc92d86d4a9f3f944a4280301b860f9a, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[4].Prefab
       value: 
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: f1471033593668c4c8a4d781060f40e1, type: 2}
 --- !u!4 &619858160
@@ -3278,7 +3278,7 @@ PrefabInstance:
     - target: {fileID: -5608710415143460044, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 6533881909380971629, guid: f1317dbb5210591478b9efc37ad76314, type: 3}
+      objectReference: {fileID: 7171837862800594896, guid: ec122be3a36ef4246b2b2f4cda39fa39, type: 3}
     - target: {fileID: -3008724873847613919, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3924097713

@@ -21,6 +21,16 @@ public class Enemy : NetworkBehaviour
     protected virtual float timeForFirstAttack { get; } = 0.1f;
     protected virtual int goldEarnedAfterDeath { get; } = 0;
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        if (collider.CompareTag("Hand"))
+        {
+            this.TakeDamage((int) collider.gameObject.GetComponent<IWeapon>().GetAmountDamage());
+        }
+    }
+
     private void Update()
     {
         CheckNearPlayer();
@@ -60,6 +70,7 @@ public class Enemy : NetworkBehaviour
      */
     private void Die()
     {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
         GameManager.Instance.RemoveEnemy();
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         this.GetComponent<NetworkObject>().Despawn(true);

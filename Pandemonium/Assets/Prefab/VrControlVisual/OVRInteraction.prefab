@@ -678,6 +678,19 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
+--- !u!114 &3926815730283912406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828347050856458932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322792acd4b4ec2459fbf80d0162d485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
 --- !u!1 &828347050891997099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7791990264021549785, guid: 4c0ee7a14e52ba544b89c2f777670cca, type: 3}
@@ -4450,6 +4463,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1639047562293526156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273586132515350856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322792acd4b4ec2459fbf80d0162d485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
 --- !u!1 &6273586132515704757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3480180546880676551, guid: 4c0ee7a14e52ba544b89c2f777670cca, type: 3}
