@@ -39,8 +39,7 @@ public class Enemy : NetworkBehaviour
         heart = GameObject.FindGameObjectWithTag("Heart").transform;
         navAgent = GetComponent<NavMeshAgent>();
 
-        StartCoroutine(GoToHeart());
-        Die();
+        StartCoroutine(GoToHeart())
     }
 
     /**
