@@ -1,6 +1,5 @@
 using UnityEngine;
 using Unity.Netcode;
-using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Collections;
 
@@ -15,11 +14,12 @@ public class Enemy : NetworkBehaviour
     private Transform heart;
     private HeartHealth heartHealth;
     private bool isChasingPlayer = false;
-    private NetworkVariable<int> health = new NetworkVariable<int>(100);
 
-    private const float distanceNearHeart = 2.1f;
-    private const float speedAttack = 3f;
-    private const float timeForFirstAttack = 0.1f;
+    protected virtual NetworkVariable<int> health { get; } = new NetworkVariable<int>(100);
+    protected virtual float distanceNearHeart { get; } = 2.1f;
+    protected virtual float speedAttack { get; } = 3f;
+    protected virtual float timeForFirstAttack { get; } = 0.1f;
+    protected virtual int goldEarnedAfterDeath { get; } = 0;
 
     private void Update()
     {
@@ -49,7 +49,7 @@ public class Enemy : NetworkBehaviour
     {
         this.health.Value -= damage;
 
-        if(health.Value < 0)
+        if(health.Value <= 0)
         {
             Die();
         }
@@ -61,6 +61,7 @@ public class Enemy : NetworkBehaviour
     private void Die()
     {
         GameManager.Instance.RemoveEnemy();
+        GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         this.GetComponent<NetworkObject>().Despawn(true);
     }
 
