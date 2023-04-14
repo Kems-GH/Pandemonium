@@ -7,7 +7,7 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using System;
 
-public class StartSession : MonoBehaviour
+public class StartSession : NetworkBehaviour
 {
     private UnityTransport transport;
     public TMPro.TMP_Text joinCode;
@@ -22,10 +22,7 @@ public class StartSession : MonoBehaviour
     private TouchScreenKeyboard overlayKeyboard;
     void Start()
     {
-        string test = "";
         transport = FindAnyObjectByType<UnityTransport>();
-        
-
     }
 
     private async void Awake() {
@@ -73,7 +70,18 @@ public class StartSession : MonoBehaviour
     {
         overlayKeyboard = TouchScreenKeyboard.Open(joinCode.text, TouchScreenKeyboardType.Default);
     }
-
+    private void Update()
+    {
+        if(overlayKeyboard != null && GameManager.Instance.IsSolo())
+        {
+            joinCode.text = overlayKeyboard.text;
+            if (overlayKeyboard.status == TouchScreenKeyboard.Status.Done)
+            {
+                overlayKeyboard = null;
+                JoinSession();
+            }
+        }
+    }
     private void OnStartSession()
     {
         btnCancel.SetActive(true);
@@ -81,18 +89,21 @@ public class StartSession : MonoBehaviour
         btnClient.SetActive(false);
         GameManager.Instance.SetSolo(false);
     }
-
     public void CancelSession()
     {
         NetworkManager.Singleton.Shutdown();
         
         GameManager.Instance.SetSolo(true);
         
-        toDelete = Instantiate(playerPrefab);
+        this.toDelete = Instantiate(playerPrefab);
 
         btnCancel.SetActive(false);
         btnHost.SetActive(true);
         btnClient.SetActive(true);
     }
 
+    private void OnDisconnectedFromServer()
+    {
+        CancelSession();
+    }
 }
