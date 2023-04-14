@@ -17,12 +17,14 @@ public class GoldManager : NetworkBehaviour
         return gold.Value;
     }
 
-    public void AddGold(int amount)
+    [ServerRpc(RequireOwnership = false)]
+    public void AddGoldServerRpc(int amount)
     {
         this.gold.Value += amount;
     }
 
-    public void RemoveGold(int amount)
+    [ServerRpc(RequireOwnership = false)]
+    public void RemoveGoldServerRpc(int amount)
     {
         this.gold.Value -= amount;
     }
