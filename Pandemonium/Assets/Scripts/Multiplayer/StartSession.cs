@@ -7,7 +7,7 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using System;
 
-public class StartSession : MonoBehaviour
+public class StartSession : NetworkBehaviour
 {
     private UnityTransport transport;
     public TMPro.TMP_Text joinCode;
@@ -108,4 +108,8 @@ public class StartSession : MonoBehaviour
         btnClient.SetActive(true);
     }
 
+    private void OnDisconnectedFromServer()
+    {
+        CancelSession();
+    }
 }
