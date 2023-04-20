@@ -20,7 +20,6 @@ public class GameManager : NetworkBehaviour {
 
     public override void OnNetworkSpawn() {
         SpawnPlayerServerRpc();
-        isSolo = false;
     }
 
     public bool IsSolo()
@@ -28,14 +27,25 @@ public class GameManager : NetworkBehaviour {
         return isSolo;
     }
 
+    public GameManager SetSolo(bool isSolo)
+    {
+        this.isSolo = isSolo;
+
+        return this;
+    }
+
     public void AddEnnemy()
     {
         this.nbEnemy++;
     }
 
-    public void RemoveEnemy()
+    public bool RemoveEnemy()
     {
+        if (this.nbEnemy <= 0)
+            return false;
+
         this.nbEnemy--;
+        return true;
     }
 
     public int GetNbEnemy()
@@ -51,4 +61,10 @@ public class GameManager : NetworkBehaviour {
         Transform head = Instantiate(HeadPrefab);
         head.GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
     }
+
+    private void OnDisconnectedFromServer()
+    {
+        StartSession.instance.CancelSession();
+    }
+    
 }
