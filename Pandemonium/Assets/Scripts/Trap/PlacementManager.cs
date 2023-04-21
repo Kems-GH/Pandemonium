@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-    [SerializeField] private BoxCollider collider;
-    [SerializeField] private GameObject placementVisible;
+    [SerializeField] private GameObject zoneVisible;
 
     private void Awake()
     {
-        placementVisible.SetActive(false);
+        zoneVisible.SetActive(false);
         this.tag = "Placement Zone";
     }
 
     public void SetZoneVisible(bool visibleZone)
     {
-        this.placementVisible.SetActive(visibleZone);
+        this.zoneVisible.SetActive(visibleZone);
     }
 }
