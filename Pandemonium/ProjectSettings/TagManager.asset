@@ -13,6 +13,7 @@ TagManager:
   - LeftController
   - LeftHand
   - RightController
+  - Placement Zone
   layers:
   - Default
   - TransparentFX

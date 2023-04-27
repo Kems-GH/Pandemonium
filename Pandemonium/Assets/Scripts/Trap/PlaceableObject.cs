@@ -1,17 +1,20 @@
+using System;
 using UnityEngine;
 
 public class PlaceableObject : MonoBehaviour
 {
+    [SerializeField] private GameObject trap;
+    
     private Vector3 basePosition;
     private GameObject[] zonesPlacement;
     private Vector3[] corners;
     private GameObject ghostTrap;
+    private bool isPreview;
 
     private const string tagZone = "Placement Zone";
     
     private void Awake()
     {
-        ghostTrap = new GameObject("Ghost");
         basePosition = transform.position;
         zonesPlacement = GameObject.FindGameObjectsWithTag(tagZone);
     }
@@ -25,15 +28,20 @@ public class PlaceableObject : MonoBehaviour
     {
         if (collider.CompareTag(tagZone))
         {
-            if(GameObject.Find("Ghost"))
-            {
-                Instantiate(ghostTrap);
-            }
-
+            ghostTrap = Instantiate(trap);
             ghostTrap.transform.position = collider.transform.position;
             ghostTrap.transform.rotation = Quaternion.identity;
+            isPreview = true;
         }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag(tagZone))
+        {
+            isPreview = false;
+            Destroy(ghostTrap);
+        }
     }
 
     public void OnGrab()
@@ -60,6 +68,7 @@ public class PlaceableObject : MonoBehaviour
             manager.SetZoneVisible(false);
         }
 
+        isPreview = false;
         Destroy(ghostTrap);
     }
 
