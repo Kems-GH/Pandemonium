@@ -1,15 +1,24 @@
+using Oculus.Interaction.Surfaces;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlaceableObject : MonoBehaviour
 {
     [SerializeField] private GameObject trap;
+    [SerializeField] private float minusY;
     
+    private Vector3[] cornersZone;
     private Vector3 basePosition;
+
     private GameObject[] zonesPlacement;
-    private Vector3[] corners;
     private GameObject ghostTrap;
+
+    private Collider zoneCollider;
+
     private bool isPreview;
+    private bool isGrabFirstHand;
+    private bool isGrabSecondHand;
 
     private const string tagZone = "Placement Zone";
     
@@ -19,33 +28,50 @@ public class PlaceableObject : MonoBehaviour
         zonesPlacement = GameObject.FindGameObjectsWithTag(tagZone);
     }
 
-    private void Start()
-    {
-        GetFourCorners();
-    }
-
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag(tagZone))
         {
-            ghostTrap = Instantiate(trap);
-            ghostTrap.transform.position = collider.transform.position;
-            ghostTrap.transform.rotation = Quaternion.identity;
-            isPreview = true;
+            InstantiateGhostTrap(collider);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider collider)
     {
-        if(other.CompareTag(tagZone))
+        if(collider.CompareTag(tagZone))
         {
             isPreview = false;
             Destroy(ghostTrap);
         }
     }
 
+    private void OnTriggerStay(Collider collider)
+    {
+        if(collider.CompareTag(tagZone) && (isGrabFirstHand || isGrabSecondHand) && !isPreview)
+        {
+            InstantiateGhostTrap(collider);
+        }
+    }
+
+    private void InstantiateGhostTrap(Collider collider)
+    {
+        // Security, but will never happen
+        if (collider.GetType() != typeof(BoxCollider)) return;
+
+        GetFourCorners((BoxCollider) collider);
+        zoneCollider = collider;
+
+        ghostTrap = Instantiate(trap);
+        ghostTrap.transform.position = collider.transform.position;
+        ghostTrap.transform.rotation = Quaternion.identity;
+        isPreview = true;
+    }
+
     public void OnGrab()
     {
+        if(!isGrabFirstHand) isGrabFirstHand = true;
+        else if(!isGrabSecondHand) isGrabSecondHand = true;
+        
         foreach (GameObject zone in zonesPlacement)
         {
             PlacementManager manager = zone.GetComponent<PlacementManager>();
@@ -55,31 +81,60 @@ public class PlaceableObject : MonoBehaviour
 
     public void OnDrag()
     {
-        // TODO :  Afficher le fantôme de l'objet sur la zone de placement
+        if (!isPreview) return;
+        
+        Vector3 point = zoneCollider.ClosestPoint(transform.position);
+
+        //Check if the point is in the collider
+        Vector3 positionGhost = new Vector3();
+        Renderer rend = ghostTrap.GetComponent<Renderer>();
+
+        // TODO check if corner is inside a the boxCollider
+
+        positionGhost = new Vector3(point.x, zoneCollider.transform.position.y - minusY, point.z);
+        ghostTrap.transform.position = positionGhost;
     }
 
     public void OnRelease()
     {
-        // TODO : Poser le piège s'il est dans une position valide
-        // Sinon, le remettre à sa place
-        foreach (GameObject zone in zonesPlacement)
-        {
-            PlacementManager manager = zone.GetComponent<PlacementManager>();
-            manager.SetZoneVisible(false);
-        }
 
-        isPreview = false;
-        Destroy(ghostTrap);
+        if (isGrabFirstHand) isGrabFirstHand = false;
+        else if (isGrabSecondHand) isGrabSecondHand = false;
+
+        StartCoroutine(nameof(PlaceTrap));
     }
 
-    private void GetFourCorners()
+    IEnumerator PlaceTrap()
     {
-        BoxCollider box = gameObject.GetComponent<BoxCollider>();
+        yield return new WaitForSeconds(1);
+        if (!isGrabFirstHand && !isGrabSecondHand)
+        {
 
-        corners = new Vector3[4];
-        corners[0] = box.center + new Vector3(-box.size.x, -box.size.y, -box.size.z) * 0.5f;
-        corners[1] = box.center + new Vector3(box.size.x, -box.size.y, -box.size.z) * 0.5f;
-        corners[2] = box.center + new Vector3(box.size.x, -box.size.y, box.size.z) * 0.5f;
-        corners[3] = box.center + new Vector3(-box.size.x, -box.size.y, box.size.z) * 0.5f;
+            isPreview = false;
+
+            // TODO : Poser le piège s'il est dans une position valide
+            // Sinon, le remettre à sa place
+            foreach (GameObject zone in zonesPlacement)
+            {
+                PlacementManager manager = zone.GetComponent<PlacementManager>();
+                manager.SetZoneVisible(false);
+            }
+
+            Vector3 point = zoneCollider.ClosestPoint(transform.position);
+            Vector3 positionGhost = new Vector3(point.x, zoneCollider.transform.position.y - minusY, point.z);
+
+            ghostTrap.transform.position = positionGhost;
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void GetFourCorners(BoxCollider collider)
+    {
+        cornersZone = new Vector3[4];
+        cornersZone[0] = collider.center + new Vector3(-collider.size.x, -collider.size.y, -collider.size.z) * 0.5f;
+        cornersZone[1] = collider.center + new Vector3(collider.size.x, -collider.size.y, -collider.size.z) * 0.5f;
+        cornersZone[2] = collider.center + new Vector3(collider.size.x, -collider.size.y, collider.size.z) * 0.5f;
+        cornersZone[3] = collider.center + new Vector3(-collider.size.x, -collider.size.y, collider.size.z) * 0.5f;
     }
 }
