@@ -6,8 +6,7 @@ public class SpawnEnemy : NetworkBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
 
-    public override void OnNetworkSpawn()
-    {
+    private void Start() {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
         InvokeRepeating(nameof(SpawnEnemyInstance), 0.2f, 4f);

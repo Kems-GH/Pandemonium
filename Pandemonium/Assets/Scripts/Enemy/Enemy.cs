@@ -15,7 +15,9 @@ public class Enemy : NetworkBehaviour
     private HeartHealth heartHealth;
     private bool isChasingPlayer = false;
 
-    protected virtual NetworkVariable<int> health { get; } = new NetworkVariable<int>(100);
+    private bool canTakeDamage = true;
+
+    [SerializeField] protected  NetworkVariable<int> health;
     protected virtual float distanceNearHeart { get; } = 2.1f;
     protected virtual float speedAttack { get; } = 3f;
     protected virtual float timeForFirstAttack { get; } = 0.1f;
@@ -25,10 +27,19 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
+        int amountDamage = 0;
+
         if (collider.CompareTag("Hand"))
         {
-            this.TakeDamage((int) collider.gameObject.GetComponent<IWeapon>().GetAmountDamage());
+            amountDamage = (int)collider.gameObject.GetComponent<IWeapon>().GetAmountDamage();
+        } else if(collider.CompareTag("Trap"))
+        {
+            amountDamage = (int)collider.gameObject.GetComponent<ITrap>().GetAmountDamage();
+        } else {
+            return;
         }
+
+        this.TakeDamage(amountDamage);
     }
 
     private void Update()
@@ -44,10 +55,12 @@ public class Enemy : NetworkBehaviour
         }
     }
 
-    public override void OnNetworkSpawn()
-    {
+    private void Start() {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
         heart = GameObject.FindGameObjectWithTag("Heart").transform;
         navAgent = GetComponent<NavMeshAgent>();
+        this.health.Value = 100;
 
         StartCoroutine(GoToHeart());
     }
@@ -56,13 +69,25 @@ public class Enemy : NetworkBehaviour
      * The Enemy take some damage
      */
     public void TakeDamage(int damage)
-    {
+    {   
+        if(!this.canTakeDamage) return;
+
+        Debug.Log(this + ": " + damage );
         this.health.Value -= damage;
 
+        this.canTakeDamage  = false;
+        StartCoroutine(Invulnerable());
+        
         if(health.Value <= 0)
         {
             Die();
         }
+    }
+
+    private IEnumerator Invulnerable()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.canTakeDamage = true;
     }
 
     /**
@@ -73,7 +98,8 @@ public class Enemy : NetworkBehaviour
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
         GameManager.Instance.RemoveEnemy();
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
-        this.GetComponent<NetworkObject>().Despawn(true);
+        if(IsServer) this.GetComponent<NetworkObject>().Despawn(true);
+        else Destroy(this.gameObject);
     }
 
     /**
