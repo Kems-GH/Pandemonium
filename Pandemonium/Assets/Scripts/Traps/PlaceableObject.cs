@@ -6,9 +6,7 @@ using UnityEngine;
 public class PlaceableObject : MonoBehaviour
 {
     [SerializeField] private GameObject trap;
-    [SerializeField] private float minusY;
     
-    private Vector3[] cornersZone;
     private Vector3 basePosition;
 
     private GameObject[] zonesPlacement;
@@ -19,7 +17,6 @@ public class PlaceableObject : MonoBehaviour
     private bool isPreview;
     private bool isGrabFirstHand;
     private bool isGrabSecondHand;
-    private bool isPlaceable = true;
 
     private const string tagZone = "Placement Zone";
     
@@ -33,7 +30,7 @@ public class PlaceableObject : MonoBehaviour
     {
         if (collider.CompareTag(tagZone))
         {
-            InstantiateGhostTrap(collider);
+            StartCoroutine(InstantiateGhostTrap(collider));
         }
     }
 
@@ -46,20 +43,13 @@ public class PlaceableObject : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider collider)
+    IEnumerator InstantiateGhostTrap(Collider collider)
     {
-        if(collider.CompareTag(tagZone) && (isGrabFirstHand || isGrabSecondHand) && !isPreview)
-        {
-            InstantiateGhostTrap(collider);
-        }
-    }
+        // We wait for the OnTriggerExit event to be launch
+        yield return new WaitForSeconds(0.2f);
 
-    private void InstantiateGhostTrap(Collider collider)
-    {
         // Security, but will never happen
-        if (collider.GetType() != typeof(BoxCollider)) return;
-
-        GetFourCorners((BoxCollider) collider);
+        if (collider.GetType() != typeof(BoxCollider)) yield break;
         zoneCollider = collider;
 
         ghostTrap = Instantiate(trap);
@@ -83,29 +73,8 @@ public class PlaceableObject : MonoBehaviour
     public void OnDrag()
     {
         if (!isPreview) return;
-        
-        Vector3 point = zoneCollider.ClosestPoint(transform.position);
-        Vector3 positionGhost = new Vector3();
-        Renderer rend = ghostTrap.GetComponent<Renderer>();
 
-        // Position of the corners of the trap
-        Vector3[] corners = new Vector3[4];
-        corners[0] = new Vector3(rend.bounds.max.x, 0, rend.bounds.max.z);
-        corners[1] = new Vector3(rend.bounds.min.x, 0, rend.bounds.max.z);
-        corners[2] = new Vector3(rend.bounds.max.x, 0, rend.bounds.min.z);
-        corners[3] = new Vector3(rend.bounds.min.x, 0, rend.bounds.min.z);
-
-        foreach(Vector3 corner in corners)
-        {
-            if(!zoneCollider.bounds.Contains(corner))
-            {
-                isPlaceable = false;
-                // TODO Add a sign so the user will know the placement is invalid
-            }
-        }
-        
-        positionGhost = new Vector3(point.x, zoneCollider.transform.position.y - minusY, point.z);
-        ghostTrap.transform.position = positionGhost;
+        ghostTrap.transform.position = zoneCollider.transform.position;
     }
 
     public void OnRelease()
@@ -125,34 +94,20 @@ public class PlaceableObject : MonoBehaviour
 
     IEnumerator PlaceTrap()
     {
-        yield return new WaitForSeconds(1);
-        isPreview = false;
-        if (!isGrabFirstHand && !isGrabSecondHand && isPlaceable)
+        yield return new WaitForSeconds(1f);
+        if (!isGrabFirstHand && !isGrabSecondHand)
         {
-
-
-            // TODO : Poser le piège s'il est dans une position valide
-            // Sinon, le remettre à sa place
-
+            isPreview = false;
             Vector3 point = zoneCollider.ClosestPoint(transform.position);
-            Vector3 positionGhost = new Vector3(point.x, zoneCollider.transform.position.y - minusY, point.z);
+            Vector3 positionGhost = zoneCollider.transform.position;
 
             ghostTrap.transform.position = positionGhost;
 
             Destroy(this.gameObject);
         }
-        else if(!isPlaceable)
-        {
-            this.transform.position = basePosition;
-        }
-    }
 
-    private void GetFourCorners(BoxCollider collider)
-    {
-        cornersZone = new Vector3[4];
-        cornersZone[0] = collider.center + new Vector3(-collider.size.x, -collider.size.y, -collider.size.z) * 0.5f; // Where
-        cornersZone[1] = collider.center + new Vector3(collider.size.x, -collider.size.y, -collider.size.z) * 0.5f;  // Where
-        cornersZone[2] = collider.center + new Vector3(collider.size.x, -collider.size.y, collider.size.z) * 0.5f;   // Where
-        cornersZone[3] = collider.center + new Vector3(-collider.size.x, -collider.size.y, collider.size.z) * 0.5f;  // Where
+        // We wait 10 seconds before the Trap box go his base position
+        yield return new WaitForSeconds(10f);
+        this.transform.position = basePosition;
     }
 }
