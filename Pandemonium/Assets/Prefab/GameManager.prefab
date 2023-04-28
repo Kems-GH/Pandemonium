@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 872511305585524967}
   - component: {fileID: 872511305585524966}
-  - component: {fileID: 872511305585524964}
+  - component: {fileID: 8832686197657083130}
+  - component: {fileID: 7281448629579090660}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &872511305585524964
+--- !u!114 &8832686197657083130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,11 +59,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 872511305585524961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf3dc850bdfcf7b4785b56b078ebef43, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c90cd2a1a0b83d47adeacf8f91e1664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OVRControllerVisualLeftPrefab: {fileID: 1058831761688883476, guid: 5ab86e905a1d075499f9242922f09ac5, type: 3}
-  OVRControllerVisualRightPrefab: {fileID: 6777512347548848599, guid: 073bfadcb4f8d904f9b74bb0ad840070, type: 3}
-  HandVisualsLeftPrefab: {fileID: 9119892841693336773, guid: 96c20612667ac1c46a046b526ca05d39, type: 3}
-  HandVisualsRightPrefab: {fileID: 6386686638868088663, guid: aab645bfa652c6d47bba752c7874ec3e, type: 3}
-  HeadPrefab: {fileID: 2574522016291621555, guid: 12c67ad927a20294a96dc33abed3911f, type: 3}
+  HeadPrefab: {fileID: 0}
+  maxEnemyOnMap: 0
+  skeletonPrefab: {fileID: 0}
+  isSolo: 1
+--- !u!114 &7281448629579090660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872511305585524961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c90cd2a1a0b83d47adeacf8f91e1664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeadPrefab: {fileID: 0}
+  maxEnemyOnMap: 0
+  skeletonPrefab: {fileID: 7171837862800594896, guid: ec122be3a36ef4246b2b2f4cda39fa39, type: 3}
+  isSolo: 1
