@@ -48,6 +48,7 @@ public class WaveManager : NetworkBehaviour
         {
             ActifSpawner[i].Activate();
         }
+
         while(wave.nbEnemy > 0)
         {
             yield return new WaitForSeconds(wave.spawnRate);
@@ -93,6 +94,22 @@ public class WaveManager : NetworkBehaviour
         if (currentWave < nbWave)
         {
             this.activator.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.Victory();
+        }
+    }
+
+    public void StopWave()
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        StopAllCoroutines();
+        CancelInvoke(nameof(CheckWaveFinished));
+        foreach (Spawner spawner in spawners)
+        {
+            spawner.Deactivate();
         }
     }
 }

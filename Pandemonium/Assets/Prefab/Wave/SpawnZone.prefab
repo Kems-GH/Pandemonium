@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433119479144800297}
   - component: {fileID: -3008724873847613919}
-  - component: {fileID: -5608710415143460044}
+  - component: {fileID: 5175816927719070990}
   m_Layer: 0
   m_Name: SpawnZone
   m_TagString: Untagged
@@ -50,7 +50,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-5608710415143460044
+--- !u!114 &5175816927719070990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 433119479144800303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728a25b0a3848cd4c96ebe5db861acd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ff9087b4f3d38d43a37473e81cae86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 0}
