@@ -18,10 +18,7 @@ public class GameManager : NetworkBehaviour {
         SpawnPlayerServerRpc();
     }
 
-    public bool IsSolo()
-    {
-        return isSolo;
-    }
+    public bool IsSolo(){return isSolo;}
 
     public GameManager SetSolo(bool isSolo)
     {
@@ -42,6 +39,29 @@ public class GameManager : NetworkBehaviour {
     private void OnDisconnectedFromServer()
     {
         StartSession.instance.CancelSession();
+    }
+
+    public void Defeat()
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (IsServer) enemy.GetComponent<NetworkObject>().Despawn(true);
+            else Destroy(enemy);
+        }
+
+        Debug.Log("Defeat");
+        WaveManager.Instance.StopWave();
+    }
+
+    public void Victory()
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        Debug.Log("Victory");
     }
 
     public GameObject GetSkeletonPrefab(){return skeletonPrefab;}

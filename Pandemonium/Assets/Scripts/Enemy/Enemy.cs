@@ -12,7 +12,7 @@ public class Enemy : NetworkBehaviour
     private Collider[] collidersPlayer;
     private NavMeshAgent navAgent;
     private Transform heart;
-    private HeartHealth heartHealth;
+    private Core core;
     private bool isChasingPlayer = false;
 
     private bool canTakeDamage = true;
@@ -147,7 +147,7 @@ public class Enemy : NetworkBehaviour
 
         if (Vector3.Distance(this.heart.transform.position, this.transform.position) < distanceNearHeart)
         {
-            this.heartHealth = this.heart.GetComponent<HeartHealth>();
+            this.core = this.heart.GetComponent<Core>();
 
             if (!IsInvoking(nameof(AttackHeart)))
             {
@@ -163,7 +163,7 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
-        this.heartHealth.TakeDamage(damageInflicted);
+        this.core.TakeDamage(damageInflicted);
     }
 
     /**
