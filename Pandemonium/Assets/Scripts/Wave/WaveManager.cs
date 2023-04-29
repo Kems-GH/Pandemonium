@@ -8,6 +8,7 @@ public class WaveManager : NetworkBehaviour
 {
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private List<Wave> waves;
+    [SerializeField] private GameObject activator;
 
     private int currentWave = 0;
     private int nbWave = 0;
@@ -20,14 +21,10 @@ public class WaveManager : NetworkBehaviour
         nbWave = waves.Count;
     }
 
-    private void Start() {
-
-    }
-
-    private void StartWave()
+    public void StartWave()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
+        this.activator.SetActive(false);
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
@@ -92,6 +89,10 @@ public class WaveManager : NetworkBehaviour
         foreach (Spawner spawner in spawners)
         {
             spawner.Deactivate();
+        }
+        if (currentWave < nbWave)
+        {
+            this.activator.SetActive(true);
         }
     }
 }

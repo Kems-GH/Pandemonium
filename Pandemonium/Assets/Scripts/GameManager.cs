@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform HeadPrefab;
-    [SerializeField] private int maxEnemyOnMap;
     [SerializeField] private GameObject skeletonPrefab;
     [SerializeField] private bool isSolo = true;
     public static GameManager Instance;
