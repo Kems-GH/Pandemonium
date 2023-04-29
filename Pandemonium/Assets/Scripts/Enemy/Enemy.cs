@@ -96,7 +96,6 @@ public class Enemy : NetworkBehaviour
     private void Die()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
-        GameManager.Instance.RemoveEnemy();
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         if(IsServer) this.GetComponent<NetworkObject>().Despawn(true);
         else Destroy(this.gameObject);
