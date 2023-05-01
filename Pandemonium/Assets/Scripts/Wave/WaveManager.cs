@@ -3,12 +3,15 @@ using Unity.Netcode;
 using System.Collections.Generic;
 using Pandemonium.Assets.Scripts;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class WaveManager : NetworkBehaviour
 {
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private List<Wave> waves;
     [SerializeField] private GameObject activator;
+    [SerializeField] private GameObject endGameMenu;
+    [SerializeField] private TMPro.TMP_Text textEndGame;
 
     private int currentWave = 0;
     private int nbWave = 0;
@@ -16,6 +19,7 @@ public class WaveManager : NetworkBehaviour
 
     private void Awake() 
     {
+        // TODO: Change if we have other level
         if (Instance == null) Instance = this;
         else Debug.LogError("Multiple WaveManager in scene");
         nbWave = waves.Count;
@@ -97,7 +101,7 @@ public class WaveManager : NetworkBehaviour
         }
         else
         {
-            GameManager.Instance.Victory();
+            this.Victory();
         }
     }
 
@@ -111,5 +115,46 @@ public class WaveManager : NetworkBehaviour
         {
             spawner.Deactivate();
         }
+    }
+
+    public void Defeat()
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        WaveManager.Instance.StopWave();
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (IsServer) enemy.GetComponent<NetworkObject>().Despawn(true);
+            else Destroy(enemy);
+        }
+
+        DisplayEndGameMenu("Game Over");
+    }
+
+    public void Victory()
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        DisplayEndGameMenu("Victory");
+    }
+
+    private void DisplayEndGameMenu(string textEnd = "")
+    {
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        this.textEndGame.text = textEnd;
+        this.endGameMenu.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadLobby()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

@@ -27,7 +27,7 @@ public class Core : NetworkBehaviour
 
         if(health.Value <= 0)
         {
-            GameManager.Instance.Defeat();
+            WaveManager.Instance.Defeat();
         }
     }
 
