@@ -1,9 +1,10 @@
 using Oculus.Interaction.Surfaces;
 using System;
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlaceableObject : MonoBehaviour
+public class PlaceableObject : NetworkBehaviour
 {
     [SerializeField] private GameObject trap;
     
@@ -52,7 +53,10 @@ public class PlaceableObject : MonoBehaviour
         if (collider.GetType() != typeof(BoxCollider)) yield break;
         zoneCollider = collider;
 
+        if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
+
         ghostTrap = Instantiate(trap);
+
         ghostTrap.transform.position = collider.transform.position;
         ghostTrap.transform.rotation = Quaternion.identity;
         isPreview = true;
@@ -95,19 +99,43 @@ public class PlaceableObject : MonoBehaviour
     IEnumerator PlaceTrap()
     {
         yield return new WaitForSeconds(1f);
-        if (!isGrabFirstHand && !isGrabSecondHand)
+        if (isGrabFirstHand || isGrabSecondHand)
         {
-            isPreview = false;
-            Vector3 point = zoneCollider.ClosestPoint(transform.position);
-            Vector3 positionGhost = zoneCollider.transform.position;
-
-            ghostTrap.transform.position = positionGhost;
-
-            Destroy(this.gameObject);
+            yield break;
         }
 
-        // We wait 10 seconds before the Trap box go his base position
-        yield return new WaitForSeconds(10f);
+        if (isPreview)
+        {
+            Destroy(ghostTrap);
+            PlaceTrapServerRpc();
+        }
+        else
+        {
+            // We wait 10 seconds before the Trap box go his base position
+            yield return new WaitForSeconds(10f);
+            ReplaceTrapBoxServerRpc();
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void PlaceTrapServerRpc()
+    {
+        isPreview = false;
+        Vector3 positionGhost = zoneCollider.transform.position;
+
+        GameObject newTrap = Instantiate(trap);
+        newTrap.GetComponent<NetworkObject>().Spawn(true);
+        trap.transform.position = positionGhost;
+
+        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+
+        if(IsServer) this.GetComponent<NetworkObject>().Despawn(true);
+        else Destroy(this.gameObject);
+    }
+
+    [ServerRpc]
+    private void ReplaceTrapBoxServerRpc()
+    {
         this.transform.position = basePosition;
     }
 }
