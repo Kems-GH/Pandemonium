@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: -7177103016889520912}
   - component: {fileID: -8774703229482622491}
   - component: {fileID: -6310289893955546310}
-  - component: {fileID: 6347549982430720675}
   - component: {fileID: -6550810548993636630}
   m_Layer: 0
   m_Name: TrapBox
@@ -210,18 +209,6 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6347549982430720675}
-        m_TargetAssemblyTypeName: GrabEvent, Assembly-CSharp
-        m_MethodName: Grab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: -6550810548993636630}
         m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
         m_MethodName: OnGrab
@@ -267,18 +254,6 @@ MonoBehaviour:
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6347549982430720675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672684713477931870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2653460053faeb3429cbe46e18e29dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6550810548993636630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trap: {fileID: 3759176188220078939, guid: 5f94a5059b2432e45b1151c2377a6405, type: 3}
-  minusY: 0.42
 --- !u!1 &6700967887335907908
 GameObject:
   m_ObjectHideFlags: 0

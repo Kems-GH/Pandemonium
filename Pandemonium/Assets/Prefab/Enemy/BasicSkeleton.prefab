@@ -164,6 +164,7 @@ MonoBehaviour:
     m_Bits: 64
   damageInflicted: 5
   radiusAggro: 5
+  animator: {fileID: 1866254736185242500}
   health:
     m_InternalValue: 0
 --- !u!136 &1546533170628477523

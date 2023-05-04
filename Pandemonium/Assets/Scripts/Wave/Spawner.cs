@@ -19,11 +19,13 @@ public class Spawner : NetworkBehaviour
         if(IsServer) enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
         
     }
-    public void Activate()
+    [ClientRpc]
+    public void ActivateClientRpc()
     {
         spawnEffect.Play();
     }
-    public void Deactivate()
+    [ClientRpc]
+    public void DeactivateClientRpc()
     {
         spawnEffect.Stop();
     }

@@ -66,14 +66,21 @@ public class PlaceableObject : NetworkBehaviour
 
     public void OnGrab()
     {
+        ChangeOwnershipServerRpc();
         if(!isGrabFirstHand) isGrabFirstHand = true;
         else if(!isGrabSecondHand) isGrabSecondHand = true;
-        
         foreach (GameObject zone in zonesPlacement)
         {
             PlacementManager manager = zone.GetComponent<PlacementManager>();
             manager.SetZoneVisible(true);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ChangeOwnershipServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        this.gameObject.GetComponent<NetworkObject>().ChangeOwnership(clientId);
     }
 
     public void OnDrag()

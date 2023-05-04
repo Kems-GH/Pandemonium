@@ -28,7 +28,7 @@ public class WaveManager : NetworkBehaviour
     public void StartWave()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
-        this.activator.SetActive(false);
+        this.DeactivateActivatorClientRpc();
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
@@ -37,6 +37,16 @@ public class WaveManager : NetworkBehaviour
         }
     }
 
+    [ClientRpc]
+    public void DeactivateActivatorClientRpc()
+    {
+        this.activator.SetActive(false);
+    }
+    [ClientRpc]
+    public void ActivateActivatorClientRpc()
+    {
+        this.activator.SetActive(false);
+    }
     private IEnumerator SpawnEnemy(Wave wave)
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
@@ -50,7 +60,7 @@ public class WaveManager : NetworkBehaviour
         // Activate spawner
         for(int i = 0; i < ActifSpawner.Length; i++)
         {
-            ActifSpawner[i].Activate();
+            ActifSpawner[i].ActivateClientRpc();
         }
         yield return new WaitForSeconds(wave.spawnRate);
 
@@ -94,11 +104,11 @@ public class WaveManager : NetworkBehaviour
 
         foreach (Spawner spawner in spawners)
         {
-            spawner.Deactivate();
+            spawner.DeactivateClientRpc();
         }
         if (currentWave < nbWave)
         {
-            this.activator.SetActive(true);
+            this.ActivateActivatorClientRpc();
         }
         else
         {
@@ -114,7 +124,7 @@ public class WaveManager : NetworkBehaviour
         CancelInvoke(nameof(CheckWaveFinished));
         foreach (Spawner spawner in spawners)
         {
-            spawner.Deactivate();
+            spawner.DeactivateClientRpc();
         }
     }
 
