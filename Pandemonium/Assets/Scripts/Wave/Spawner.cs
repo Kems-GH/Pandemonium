@@ -4,12 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class Spawner : NetworkBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    private const float rangeSpawn = 1.5f;
+
     public void Spawn(GameObject enemyPrefab)
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
-        Vector3 randPos = Random.insideUnitSphere * 3;
+        Vector3 randPos = Random.insideUnitSphere * rangeSpawn;
         // We create a new Vector3 to keep the y value
         Vector3 pos = new Vector3(randPos.x + transform.position.x, transform.position.y, randPos.z + transform.position.z);
 
