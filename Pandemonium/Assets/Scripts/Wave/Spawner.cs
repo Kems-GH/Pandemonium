@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Spawner : NetworkBehaviour
 {
-    private const float rangeSpawn = 1.5f;
+    private const float rangeSpawn = 1f;
 
     public void Spawn(GameObject enemyPrefab)
     {
