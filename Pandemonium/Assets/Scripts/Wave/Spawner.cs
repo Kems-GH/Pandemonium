@@ -6,6 +6,7 @@ public class Spawner : NetworkBehaviour
 {
     private const float rangeSpawn = 1f;
 
+    [SerializeField] private ParticleSystem spawnEffect;
     public void Spawn(GameObject enemyPrefab)
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
@@ -20,10 +21,10 @@ public class Spawner : NetworkBehaviour
     }
     public void Activate()
     {
-        //TODO : Activate animation
+        spawnEffect.Play();
     }
     public void Deactivate()
     {
-        //TODO : Deactivate animation
+        spawnEffect.Stop();
     }
 }

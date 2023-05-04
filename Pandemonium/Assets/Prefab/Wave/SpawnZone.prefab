@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff9087b4f3d38d43a37473e81cae86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  spawnEffect: {fileID: 5720524742053073693}
 --- !u!1001 &9181326205219680791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,6 +73,10 @@ PrefabInstance:
     - target: {fileID: 3125318447052028991, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461576481790140682, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762055322657731694, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
       propertyPath: m_RootOrder
@@ -143,5 +147,10 @@ PrefabInstance:
 --- !u!4 &2503221790882858617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6762055322657731694, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
+  m_PrefabInstance: {fileID: 9181326205219680791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5720524742053073693 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3461576481790140682, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
   m_PrefabInstance: {fileID: 9181326205219680791}
   m_PrefabAsset: {fileID: 0}

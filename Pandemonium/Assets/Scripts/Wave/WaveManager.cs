@@ -52,6 +52,7 @@ public class WaveManager : NetworkBehaviour
         {
             ActifSpawner[i].Activate();
         }
+        yield return new WaitForSeconds(wave.spawnRate);
 
         while(wave.nbEnemy > 0)
         {
