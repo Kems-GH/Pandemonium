@@ -100,6 +100,8 @@ public class Enemy : NetworkBehaviour
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         StopAllCoroutines();
         CancelInvoke();
+        navAgent.isStopped = true;
+        
         this.animator.SetTrigger("Death");
         StartCoroutine(DestroyBones());
     }

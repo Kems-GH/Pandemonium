@@ -45,7 +45,7 @@ public class WaveManager : NetworkBehaviour
     [ClientRpc]
     public void ActivateActivatorClientRpc()
     {
-        this.activator.SetActive(false);
+        this.activator.SetActive(true);
     }
     private IEnumerator SpawnEnemy(Wave wave)
     {
@@ -141,27 +141,34 @@ public class WaveManager : NetworkBehaviour
             else Destroy(enemy);
         }
 
-        DisplayEndGameMenu("Game Over");
+        DisplayEndGameMenuClientRpc("Game Over");
     }
 
     public void Victory()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
-        DisplayEndGameMenu("Victory");
+        DisplayEndGameMenuClientRpc("Victory");
     }
 
-    private void DisplayEndGameMenu(string textEnd = "")
+    [ClientRpc]
+    private void DisplayEndGameMenuClientRpc(string textEnd = "")
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
         this.textEndGame.text = textEnd;
         this.endGameMenu.SetActive(true);
+    }
+    [ClientRpc]
+    private void HideEndGameMenuClientRpc()
+    {
+
+        this.endGameMenu.SetActive(false);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.currentWave = 0;
+        this.HideEndGameMenuClientRpc();
+        this.ActivateActivatorClientRpc();
     }
 
     public void LoadLobby()
