@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GoldManager : NetworkBehaviour
 {
-    private NetworkVariable<int> gold;
+    private NetworkVariable<int> gold = new NetworkVariable<int>(0);
 
     public static GoldManager instance;
 
