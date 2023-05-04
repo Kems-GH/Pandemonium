@@ -126,7 +126,8 @@ public class PlaceableObject : NetworkBehaviour
 
         GameObject newTrap = Instantiate(trap);
         newTrap.GetComponent<NetworkObject>().Spawn(true);
-        trap.transform.position = positionGhost;
+        newTrap.transform.position = positionGhost;
+        newTrap.transform.rotation = Quaternion.identity;
 
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
