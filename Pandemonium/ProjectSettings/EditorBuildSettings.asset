@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Dev/TestMultiplayer.unity
+    path: Assets/Scenes/Dev/TestTrap.unity
     guid: f3032a8aa5a15714aba57ad44cbebd5c
   - enabled: 0
     path: Assets/Scenes/DemoScene.unity
