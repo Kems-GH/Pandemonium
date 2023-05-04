@@ -29,7 +29,7 @@ public class PlaceableObject : NetworkBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(tagZone))
+        if (collider.CompareTag(tagZone) && !collider.gameObject.GetComponent<PlacementManager>().GetIsFree())
         {
             StartCoroutine(InstantiateGhostTrap(collider));
         }
@@ -76,7 +76,7 @@ public class PlaceableObject : NetworkBehaviour
 
     public void OnDrag()
     {
-        if (!isPreview) return;
+        if (!isPreview || ghostTrap == null) return;
 
         ghostTrap.transform.position = zoneCollider.transform.position;
     }
@@ -108,6 +108,7 @@ public class PlaceableObject : NetworkBehaviour
         {
             Destroy(ghostTrap);
             PlaceTrapServerRpc();
+            zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(true);
         }
         else
         {
