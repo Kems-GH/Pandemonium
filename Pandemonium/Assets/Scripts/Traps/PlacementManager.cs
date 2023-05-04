@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlacementManager : MonoBehaviour
 {
     [SerializeField] private GameObject zoneVisible;
-    private NetworkVariable<bool> isFree = new NetworkVariable<bool>(false);
+    private NetworkVariable<bool> isFree = new NetworkVariable<bool>(true);
     
     private void Awake()
     {
