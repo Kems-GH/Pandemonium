@@ -2,6 +2,7 @@ using Oculus.Interaction.Surfaces;
 using System;
 using System.Collections;
 using Unity.Netcode;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlaceableObject : NetworkBehaviour
@@ -56,18 +57,18 @@ public class PlaceableObject : NetworkBehaviour
         if (collider.GetType() != typeof(BoxCollider)) yield break;
         zoneCollider = collider;
 
-        if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
-
         isPreview = true;
         InstantiateGhostTrapServerRpc();
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void InstantiateGhostTrapServerRpc()
+    private void InstantiateGhostTrapServerRpc(ServerRpcParams serverRpcParams = default)
     {
         ghostTrap = Instantiate(trap);
         ghostTrap.GetComponent<NetworkObject>().Spawn(true);
 
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        ghostTrap.GetComponent<NetworkObject>().ChangeOwnership(clientId);
         ghostTrap.transform.position = zoneCollider.transform.position;
         ghostTrap.transform.rotation = Quaternion.identity;
     }
@@ -135,15 +136,13 @@ public class PlaceableObject : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void PlaceTrapServerRpc(ServerRpcParams serverRpcParams = default)
+    private void PlaceTrapServerRpc()
     {
-        var clientId = serverRpcParams.Receive.SenderClientId;
         isPreview = false;
         Vector3 positionGhost = zoneCollider.transform.position;
 
         GameObject newTrap = Instantiate(trap, positionGhost, Quaternion.identity);
         newTrap.GetComponent<NetworkObject>().Spawn(true);
-        newTrap.GetComponent<NetworkObject>().ChangeOwnership(clientId);
 
         this.GetComponent<NetworkObject>().Despawn(true);
         zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(false);
