@@ -1,8 +1,5 @@
-using Oculus.Interaction.Surfaces;
-using System;
 using System.Collections;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlaceableObject : NetworkBehaviour
