@@ -35,4 +35,9 @@ public class Core : NetworkBehaviour
     {
         text.text = health.Value.ToString();
     }
+
+    public void ResetHealth()
+    {
+        health.Value = 100;
+    }
 }

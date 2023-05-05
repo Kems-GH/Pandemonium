@@ -48311,6 +48311,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
       propertyPath: spawners.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -48322,6 +48326,30 @@ PrefabInstance:
       propertyPath: spawners.Array.data[1]
       value: 
       objectReference: {fileID: 847688879}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].nbEnemy
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].nbSpawner
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].spawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].maxNbSpawn
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].minNbSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925069668748254584, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
+      propertyPath: waves.Array.data[2].skeletonProba
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5925069668748254587, guid: da3f81dd03c869c4ab70c0eda33e61f4, type: 3}
       propertyPath: m_RootOrder
       value: 0
