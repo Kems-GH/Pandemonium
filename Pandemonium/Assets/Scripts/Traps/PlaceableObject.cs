@@ -62,11 +62,11 @@ public class PlaceableObject : NetworkBehaviour
         InstantiateGhostTrapServerRpc();
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void InstantiateGhostTrapServerRpc()
     {
         ghostTrap = Instantiate(trap);
-        if (IsServer) ghostTrap.GetComponent<NetworkObject>().Spawn(true);
+        ghostTrap.GetComponent<NetworkObject>().Spawn(true);
 
         ghostTrap.transform.position = zoneCollider.transform.position;
         ghostTrap.transform.rotation = Quaternion.identity;
