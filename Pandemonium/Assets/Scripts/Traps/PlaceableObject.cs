@@ -117,23 +117,7 @@ public class PlaceableObject : NetworkBehaviour
         if (isPreview)
         {
             Destroy(ghostTrap);
-            if (IsServer || GameManager.Instance.IsSolo())
-            {
-                ghostTrap.GetComponent<NetworkObject>().Despawn(true);
-
-                isPreview = false;
-                Vector3 positionGhost = zoneCollider.transform.position;
-
-                GameObject newTrap = Instantiate(trap, positionGhost, Quaternion.identity);
-                newTrap.GetComponent<NetworkObject>().Spawn(true);
-
-                this.GetComponent<NetworkObject>().Despawn(true);
-                zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(false);
-            }
-            else
-            {
-                PlaceTrapServerRpc();
-            }
+            PlaceTrapServerRpc();
         }
         else
         {
@@ -144,13 +128,15 @@ public class PlaceableObject : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void PlaceTrapServerRpc()
+    private void PlaceTrapServerRpc(ServerRpcParams serverRpcParams = default)
     {
+        var clientId = serverRpcParams.Receive.SenderClientId;
         isPreview = false;
         Vector3 positionGhost = zoneCollider.transform.position;
 
         GameObject newTrap = Instantiate(trap, positionGhost, Quaternion.identity);
         newTrap.GetComponent<NetworkObject>().Spawn(true);
+        newTrap.GetComponent<NetworkObject>().ChangeOwnership(clientId);
 
         this.GetComponent<NetworkObject>().Despawn(true);
         zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(false);

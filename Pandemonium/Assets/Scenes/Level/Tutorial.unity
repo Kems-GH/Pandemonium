@@ -11316,7 +11316,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.23333333
+  m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 58601c1c5c0db7c4085134700bc1f91f, type: 2}
 --- !u!4 &307318603
@@ -49682,6 +49682,10 @@ PrefabInstance:
       propertyPath: toDelete
       value: 
       objectReference: {fileID: 1859402977}
+    - target: {fileID: 5863299045976325468, guid: 14219d89cf3105d45b5cee9c8e9d65cc, type: 3}
+      propertyPath: _allowTeleport
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5863299045976325470, guid: 14219d89cf3105d45b5cee9c8e9d65cc, type: 3}
       propertyPath: m_Name
       value: MenuStartMultiplayer
