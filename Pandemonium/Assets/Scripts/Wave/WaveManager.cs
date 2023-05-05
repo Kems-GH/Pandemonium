@@ -63,12 +63,12 @@ public class WaveManager : NetworkBehaviour
             ActifSpawner[i].ActivateClientRpc();
         }
         yield return new WaitForSeconds(wave.spawnRate);
-
-        while(wave.nbEnemy > 0)
+        int nbEnemyWave = wave.nbEnemy;
+        while(nbEnemyWave > 0)
         {
             yield return new WaitForSeconds(wave.spawnRate);
             // Spawn enemy on spawner
-            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), wave.nbEnemy);
+            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), nbEnemyWave);
             foreach (Spawner spawner in ActifSpawner)
             {
                 for (int i = 0; i < nbEnemy; i++)
@@ -84,7 +84,7 @@ public class WaveManager : NetworkBehaviour
                     }
                 }
             }
-            wave.nbEnemy -= nbEnemy;
+            nbEnemyWave -= nbEnemy;
         }
         InvokeRepeating(nameof(CheckWaveFinished), 1f, 1f);
     }
