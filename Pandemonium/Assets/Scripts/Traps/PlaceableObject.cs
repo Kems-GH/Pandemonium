@@ -59,16 +59,16 @@ public class PlaceableObject : NetworkBehaviour
         if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
 
         isPreview = true;
-        InstantiateGhostTrapServerRpc(collider);
+        InstantiateGhostTrapServerRpc();
     }
 
     [ServerRpc]
-    private void InstantiateGhostTrapServerRpc(Collider collider)
+    private void InstantiateGhostTrapServerRpc()
     {
         ghostTrap = Instantiate(trap);
         if (IsServer) ghostTrap.GetComponent<NetworkObject>().Spawn(true);
 
-        ghostTrap.transform.position = collider.transform.position;
+        ghostTrap.transform.position = zoneCollider.transform.position;
         ghostTrap.transform.rotation = Quaternion.identity;
     }
 
