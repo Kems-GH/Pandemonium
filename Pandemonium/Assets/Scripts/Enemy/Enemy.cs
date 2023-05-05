@@ -8,6 +8,7 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private LayerMask layerMaskPlayer;
     [SerializeField] private int damageInflicted;
     [SerializeField] private int radiusAggro;
+    [SerializeField] private Animator animator;
 
     private Collider[] collidersPlayer;
     private NavMeshAgent navAgent;
@@ -97,7 +98,18 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
-        if(IsServer) this.GetComponent<NetworkObject>().Despawn(true);
+        StopAllCoroutines();
+        CancelInvoke();
+        navAgent.isStopped = true;
+        
+        this.animator.SetTrigger("Death");
+        StartCoroutine(DestroyBones());
+    }
+
+    private IEnumerator DestroyBones()
+    {
+        yield return new WaitForSeconds(2f);
+        if (IsServer) this.GetComponent<NetworkObject>().Despawn(true);
         else Destroy(this.gameObject);
     }
 
@@ -162,7 +174,7 @@ public class Enemy : NetworkBehaviour
     private void AttackHeart()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
+        this.animator.SetBool("IsAttacking", true);
         this.core.TakeDamage(damageInflicted);
     }
 
@@ -172,6 +184,7 @@ public class Enemy : NetworkBehaviour
     private IEnumerator GoToHeart()
     {
         yield return new WaitForSeconds(1f);
+        this.animator.SetInteger("Speed", 15);
         navAgent.SetDestination(this.heart.transform.position);
     }
 }

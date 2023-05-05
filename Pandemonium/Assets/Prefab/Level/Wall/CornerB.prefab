@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 564026914220222486}
   - component: {fileID: 2120491087510904914}
   - component: {fileID: 2233409785349628907}
+  - component: {fileID: 2273230226056390552}
   m_Layer: 0
   m_Name: CornerB
   m_TagString: Untagged
@@ -132,6 +133,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.43251503, y: 6.84167, z: 1.8705186}
   m_Center: {x: -0.027458966, y: 3.4229875, z: 0.76357776}
+--- !u!208 &2273230226056390552
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961470189791404688}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 0.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &399208361444296037
 PrefabInstance:
   m_ObjectHideFlags: 0

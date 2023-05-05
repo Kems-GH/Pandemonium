@@ -28,7 +28,7 @@ public class WaveManager : NetworkBehaviour
     public void StartWave()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
-        this.activator.SetActive(false);
+        this.DeactivateActivatorClientRpc();
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
@@ -37,6 +37,16 @@ public class WaveManager : NetworkBehaviour
         }
     }
 
+    [ClientRpc]
+    public void DeactivateActivatorClientRpc()
+    {
+        this.activator.SetActive(false);
+    }
+    [ClientRpc]
+    public void ActivateActivatorClientRpc()
+    {
+        this.activator.SetActive(true);
+    }
     private IEnumerator SpawnEnemy(Wave wave)
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
@@ -50,14 +60,15 @@ public class WaveManager : NetworkBehaviour
         // Activate spawner
         for(int i = 0; i < ActifSpawner.Length; i++)
         {
-            ActifSpawner[i].Activate();
+            ActifSpawner[i].ActivateClientRpc();
         }
-
-        while(wave.nbEnemy > 0)
+        yield return new WaitForSeconds(wave.spawnRate);
+        int nbEnemyWave = wave.nbEnemy;
+        while(nbEnemyWave > 0)
         {
             yield return new WaitForSeconds(wave.spawnRate);
             // Spawn enemy on spawner
-            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), wave.nbEnemy);
+            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), nbEnemyWave);
             foreach (Spawner spawner in ActifSpawner)
             {
                 for (int i = 0; i < nbEnemy; i++)
@@ -73,7 +84,7 @@ public class WaveManager : NetworkBehaviour
                     }
                 }
             }
-            wave.nbEnemy -= nbEnemy;
+            nbEnemyWave -= nbEnemy;
         }
         InvokeRepeating(nameof(CheckWaveFinished), 1f, 1f);
     }
@@ -93,11 +104,11 @@ public class WaveManager : NetworkBehaviour
 
         foreach (Spawner spawner in spawners)
         {
-            spawner.Deactivate();
+            spawner.DeactivateClientRpc();
         }
         if (currentWave < nbWave)
         {
-            this.activator.SetActive(true);
+            this.ActivateActivatorClientRpc();
         }
         else
         {
@@ -113,7 +124,7 @@ public class WaveManager : NetworkBehaviour
         CancelInvoke(nameof(CheckWaveFinished));
         foreach (Spawner spawner in spawners)
         {
-            spawner.Deactivate();
+            spawner.DeactivateClientRpc();
         }
     }
 
@@ -130,27 +141,35 @@ public class WaveManager : NetworkBehaviour
             else Destroy(enemy);
         }
 
-        DisplayEndGameMenu("Game Over");
+        DisplayEndGameMenuClientRpc("Game Over");
     }
 
     public void Victory()
     {
         if (!IsServer && !GameManager.Instance.IsSolo()) return;
 
-        DisplayEndGameMenu("Victory");
+        DisplayEndGameMenuClientRpc("Victory");
     }
 
-    private void DisplayEndGameMenu(string textEnd = "")
+    [ClientRpc]
+    private void DisplayEndGameMenuClientRpc(string textEnd = "")
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
         this.textEndGame.text = textEnd;
         this.endGameMenu.SetActive(true);
+    }
+    [ClientRpc]
+    private void HideEndGameMenuClientRpc()
+    {
+
+        this.endGameMenu.SetActive(false);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.currentWave = 0;
+        GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
+        this.HideEndGameMenuClientRpc();
+        this.ActivateActivatorClientRpc();
     }
 
     public void LoadLobby()

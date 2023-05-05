@@ -1,5 +1,3 @@
-using Oculus.Interaction.Surfaces;
-using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -9,6 +7,7 @@ public class PlaceableObject : NetworkBehaviour
     [SerializeField] private GameObject trap;
     
     private Vector3 basePosition;
+    private Quaternion baseRotation;
 
     private GameObject[] zonesPlacement;
     private GameObject ghostTrap;
@@ -24,12 +23,13 @@ public class PlaceableObject : NetworkBehaviour
     private void Awake()
     {
         basePosition = transform.position;
+        baseRotation = transform.rotation;
         zonesPlacement = GameObject.FindGameObjectsWithTag(tagZone);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(tagZone) && !collider.gameObject.GetComponent<PlacementManager>().GetIsFree())
+        if (collider.CompareTag(tagZone) && collider.gameObject.GetComponent<PlacementManager>().GetIsFree())
         {
             StartCoroutine(InstantiateGhostTrap(collider));
         }
@@ -41,6 +41,7 @@ public class PlaceableObject : NetworkBehaviour
         {
             isPreview = false;
             Destroy(ghostTrap);
+            if (IsServer) ghostTrap.GetComponent<NetworkObject>().Despawn(true);
         }
     }
 
@@ -53,20 +54,27 @@ public class PlaceableObject : NetworkBehaviour
         if (collider.GetType() != typeof(BoxCollider)) yield break;
         zoneCollider = collider;
 
-        if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
-
-        ghostTrap = Instantiate(trap);
-
-        ghostTrap.transform.position = collider.transform.position;
-        ghostTrap.transform.rotation = Quaternion.identity;
         isPreview = true;
+        InstantiateGhostTrapServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void InstantiateGhostTrapServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        ghostTrap = Instantiate(trap);
+        ghostTrap.GetComponent<NetworkObject>().Spawn(true);
+
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        ghostTrap.GetComponent<NetworkObject>().ChangeOwnership(clientId);
+        ghostTrap.transform.position = zoneCollider.transform.position;
+        ghostTrap.transform.rotation = Quaternion.identity;
     }
 
     public void OnGrab()
     {
+        ChangeOwnershipServerRpc();
         if(!isGrabFirstHand) isGrabFirstHand = true;
         else if(!isGrabSecondHand) isGrabSecondHand = true;
-        
         foreach (GameObject zone in zonesPlacement)
         {
             PlacementManager manager = zone.GetComponent<PlacementManager>();
@@ -96,6 +104,13 @@ public class PlaceableObject : NetworkBehaviour
         StartCoroutine(nameof(PlaceTrap));
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void ChangeOwnershipServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        var clientId = serverRpcParams.Receive.SenderClientId;
+        this.gameObject.GetComponent<NetworkObject>().ChangeOwnership(clientId);
+    }
+
     IEnumerator PlaceTrap()
     {
         yield return new WaitForSeconds(1f);
@@ -108,7 +123,6 @@ public class PlaceableObject : NetworkBehaviour
         {
             Destroy(ghostTrap);
             PlaceTrapServerRpc();
-            zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(true);
         }
         else
         {
@@ -118,26 +132,23 @@ public class PlaceableObject : NetworkBehaviour
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     private void PlaceTrapServerRpc()
     {
         isPreview = false;
         Vector3 positionGhost = zoneCollider.transform.position;
 
-        GameObject newTrap = Instantiate(trap);
+        GameObject newTrap = Instantiate(trap, positionGhost, Quaternion.identity);
         newTrap.GetComponent<NetworkObject>().Spawn(true);
-        newTrap.transform.position = positionGhost;
-        newTrap.transform.rotation = Quaternion.identity;
 
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
-
-        if(IsServer) this.GetComponent<NetworkObject>().Despawn(true);
-        else Destroy(this.gameObject);
+        this.GetComponent<NetworkObject>().Despawn(true);
+        zoneCollider.gameObject.GetComponent<PlacementManager>().SetFreePlace(false);
     }
 
     [ServerRpc]
     private void ReplaceTrapBoxServerRpc()
     {
         this.transform.position = basePosition;
+        this.transform.rotation = baseRotation;
     }
 }
