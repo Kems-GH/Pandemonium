@@ -43,6 +43,7 @@ public class PlaceableObject : NetworkBehaviour
         {
             isPreview = false;
             Destroy(ghostTrap);
+            if (IsServer) ghostTrap.GetComponent<NetworkObject>().Despawn(true);
         }
     }
 
@@ -57,12 +58,18 @@ public class PlaceableObject : NetworkBehaviour
 
         if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
 
+        isPreview = true;
+        InstantiateGhostTrapServerRpc(collider);
+    }
+
+    [ServerRpc]
+    private void InstantiateGhostTrapServerRpc(Collider collider)
+    {
         ghostTrap = Instantiate(trap);
         if (IsServer) ghostTrap.GetComponent<NetworkObject>().Spawn(true);
 
         ghostTrap.transform.position = collider.transform.position;
         ghostTrap.transform.rotation = Quaternion.identity;
-        isPreview = true;
     }
 
     public void OnGrab()
