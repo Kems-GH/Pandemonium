@@ -1462,11 +1462,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joinCode: {fileID: 5863299045190978488}
-  toDelete: {fileID: 0}
+  joinCodeUi: {fileID: 0}
   btnHost: {fileID: 5863299046549202677}
   btnClient: {fileID: 5863299045622475410}
   btnCancel: {fileID: 5863299044915608232}
-  playerPrefab: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
 --- !u!114 &5863299045976325456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5863299045976325459}
         m_TargetAssemblyTypeName: StartSession, Assembly-CSharp
-        m_MethodName: createMultiplayerRelay
+        m_MethodName: displayJoinCode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

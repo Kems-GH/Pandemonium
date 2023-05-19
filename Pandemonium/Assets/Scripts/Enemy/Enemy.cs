@@ -26,7 +26,7 @@ public class Enemy : NetworkBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         int amountDamage = 0;
 
@@ -47,7 +47,7 @@ public class Enemy : NetworkBehaviour
     {
         CheckNearPlayer();
 
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         CheckNearHeart();
 
         if (!isChasingPlayer)
@@ -57,7 +57,7 @@ public class Enemy : NetworkBehaviour
     }
 
     private void Start() {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         heart = GameObject.FindGameObjectWithTag("Heart").transform;
         navAgent = GetComponent<NavMeshAgent>();
@@ -96,7 +96,7 @@ public class Enemy : NetworkBehaviour
      */
     private void Die()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         StopAllCoroutines();
         CancelInvoke();
@@ -173,7 +173,7 @@ public class Enemy : NetworkBehaviour
      */
     private void AttackHeart()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         this.animator.SetBool("IsAttacking", true);
         this.core.TakeDamage(damageInflicted);
     }

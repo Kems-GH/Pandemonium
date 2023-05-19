@@ -4,15 +4,14 @@ using UnityEngine;
 public class SpikeTrap : NetworkBehaviour
 {
     [SerializeField] private Transform _spike;
+
     private Animator _animator;
-
     private float _cooldown = 5f;
-
     private float _timeLastActivated = 5f;
 
     void Start()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         this._animator = GetComponent<Animator>();
     }
 
@@ -26,6 +25,7 @@ public class SpikeTrap : NetworkBehaviour
 
     void Update()
     {
+        if (!IsServer) return;
         if (_timeLastActivated < _cooldown) _timeLastActivated  += Time.deltaTime;
     }
 

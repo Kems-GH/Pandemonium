@@ -21,13 +21,19 @@ public class WaveManager : NetworkBehaviour
     {
         // TODO: Change if we have other level
         if (Instance == null) Instance = this;
-        else Debug.LogError("Multiple WaveManager in scene");
-        nbWave = waves.Count;
+        else 
+        {
+            Debug.LogError("Multiple WaveManager in scene");
+            Destroy(this.gameObject);
+            return;
+        }
+
+        this.nbWave = waves.Count;
     }
 
     public void StartWave()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         this.DeactivateActivatorClientRpc();
         if (currentWave < nbWave)
         {
@@ -49,7 +55,7 @@ public class WaveManager : NetworkBehaviour
     }
     private IEnumerator SpawnEnemy(Wave wave)
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) yield break;
+        if (!IsServer) yield break;
 
         Spawner[] ActifSpawner = new Spawner[waves[currentWave].nbSpawner];
 
@@ -100,7 +106,7 @@ public class WaveManager : NetworkBehaviour
 
     private void EndWave()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         foreach (Spawner spawner in spawners)
         {
@@ -118,7 +124,7 @@ public class WaveManager : NetworkBehaviour
 
     public void StopWave()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         StopAllCoroutines();
         CancelInvoke(nameof(CheckWaveFinished));
@@ -130,7 +136,7 @@ public class WaveManager : NetworkBehaviour
 
     public void Defeat()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
         WaveManager.Instance.StopWave();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -146,7 +152,7 @@ public class WaveManager : NetworkBehaviour
 
     public void Victory()
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         DisplayEndGameMenuClientRpc("Victory");
     }
