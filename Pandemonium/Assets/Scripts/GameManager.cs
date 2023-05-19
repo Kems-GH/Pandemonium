@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform HeadPrefab;
     [SerializeField] private GameObject skeletonPrefab;
-    [SerializeField] private bool isSolo = true;
     public static GameManager Instance;
 
     private void Awake() {
@@ -14,15 +13,6 @@ public class GameManager : NetworkBehaviour {
 
     public override void OnNetworkSpawn() {
         SpawnPlayerServerRpc();
-    }
-
-    public bool IsSolo(){return isSolo;}
-
-    public GameManager SetSolo(bool isSolo)
-    {
-        this.isSolo = isSolo;
-
-        return this;
     }
 
     [ServerRpc(RequireOwnership = false)]

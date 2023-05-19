@@ -40,8 +40,9 @@ public class PlaceableObject : NetworkBehaviour
         if(collider.CompareTag(tagZone))
         {
             isPreview = false;
-            Destroy(ghostTrap);
+            
             if (IsServer) ghostTrap.GetComponent<NetworkObject>().Despawn(true);
+            else Destroy(ghostTrap);
         }
     }
 
@@ -73,8 +74,10 @@ public class PlaceableObject : NetworkBehaviour
     public void OnGrab()
     {
         ChangeOwnershipServerRpc();
+
         if(!isGrabFirstHand) isGrabFirstHand = true;
         else if(!isGrabSecondHand) isGrabSecondHand = true;
+
         foreach (GameObject zone in zonesPlacement)
         {
             PlacementManager manager = zone.GetComponent<PlacementManager>();

@@ -9,7 +9,7 @@ public class Spawner : NetworkBehaviour
     [SerializeField] private ParticleSystem spawnEffect;
     public void Spawn(GameObject enemyPrefab)
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         Vector3 randPos = Random.insideUnitSphere * rangeSpawn;
         // We create a new Vector3 to keep the y value
