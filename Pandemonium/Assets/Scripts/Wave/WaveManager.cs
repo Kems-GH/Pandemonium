@@ -12,9 +12,11 @@ public class WaveManager : NetworkBehaviour
     [SerializeField] private GameObject activator;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private TMPro.TMP_Text textEndGame;
+    [SerializeField] private bool isActiveWave = true;
 
     private int currentWave = 0;
     private int nbWave = 0;
+    private StartWaveTrigger startWaveTrigger;
     public static WaveManager Instance;
 
     private void Awake() 
@@ -31,82 +33,40 @@ public class WaveManager : NetworkBehaviour
         this.nbWave = waves.Count;
     }
 
+    private void Start() {
+        if (!IsServer) return;
+        startWaveTrigger = GetComponent<StartWaveTrigger>();
+        startWaveTrigger.OnTiriggerEnter += StartWave;
+    }
+
     public void StartWave()
     {
         if (!IsServer) return;
-        this.DeactivateActivatorClientRpc();
+        isActiveWave = true;
+        startWaveTrigger.DeactivateClientRpc();
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
-            StartCoroutine(SpawnEnemy(wave));
+            StartCoroutine(SpawnManager.SpawnEnemy(wave, spawners));
             currentWave++;
+            InvokeRepeating(nameof(CheckWaveFinished), 5f, 1f);
         }
-    }
-
-    [ClientRpc]
-    public void DeactivateActivatorClientRpc()
-    {
-        this.activator.SetActive(false);
-    }
-    [ClientRpc]
-    public void ActivateActivatorClientRpc()
-    {
-        this.activator.SetActive(true);
-    }
-    private IEnumerator SpawnEnemy(Wave wave)
-    {
-        if (!IsServer) yield break;
-
-        Spawner[] ActifSpawner = new Spawner[waves[currentWave].nbSpawner];
-
-        // Randomize spawner and select the number of spawner needed
-        Tools.ShuffleList(spawners);
-        spawners.CopyTo(0, ActifSpawner, 0, wave.nbSpawner < spawners.Count ? wave.nbSpawner : spawners.Count);
-
-        // Activate spawner
-        for(int i = 0; i < ActifSpawner.Length; i++)
-        {
-            ActifSpawner[i].ActivateClientRpc();
-        }
-        yield return new WaitForSeconds(wave.spawnRate);
-        int nbEnemyWave = wave.nbEnemy;
-        while(nbEnemyWave > 0)
-        {
-            yield return new WaitForSeconds(wave.spawnRate);
-            // Spawn enemy on spawner
-            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), nbEnemyWave);
-            foreach (Spawner spawner in ActifSpawner)
-            {
-                for (int i = 0; i < nbEnemy; i++)
-                {
-                    int rand = Random.Range(0, 100);
-                    if (rand < wave.skeletonProba)
-                    {
-                        spawner.Spawn(GameManager.Instance.GetSkeletonPrefab());
-                    }
-                    else
-                    {
-                        spawner.Spawn(GameManager.Instance.GetSkeletonPrefab());
-                    }
-                }
-            }
-            nbEnemyWave -= nbEnemy;
-        }
-        InvokeRepeating(nameof(CheckWaveFinished), 1f, 1f);
     }
 
     private void CheckWaveFinished()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if(!isActiveWave) return;
+        if(WaveChecker.CheckWaveFinished())
         {
-            CancelInvoke(nameof(CheckWaveFinished));
             EndWave();
+            return;
         }
     }
 
     private void EndWave()
     {
         if (!IsServer) return;
+        isActiveWave = false;
 
         foreach (Spawner spawner in spawners)
         {
@@ -114,7 +74,7 @@ public class WaveManager : NetworkBehaviour
         }
         if (currentWave < nbWave)
         {
-            this.ActivateActivatorClientRpc();
+            startWaveTrigger.ActivateClientRpc();
         }
         else
         {
@@ -163,6 +123,7 @@ public class WaveManager : NetworkBehaviour
         this.textEndGame.text = textEnd;
         this.endGameMenu.SetActive(true);
     }
+
     [ClientRpc]
     private void HideEndGameMenuClientRpc()
     {
@@ -175,7 +136,7 @@ public class WaveManager : NetworkBehaviour
         this.currentWave = 0;
         GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
         this.HideEndGameMenuClientRpc();
-        this.ActivateActivatorClientRpc();
+        startWaveTrigger.ActivateClientRpc();
     }
 
     public void LoadLobby()
