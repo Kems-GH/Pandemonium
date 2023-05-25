@@ -4,12 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class Spawner : NetworkBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    private const float rangeSpawn = 1f;
+
+    [SerializeField] private ParticleSystem spawnEffect;
     public void Spawn(GameObject enemyPrefab)
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
-        Vector3 randPos = Random.insideUnitSphere * 3;
+        Vector3 randPos = Random.insideUnitSphere * rangeSpawn;
         // We create a new Vector3 to keep the y value
         Vector3 pos = new Vector3(randPos.x + transform.position.x, transform.position.y, randPos.z + transform.position.z);
 
@@ -17,12 +19,14 @@ public class Spawner : NetworkBehaviour
         if(IsServer) enemyGameObject.GetComponent<NetworkObject>().Spawn(true);
         
     }
-    public void Activate()
+    [ClientRpc]
+    public void ActivateClientRpc()
     {
-        //TODO : Activate animation
+        spawnEffect.Play();
     }
-    public void Deactivate()
+    [ClientRpc]
+    public void DeactivateClientRpc()
     {
-        //TODO : Deactivate animation
+        spawnEffect.Stop();
     }
 }

@@ -9,30 +9,37 @@ using System;
 
 public class StartSession : NetworkBehaviour
 {
+    private const int MAX_PLAYERS = 4;
     private UnityTransport transport;
+    private Allocation allocation;
     public TMPro.TMP_Text joinCode;
-    [SerializeField] private GameObject toDelete;
+    public TMPro.TMP_InputField joinCodeUi;
 
     [SerializeField] private GameObject btnHost;
     [SerializeField] private GameObject btnClient;
     [SerializeField] private GameObject btnCancel;
 
-    [SerializeField] private GameObject playerPrefab;
-
     private TouchScreenKeyboard overlayKeyboard;
 
     public static StartSession instance;
 
-    void Start()
-    {
-        transport = FindAnyObjectByType<UnityTransport>();
-    }
-
     private async void Awake() {
         if(instance == null) instance = this;
-        else  Debug.LogError("There is more than one StartSession in the scene");
+        else 
+        {
+            Debug.LogError("There is more than one StartSession in the scene");
+            Destroy(this.gameObject);
+            return;
+        }
 
+        transport = FindAnyObjectByType<UnityTransport>();
+        if (transport == null)
+        {
+            Debug.LogError("No transport found in the scene");
+            return;
+        }
         await Authenticate();
+        this.createMultiplayerRelay();
     }
 
     private async System.Threading.Tasks.Task Authenticate() {
@@ -41,30 +48,52 @@ public class StartSession : NetworkBehaviour
     }
 
     public async void createMultiplayerRelay(){
-        OnStartSession();
-        Allocation a = await RelayService.Instance.CreateAllocationAsync(2);
-        joinCode.text = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
+        allocation = await RelayService.Instance.CreateAllocationAsync(MAX_PLAYERS);
 
-
-        transport.SetRelayServerData(a.RelayServer.IpV4, (ushort) a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData);
+        transport.SetRelayServerData(allocation.RelayServer.IpV4, (ushort) allocation.RelayServer.Port, allocation.AllocationIdBytes, allocation.Key, allocation.ConnectionData);
         
         NetworkManager.Singleton.StartHost();
-        Destroy(toDelete);
 
         if(!NetworkManager.Singleton.IsHost) CancelSession();
 
     }
 
+    public async void displayJoinCode(){
+        OnStartSession();
+        joinCode.text = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        if(joinCodeUi != null) joinCodeUi.text = joinCode.text;
+    }
+
     public async void JoinSession()
     {
+        if(joinCode.text == "") return;
         OnStartSession();
+        NetworkManager.Singleton.Shutdown();
         try
         {
-            JoinAllocation a = await RelayService.Instance.JoinAllocationAsync(joinCode.text);
+            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode.text);
 
-            transport.SetClientRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData, a.HostConnectionData);
+            transport.SetClientRelayData(joinAllocation.RelayServer.IpV4, (ushort)joinAllocation.RelayServer.Port, joinAllocation.AllocationIdBytes, joinAllocation.Key, joinAllocation.ConnectionData, joinAllocation.HostConnectionData);
             NetworkManager.Singleton.StartClient();
-            Destroy(toDelete);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error when trying to join multiplayer lobby " + e.Message);
+            CancelSession();
+        }
+    }
+
+    public async void JoinSessionUi()
+    {
+        if(joinCodeUi.text == "") return;
+        OnStartSession();
+        NetworkManager.Singleton.Shutdown();
+        try
+        {
+            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCodeUi.text);
+
+            transport.SetClientRelayData(joinAllocation.RelayServer.IpV4, (ushort)joinAllocation.RelayServer.Port, joinAllocation.AllocationIdBytes, joinAllocation.Key, joinAllocation.ConnectionData, joinAllocation.HostConnectionData);
+            NetworkManager.Singleton.StartClient();
         }
         catch (Exception e)
         {
@@ -78,7 +107,7 @@ public class StartSession : NetworkBehaviour
     }
     private void Update()
     {
-        if(overlayKeyboard != null && GameManager.Instance.IsSolo())
+        if(overlayKeyboard != null)
         {
             joinCode.text = overlayKeyboard.text;
             if (overlayKeyboard.status == TouchScreenKeyboard.Status.Done)
@@ -93,15 +122,15 @@ public class StartSession : NetworkBehaviour
         btnCancel.SetActive(true);
         btnHost.SetActive(false);
         btnClient.SetActive(false);
-        GameManager.Instance.SetSolo(false);
     }
+
     public void CancelSession()
     {
+        joinCode.text = "";
+        if(joinCodeUi != null) joinCodeUi.text = "";
+
         NetworkManager.Singleton.Shutdown();
-        
-        GameManager.Instance.SetSolo(true);
-        
-        this.toDelete = Instantiate(playerPrefab);
+        this.createMultiplayerRelay();
 
         btnCancel.SetActive(false);
         btnHost.SetActive(true);
@@ -112,4 +141,5 @@ public class StartSession : NetworkBehaviour
     {
         CancelSession();
     }
+
 }

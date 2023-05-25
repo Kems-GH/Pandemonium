@@ -20,7 +20,7 @@ public class Core : NetworkBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!IsServer && !GameManager.Instance.IsSolo()) return;
+        if (!IsServer) return;
 
         health.Value -= damage;
         UpdateText();
@@ -34,5 +34,10 @@ public class Core : NetworkBehaviour
     void UpdateText()
     {
         text.text = health.Value.ToString();
+    }
+
+    public void ResetHealth()
+    {
+        health.Value = 100;
     }
 }
