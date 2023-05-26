@@ -40,4 +40,9 @@ public class Core : NetworkBehaviour
     {
         health.Value = 100;
     }
+
+    public int GetLife()
+    {
+        return health.Value;
+    }
 }
