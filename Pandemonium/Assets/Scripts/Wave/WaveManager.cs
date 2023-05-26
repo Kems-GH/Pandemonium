@@ -19,11 +19,7 @@ public class WaveManager : NetworkBehaviour
     private void Awake() 
     {
         this.nbWave = waves.Count;
-    }
-
-    private void Start() {
-        if (!IsServer) return;
-        startWaveTrigger = GetComponent<StartWaveTrigger>();
+        startWaveTrigger = GetComponentInChildren<StartWaveTrigger>();
         startWaveTrigger.OnTriggerEnterEvent += StartWave;
     }
 

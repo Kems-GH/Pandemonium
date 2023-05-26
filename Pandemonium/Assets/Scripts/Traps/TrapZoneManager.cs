@@ -1,20 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class TrapZoneManager : MonoBehaviour
+public class TrapZoneManager : NetworkBehaviour 
 {
-
     private List<TrapZone> zonesPlacement; 
     private void Awake()
     {
-        this.zonesPlacement = new List<TrapZone>(GetComponents<TrapZone>());
+        this.zonesPlacement = new List<TrapZone>(GameObject.FindObjectsOfType<TrapZone>());
+        if(this.zonesPlacement == null) Debug.LogError("No TrapZone found");
     }
 
     public void setAllVisible(bool visible)
     {
         foreach (TrapZone zone in zonesPlacement)
         {
-            zone.gameObject.SetActive(visible);
+            zone.setVisible(visible);
         }
     }
 

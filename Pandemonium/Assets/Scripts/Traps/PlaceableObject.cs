@@ -25,8 +25,12 @@ public class PlaceableObject : NetworkBehaviour
         this.basePosition = transform.position;
         this.baseRotation = transform.rotation;
         this.zonesPlacement = GameObject.FindGameObjectsWithTag(TrapZone.TAG);
-        this.trapZoneManager = GetComponent<TrapZoneManager>();
-        this.waveManager = GetComponent<WaveManager>();
+        this.trapZoneManager = GameObject.FindObjectOfType<TrapZoneManager>();
+        this.waveManager = GameObject.FindObjectOfType<WaveManager>();
+
+        if(this.zonesPlacement == null) Debug.LogError("No TrapZone found");
+        if(this.trapZoneManager == null) Debug.LogError("TrapZoneManager not found");
+        if(this.waveManager == null) Debug.LogError("WaveManager not found");
 
         TrapBoxTrigger trigger = GetComponentInChildren<TrapBoxTrigger>();
         trigger.OnTriggerEnterEvent += OnTriggerEnterEvent;
@@ -42,18 +46,24 @@ public class PlaceableObject : NetworkBehaviour
 
         if (this.nbGrab == 0 && Time.time - this.timeLastRelease > 10f)
         {
-            this.ReplaceTrapBoxServerRpc();
+            this.ReplaceTrapBox();
         }
     }
 
     private void OnTriggerEnterEvent(Collider collider)
     {
+        if(!IsServer) return;
+
+        if(this.zoneCollider != null) DestroyGhostTrapServerRpc();
         this.zoneCollider = collider;
+
         CreateGhostTrapServerRpc();
     }
 
     private void OnTriggerExitEvent(Collider collider)
     {
+        if(!IsServer) return;
+        if(this.zoneCollider != collider) return;
         DestroyGhostTrapServerRpc();
     }
 
@@ -69,25 +79,38 @@ public class PlaceableObject : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void DestroyGhostTrapServerRpc()
     {
+        this.zoneCollider = null;
         isPreview = false;
-
         ghostTrap.GetComponent<NetworkObject>().Despawn(true);
     }
 
     public void OnGrab()
     {
-        if(!IsOwner) ChangeOwnershipServerRpc();
+        ChangeOwnershipServerRpc();
 
-        nbGrab++;
+        OnGrabServerRpc();
+
         if(this.waveManager.isWaveRunning) return;
-        this.GetComponent<TrapZoneManager>().setAllVisible(true);
+        this.trapZoneManager.setAllVisible(true);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void OnGrabServerRpc()
+    {
+        this.nbGrab++;
     }
 
     public void OnRelease()
     {
         // Deactivate all Placement Zone
-        this.GetComponent<TrapZoneManager>().setAllVisible(false);
+        this.trapZoneManager.setAllVisible(false);
 
+        this.OnReleaseServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void OnReleaseServerRpc()
+    {
         nbGrab--;
         timeLastRelease = (int)Time.time;
 
@@ -105,16 +128,15 @@ public class PlaceableObject : NetworkBehaviour
     IEnumerator PlaceTrap()
     {
         yield return new WaitForSeconds(1f);
-        if (this.nbGrab > 0) yield break; 
         PlaceTrapServerRpc();
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void PlaceTrapServerRpc()
     {
+        if (this.nbGrab != 0) return;
         isPreview = false;
 
-        zoneCollider.gameObject.GetComponent<TrapZone>().isFree = false;
         trapZoneManager.PlaceTrap(zoneCollider.gameObject.GetComponent<TrapZone>());
         ghostTrap.GetComponent<NetworkObject>().Despawn(true);
 
@@ -124,8 +146,7 @@ public class PlaceableObject : NetworkBehaviour
         this.GetComponent<NetworkObject>().Despawn(true);
     }
 
-    [ServerRpc]
-    private void ReplaceTrapBoxServerRpc()
+    private void ReplaceTrapBox()
     {
         this.transform.position = basePosition;
         this.transform.rotation = baseRotation;

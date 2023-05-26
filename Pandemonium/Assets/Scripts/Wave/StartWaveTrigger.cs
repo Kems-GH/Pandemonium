@@ -23,6 +23,6 @@ public class StartWaveTrigger : NetworkBehaviour
     [ClientRpc]
     public void ActivateClientRpc()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(true);
     }
 }
