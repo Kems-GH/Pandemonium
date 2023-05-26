@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8774703229482622491}
   - component: {fileID: -6310289893955546310}
   - component: {fileID: -6550810548993636630}
+  - component: {fileID: 2715631644707760466}
   m_Layer: 0
   m_Name: TrapBox
   m_TagString: Untagged
@@ -54,8 +55,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9228236, y: 0.9187721, z: 0.9225933}
+  m_Center: {x: -0.0020266508, y: 0.0040535955, z: -0.0013818007}
 --- !u!54 &-4741234981918195528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,8 +210,8 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
+      - m_Target: {fileID: 2715631644707760466}
+        m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnGrab
         m_Mode: 1
         m_Arguments:
@@ -224,8 +225,8 @@ MonoBehaviour:
   _whenUnselect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
+      - m_Target: {fileID: 2715631644707760466}
+        m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnRelease
         m_Mode: 1
         m_Arguments:
@@ -239,8 +240,8 @@ MonoBehaviour:
   _whenMove:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
+      - m_Target: {fileID: 2715631644707760466}
+        m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnDrag
         m_Mode: 1
         m_Arguments:
@@ -267,6 +268,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trap: {fileID: 3759176188220078939, guid: 5f94a5059b2432e45b1151c2377a6405, type: 3}
+--- !u!114 &2715631644707760466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672684713477931870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef083f97366e4d4681b37911ac8118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6700967887335907908
 GameObject:
   m_ObjectHideFlags: 0

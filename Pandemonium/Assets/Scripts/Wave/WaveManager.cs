@@ -1,8 +1,6 @@
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
-using Pandemonium.Assets.Scripts;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class WaveManager : NetworkBehaviour
@@ -12,37 +10,27 @@ public class WaveManager : NetworkBehaviour
     [SerializeField] private GameObject activator;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private TMPro.TMP_Text textEndGame;
-    [SerializeField] private bool isActiveWave = true;
+    [field:SerializeField] public bool isWaveRunning { get; set; } = false;
 
     private int currentWave = 0;
     private int nbWave = 0;
     private StartWaveTrigger startWaveTrigger;
-    public static WaveManager Instance;
 
     private void Awake() 
     {
-        // TODO: Change if we have other level
-        if (Instance == null) Instance = this;
-        else 
-        {
-            Debug.LogError("Multiple WaveManager in scene");
-            Destroy(this.gameObject);
-            return;
-        }
-
         this.nbWave = waves.Count;
     }
 
     private void Start() {
         if (!IsServer) return;
         startWaveTrigger = GetComponent<StartWaveTrigger>();
-        startWaveTrigger.OnTiriggerEnter += StartWave;
+        startWaveTrigger.OnTriggerEnterEvent += StartWave;
     }
 
     public void StartWave()
     {
         if (!IsServer) return;
-        isActiveWave = true;
+        isWaveRunning = true;
         startWaveTrigger.DeactivateClientRpc();
         if (currentWave < nbWave)
         {
@@ -55,7 +43,7 @@ public class WaveManager : NetworkBehaviour
 
     private void CheckWaveFinished()
     {
-        if(!isActiveWave) return;
+        if(!isWaveRunning) return;
         if(WaveChecker.CheckWaveFinished())
         {
             EndWave();
@@ -66,18 +54,16 @@ public class WaveManager : NetworkBehaviour
     private void EndWave()
     {
         if (!IsServer) return;
-        isActiveWave = false;
+        isWaveRunning = false;
 
         foreach (Spawner spawner in spawners)
         {
             spawner.DeactivateClientRpc();
         }
-        if (currentWave < nbWave)
-        {
+        if (currentWave < nbWave) {
             startWaveTrigger.ActivateClientRpc();
         }
-        else
-        {
+        else {
             this.Victory();
         }
     }
@@ -85,6 +71,8 @@ public class WaveManager : NetworkBehaviour
     public void StopWave()
     {
         if (!IsServer) return;
+
+        isWaveRunning = false;
 
         StopAllCoroutines();
         CancelInvoke(nameof(CheckWaveFinished));
@@ -97,14 +85,13 @@ public class WaveManager : NetworkBehaviour
     public void Defeat()
     {
         if (!IsServer) return;
-        WaveManager.Instance.StopWave();
+        this.StopWave();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)
         {
-            if (IsServer) enemy.GetComponent<NetworkObject>().Despawn(true);
-            else Destroy(enemy);
+            enemy.GetComponent<NetworkObject>().Despawn(true);
         }
 
         DisplayEndGameMenuClientRpc("Game Over");
