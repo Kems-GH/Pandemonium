@@ -10,7 +10,7 @@ public class WaveManager : NetworkBehaviour
     [SerializeField] private GameObject activator;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private TMPro.TMP_Text textEndGame;
-    [field:SerializeField] public bool isWaveRunning { get; set; } = false;
+    [field:SerializeField] public NetworkVariable<bool> isWaveRunning { get; set; } = new NetworkVariable<bool>(false);
 
     private int currentWave = 0;
     private int nbWave = 0;
@@ -26,7 +26,7 @@ public class WaveManager : NetworkBehaviour
     public void StartWave()
     {
         if (!IsServer) return;
-        isWaveRunning = true;
+        isWaveRunning.Value = true;
         startWaveTrigger.DeactivateClientRpc();
         if (currentWave < nbWave)
         {
@@ -39,7 +39,7 @@ public class WaveManager : NetworkBehaviour
 
     private void CheckWaveFinished()
     {
-        if(!isWaveRunning) return;
+        if(!isWaveRunning.Value) return;
         if(WaveChecker.CheckWaveFinished())
         {
             EndWave();
@@ -50,7 +50,9 @@ public class WaveManager : NetworkBehaviour
     private void EndWave()
     {
         if (!IsServer) return;
-        isWaveRunning = false;
+        isWaveRunning.Value = false;
+        StopAllCoroutines();
+        CancelInvoke(nameof(CheckWaveFinished));
 
         foreach (Spawner spawner in spawners)
         {
@@ -68,7 +70,7 @@ public class WaveManager : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        isWaveRunning = false;
+        isWaveRunning.Value = false;
 
         StopAllCoroutines();
         CancelInvoke(nameof(CheckWaveFinished));
@@ -114,7 +116,8 @@ public class WaveManager : NetworkBehaviour
         this.endGameMenu.SetActive(false);
     }
 
-    public void Restart()
+    [ServerRpc (RequireOwnership = false)]
+    public void RestartServerRpc()
     {
         this.currentWave = 0;
         GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
@@ -125,5 +128,10 @@ public class WaveManager : NetworkBehaviour
     public void LoadLobby()
     {
         SceneManager.LoadScene("Lobby");
+    }
+
+    public bool IsWaveRunning()
+    {
+        return isWaveRunning.Value;
     }
 }

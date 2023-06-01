@@ -53,6 +53,7 @@ public class PlaceableObject : NetworkBehaviour
     private void OnTriggerEnterEvent(Collider collider)
     {
         if(!IsServer) return;
+        if(this.waveManager.IsWaveRunning()) return;
 
         if(this.zoneCollider != null) DestroyGhostTrapServerRpc();
         this.zoneCollider = collider;
@@ -70,6 +71,7 @@ public class PlaceableObject : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void CreateGhostTrapServerRpc()
     {
+        if(this.waveManager.IsWaveRunning()) return;
         this.isPreview = true;
 
         ghostTrap = Instantiate(trap, zoneCollider.transform.position, Quaternion.identity);
@@ -90,7 +92,7 @@ public class PlaceableObject : NetworkBehaviour
 
         OnGrabServerRpc();
 
-        if(this.waveManager.isWaveRunning) return;
+        if(this.waveManager.IsWaveRunning()) return;
         this.trapZoneManager.setAllVisible(true);
     }
 
@@ -114,7 +116,7 @@ public class PlaceableObject : NetworkBehaviour
         nbGrab--;
         timeLastRelease = (int)Time.time;
 
-        if(this.waveManager.isWaveRunning) return;
+        if(this.waveManager.IsWaveRunning()) return;
         if(this.nbGrab == 0 && this.isPreview) StartCoroutine(nameof(PlaceTrap));
     }
 
@@ -136,7 +138,7 @@ public class PlaceableObject : NetworkBehaviour
     {
         if (this.nbGrab != 0) return;
         isPreview = false;
-
+        if(this.waveManager.IsWaveRunning()) return;
         trapZoneManager.PlaceTrap(zoneCollider.gameObject.GetComponent<TrapZone>());
         ghostTrap.GetComponent<NetworkObject>().Despawn(true);
 
