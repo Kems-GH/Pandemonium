@@ -11,14 +11,11 @@ public class PlaceableObject : NetworkBehaviour
 
     private GameObject[] zonesPlacement;
     private GameObject ghostTrap;
-
     private Collider zoneCollider;
-
     private bool isPreview;
     private int nbGrab = 0;
     private TrapZoneManager trapZoneManager;
     private WaveManager waveManager;
-    private int timeLastRelease = 0;
 
     private void Awake()
     {
@@ -38,16 +35,6 @@ public class PlaceableObject : NetworkBehaviour
         trigger.OnGrabEvent += OnGrab;
         trigger.OnReleaseEvent += OnRelease;
     
-    }
-
-    private void Update()
-    {
-        if (!IsServer) return;
-
-        if (this.nbGrab == 0 && this.timeLastRelease != 0 && Time.time - this.timeLastRelease > 10f)
-        {
-            this.ReplaceTrapBox();
-        }
     }
 
     private void OnTriggerEnterEvent(Collider collider)
@@ -99,6 +86,7 @@ public class PlaceableObject : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void OnGrabServerRpc()
     {
+        StopCoroutine(nameof(ReplaceTrapBox));
         this.nbGrab++;
     }
 
@@ -114,7 +102,7 @@ public class PlaceableObject : NetworkBehaviour
     public void OnReleaseServerRpc()
     {
         nbGrab--;
-        timeLastRelease = (int)Time.time;
+        if(nbGrab == 0) StartCoroutine(nameof(ReplaceTrapBox));
 
         if(this.waveManager.IsWaveRunning()) return;
         if(this.nbGrab == 0 && this.isPreview) StartCoroutine(nameof(PlaceTrap));
@@ -148,9 +136,9 @@ public class PlaceableObject : NetworkBehaviour
         this.GetComponent<NetworkObject>().Despawn(true);
     }
 
-    private void ReplaceTrapBox()
+    private IEnumerator ReplaceTrapBox()
     {
-        this.timeLastRelease = 0;
+        yield return new WaitForSeconds(10f);
         this.transform.position = basePosition;
         this.transform.rotation = baseRotation;
     }
