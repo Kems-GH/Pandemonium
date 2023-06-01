@@ -7,7 +7,6 @@ public class WaveManager : NetworkBehaviour
 {
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private List<Wave> waves;
-    [SerializeField] private GameObject activator;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private TMPro.TMP_Text textEndGame;
     [field:SerializeField] public NetworkVariable<bool> isWaveRunning { get; set; } = new NetworkVariable<bool>(false);
@@ -27,7 +26,7 @@ public class WaveManager : NetworkBehaviour
     {
         if (!IsServer) return;
         isWaveRunning.Value = true;
-        startWaveTrigger.DeactivateClientRpc();
+        this.DisplayActivatorClientRpc(false);
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
@@ -59,7 +58,7 @@ public class WaveManager : NetworkBehaviour
             spawner.DeactivateClientRpc();
         }
         if (currentWave < nbWave) {
-            startWaveTrigger.ActivateClientRpc();
+            this.DisplayActivatorClientRpc(true);
         }
         else {
             this.Victory();
@@ -122,7 +121,7 @@ public class WaveManager : NetworkBehaviour
         this.currentWave = 0;
         GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
         this.HideEndGameMenuClientRpc();
-        startWaveTrigger.ActivateClientRpc();
+        this.DisplayActivatorClientRpc(true);
     }
 
     public void LoadLobby()
@@ -133,5 +132,11 @@ public class WaveManager : NetworkBehaviour
     public bool IsWaveRunning()
     {
         return isWaveRunning.Value;
+    }
+
+    [ClientRpc]
+    public void DisplayActivatorClientRpc(bool display)
+    {
+        this.startWaveTrigger.Display(display);
     }
 }

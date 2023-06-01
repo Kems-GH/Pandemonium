@@ -44,7 +44,7 @@ public class PlaceableObject : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        if (this.nbGrab == 0 && Time.time - this.timeLastRelease > 10f)
+        if (this.nbGrab == 0 && this.timeLastRelease != 0 && Time.time - this.timeLastRelease > 10f)
         {
             this.ReplaceTrapBox();
         }
@@ -150,6 +150,7 @@ public class PlaceableObject : NetworkBehaviour
 
     private void ReplaceTrapBox()
     {
+        this.timeLastRelease = 0;
         this.transform.position = basePosition;
         this.transform.rotation = baseRotation;
     }

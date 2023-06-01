@@ -14,15 +14,8 @@ public class StartWaveTrigger : NetworkBehaviour
         }
     }
 
-    [ClientRpc]
-    public void DeactivateClientRpc()
+    public void Display(bool display)
     {
-        this.gameObject.SetActive(false);
-    }
-
-    [ClientRpc]
-    public void ActivateClientRpc()
-    {
-        this.gameObject.SetActive(true);
+        this.gameObject.SetActive(display);
     }
 }
