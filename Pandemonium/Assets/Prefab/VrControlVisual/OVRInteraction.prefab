@@ -212,6 +212,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4568164227741970877}
     m_Modifications:
+    - target: {fileID: 1387418358425731260, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+      propertyPath: _locomotor
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1773370184635449205, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
       propertyPath: _cameraRigRef
       value: 
@@ -292,6 +296,18 @@ PrefabInstance:
       propertyPath: _trackingToWorldTransformer
       value: 
       objectReference: {fileID: 1969545433989712944}
+    - target: {fileID: 6477771440956737868, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+      propertyPath: m_TagString
+      value: TeleportInteractor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477771441715626255, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+      propertyPath: m_TagString
+      value: TeleportInteractor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307818813428210014, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7447920919606173762, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
       propertyPath: _handMaterialPropertyBlockEditor
       value: 
@@ -324,8 +340,47 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 951099334
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6968545289557270180, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+--- !u!1 &1935782550458414911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7307818813428210014, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
+  m_PrefabInstance: {fileID: 9203054742299160161}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5606488127587671371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935782550458414911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085d9ec7bb5e55f48b879d93931f553e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRig: {fileID: 0}
+  CharacterController: {fileID: 0}
+  PlayerController: {fileID: 0}
+--- !u!114 &3733901819946106007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935782550458414911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331d7f91e4f2d20498cb8079638deeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeState: {fileID: 0}
+  _interactableFilters: []
+  _maxIterationsPerFrame: 3
+  _data: {fileID: 0}
+  _axis2D: {fileID: 0}
+  _deadZone: 0.5
 --- !u!114 &4155635142338396332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5051941073094635213, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
