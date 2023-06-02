@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level/Tutorial.unity
     guid: 55aed993bc9c15f41b2a1c207e0b96af
-  - enabled: 1
-    path: Assets/Scenes/Dev/TestMultiplayer 1.unity
-    guid: 87ffdcfe902200f409fdcee8456cbeaf
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 595350adcb94b6046b2085cc4a08ecb2, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c6a1abf6753c80b4e956d73f86fd9b4d, type: 2}
