@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
 public class ChangeModeDeplacement : MonoBehaviour
@@ -20,10 +21,12 @@ public class ChangeModeDeplacement : MonoBehaviour
         slideInteractor = GameObject.FindGameObjectWithTag(TAG_SLIDE_INTERACTOR);
 
         MenuOption menuOption = FindAnyObjectByType<MenuOption>();
-        menuOption.ChangeModeHandler += ChangeMode;
+        menuOption.ChangeModeHandler += ChangeModeClientRpc;
     }
 
-    public void ChangeMode(int mode)
+
+    [ClientRpc]
+    public void ChangeModeClientRpc(int mode)
     {
         ChangeVisualMode(mode);
         if (mode == 0)
