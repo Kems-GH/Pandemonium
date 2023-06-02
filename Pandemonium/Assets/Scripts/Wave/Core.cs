@@ -8,14 +8,20 @@ public class Core : NetworkBehaviour
 
     private NetworkVariable<int> health = new NetworkVariable<int>(100);
 
+    private WaveManager waveManager;
+
     public override void OnNetworkSpawn()
     {
         health.OnValueChanged += (int oldValue, int newValue) => { UpdateText(); };
     }
 
+    private void Awake() {
+        this.waveManager = FindObjectOfType<WaveManager>();
+    }
+
     private void Start() 
     {
-        UpdateText();
+        this.UpdateText();
     }
 
     public void TakeDamage(int damage)
@@ -23,11 +29,11 @@ public class Core : NetworkBehaviour
         if (!IsServer) return;
 
         health.Value -= damage;
-        UpdateText();
+        this.UpdateText();
 
         if(health.Value <= 0)
         {
-            WaveManager.Instance.Defeat();
+            this.waveManager.Defeat();
         }
     }
 
