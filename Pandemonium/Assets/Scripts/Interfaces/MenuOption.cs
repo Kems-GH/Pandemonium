@@ -15,6 +15,11 @@ public class MenuOption : MonoBehaviour
         Application.Quit();
     }
 
+    public void GoToLobby()
+    {
+        Debug.Log("Go to Lobby");
+    }
+
     public void ChangeModeDeplacement()
     {
         if(mode == 0) mode++;
