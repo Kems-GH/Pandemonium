@@ -21,6 +21,7 @@ public class EnemyMovement
         this.core = GameObject.FindGameObjectWithTag("Core").GetComponent<Core>();
         this.layerMaskPlayer = LayerMask.GetMask("Player");
         this.navAgent = navAgent;
+        this.navAgent.speed = enemy.speed;
         GoToHeart();
     }
 
@@ -45,6 +46,7 @@ public class EnemyMovement
      */
     private void ChasePlayer(Vector3 player)
     {
+        
         navAgent.SetDestination(player);
     }
 

@@ -7,5 +7,5 @@ public class BasicSkeleton : Enemy
     public override int goldEarnedAfterDeath { get; } = 0;
     public override int damageInflicted { get; } = 5;
     public override int radiusAggro { get;} = 10;
-    public override int speed { get;} = 15;
+    public override int speed { get;} = 1;
 }
