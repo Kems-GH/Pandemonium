@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 8371098856195265805}
   - component: {fileID: 8483285103687205449}
   - component: {fileID: 7809888035577005429}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}

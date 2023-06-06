@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour, IWeapon
+public class Punch : MonoBehaviour, IGiveDamage
 {
-    private readonly float damage = 25;
+    private readonly int damage = 25;
 
-    float IWeapon.GetAmountDamage()
+    public int GetAmountDamage()
     {
         return damage;
     }

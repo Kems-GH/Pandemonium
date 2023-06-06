@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1546533170628477523}
   - component: {fileID: 1866254736185242500}
   - component: {fileID: 2791447626779814108}
+  - component: {fileID: 536725732297457687}
   m_Layer: 0
   m_Name: BasicSkeleton
   m_TagString: Enemy
@@ -159,14 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02f44e5007b308409dcc749b112c1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMaskPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  damageInflicted: 5
-  radiusAggro: 5
-  animator: {fileID: 1866254736185242500}
-  health:
-    m_InternalValue: 0
 --- !u!136 &1546533170628477523
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -214,8 +207,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
+  TransitionStateInfoList:
+  - Layer: 0
+    OriginatingState: -806989707
+    DestinationState: 167739960
+    TransitionDuration: 0.25
+    TriggerNameHash: 1080829965
+    TransitionIndex: 0
   m_Animator: {fileID: 1866254736185242500}
+--- !u!114 &536725732297457687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171837862800594896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57be7a4f690d98e4593eed5e0a0b862c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &19145235351735148
 PrefabInstance:
   m_ObjectHideFlags: 0
