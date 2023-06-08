@@ -46,8 +46,14 @@ public class Core : NetworkBehaviour
     {
         health.Value = 100;
     }
+
     public Vector3 GetPosition()
     {
         return this.position;
+    }
+
+    public int GetLife()
+    {
+        return health.Value;
     }
 }

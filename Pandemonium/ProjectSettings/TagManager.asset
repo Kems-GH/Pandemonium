@@ -15,6 +15,9 @@ TagManager:
   - Placement Zone
   - Enemy
   - Core
+  - TextDeplacement
+  - TeleportInteractor
+  - SlideInteractor
   layers:
   - Default
   - TransparentFX
