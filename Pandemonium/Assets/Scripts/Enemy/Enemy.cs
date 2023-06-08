@@ -30,7 +30,7 @@ public abstract class Enemy : NetworkBehaviour
         this.life = new EnemyLife(this, maxHealth);
 
         EnemyTrigger trigger = GetComponent<EnemyTrigger>();
-        Debug.Log("EnemyTrigger : " + trigger);
+
         trigger.OnTriggerEnterEvent += this.life.TriggerDamage;
 
         this.position = transform.position;
