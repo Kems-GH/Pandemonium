@@ -5,7 +5,6 @@ public class EnemyMovement
 {
     private LayerMask layerMaskPlayer;
     private Enemy enemy;
-    [SerializeField] private Animator animator;
 
     private Collider[] collidersPlayer;
     private NavMeshAgent navAgent;
@@ -14,9 +13,8 @@ public class EnemyMovement
     private bool isAttacking = false;
     private float timeLastAttack = 0f;
 
-    public EnemyMovement(Enemy enemy, Animator animator, NavMeshAgent navAgent)
+    public EnemyMovement(Enemy enemy, NavMeshAgent navAgent)
     {
-        this.animator = animator;
         this.enemy = enemy;
         this.core = GameObject.FindGameObjectWithTag("Core").GetComponent<Core>();
         this.layerMaskPlayer = LayerMask.GetMask("Player");
@@ -74,7 +72,7 @@ public class EnemyMovement
      */
     private void CheckNearHeart()
     {
-        if (isChasingPlayer)return;
+        if (isChasingPlayer) return;
 
         if (Vector3.Distance(this.core.transform.position, this.enemy.position) < this.enemy.distanceNearHeart)
         {
@@ -90,7 +88,7 @@ public class EnemyMovement
         if(isAttacking) return;
         this.isAttacking = true;
         this.timeLastAttack = Time.time;
-        this.animator.SetTrigger("Attack");
+        this.enemy.SetTriggerAttackClientRpc();
         this.core.TakeDamage(this.enemy.damageInflicted);
     }
 
@@ -99,13 +97,13 @@ public class EnemyMovement
      */
     private void GoToHeart()
     {
-        this.animator.SetInteger("Speed", this.enemy.speed);
+        this.enemy.SetSpeedWalkClientRpc(this.enemy.speed);
         navAgent.SetDestination(this.core.GetPosition());
     }
 
     public void StopMovement()
     {
-        this.animator.SetInteger("Speed", 0);
+        this.enemy.SetSpeedWalkClientRpc(0);
         navAgent.isStopped = true;
     }
 }

@@ -35,9 +35,8 @@ public abstract class Enemy : NetworkBehaviour
         this.position = transform.position;
 
         this.animator = GetComponent<Animator>();
-        this.movement = new EnemyMovement(this, this.animator, GetComponent<NavMeshAgent>());
+        this.movement = new EnemyMovement(this, GetComponent<NavMeshAgent>());
     }
-
 
     /**
      * The Enemy die
@@ -50,15 +49,14 @@ public abstract class Enemy : NetworkBehaviour
         CancelInvoke();
         this.movement.StopMovement();
         
-        this.animator.SetTrigger("Death");
+        this.SetDeathClientRpc();
         StartCoroutine(DestroyBones());
     }
 
     private IEnumerator DestroyBones()
     {
         yield return new WaitForSeconds(2f);
-        if (IsServer) this.GetComponent<NetworkObject>().Despawn(true);
-        else Destroy(this.gameObject);
+        this.GetComponent<NetworkObject>().Despawn(true);
     }
 
     private void Update() {
@@ -66,5 +64,23 @@ public abstract class Enemy : NetworkBehaviour
         this.position = transform.position;
         this.movement.Move();
     }
-    
+
+    [ClientRpc]
+    public void SetTriggerAttackClientRpc()
+    {
+        this.animator.SetTrigger("Attack");
+    }
+
+    [ClientRpc]
+    public void SetSpeedWalkClientRpc(int speed)
+    {
+        this.animator.SetInteger("Speed", speed);
+    }
+
+    [ClientRpc]
+    public void SetDeathClientRpc()
+    {
+        this.animator.SetTrigger("Death");
+    }
+
 }
