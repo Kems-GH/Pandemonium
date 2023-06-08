@@ -119,7 +119,7 @@ public class WaveManager : NetworkBehaviour
     public void RestartServerRpc()
     {
         this.currentWave = 0;
-        GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
+        GameObject.FindGameObjectWithTag("Core").GetComponent<Core>().ResetHealth();
         this.HideEndGameMenuClientRpc();
         this.DisplayActivatorClientRpc(true);
     }
