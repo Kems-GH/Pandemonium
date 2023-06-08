@@ -24,6 +24,7 @@ public abstract class Enemy : NetworkBehaviour
     public abstract int speed { get;}
 
     private void Start() {
+        this.animator = GetComponent<Animator>();
         if (!IsServer) return;
 
         this.life = new EnemyLife(this, maxHealth);
@@ -34,7 +35,7 @@ public abstract class Enemy : NetworkBehaviour
 
         this.position = transform.position;
 
-        this.animator = GetComponent<Animator>();
+        
         this.movement = new EnemyMovement(this, GetComponent<NavMeshAgent>());
     }
 
