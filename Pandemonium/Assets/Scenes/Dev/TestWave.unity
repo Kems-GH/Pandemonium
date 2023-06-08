@@ -378,6 +378,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 665412563078543564, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4281740181
+      objectReference: {fileID: 0}
     - target: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
       propertyPath: m_Name
       value: OVRInteraction

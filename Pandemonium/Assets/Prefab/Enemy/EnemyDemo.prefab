@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: -107630901926019473}
   - component: {fileID: -1674745869673450548}
   - component: {fileID: 5660256782899763358}
-  - component: {fileID: 6382707578946080844}
   m_Layer: 0
   m_Name: EnemyDemo
   m_TagString: Untagged
@@ -371,25 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6382707578946080844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6533881909380971629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b51a78094b6d0f408989692b80b5a61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMaskPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  damageInflicted: 0
-  radiusAggro: 0
-  health:
-    m_InternalValue: 0
 --- !u!1 &9133698716990359280
 GameObject:
   m_ObjectHideFlags: 0
