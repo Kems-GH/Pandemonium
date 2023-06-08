@@ -7,7 +7,6 @@ public class EnemyTrigger: NetworkBehaviour
     public event TriggerEventHandlerCollider OnTriggerEnterEvent;
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("OnTriggerEnter :" + IsServer);
         if (!IsServer) return;
 
         OnTriggerEnterEvent?.Invoke(collider);

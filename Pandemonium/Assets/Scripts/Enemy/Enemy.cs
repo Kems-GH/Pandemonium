@@ -21,7 +21,8 @@ public abstract class Enemy : NetworkBehaviour
     public abstract int goldEarnedAfterDeath { get; }
     public abstract int damageInflicted { get; }
     public abstract int radiusAggro { get;}
-    public abstract int speed { get;}
+    public abstract float speed { get;}
+    public abstract bool ignorePlayer { get; }
 
     private void Start() {
         this.animator = GetComponent<Animator>();
@@ -73,9 +74,9 @@ public abstract class Enemy : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void SetSpeedWalkClientRpc(int speed)
+    public void SetSpeedWalkClientRpc(float speed)
     {
-        this.animator.SetInteger("Speed", speed);
+        this.animator.SetFloat("Speed", speed);
     }
 
     [ClientRpc]

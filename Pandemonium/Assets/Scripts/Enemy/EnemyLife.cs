@@ -16,7 +16,6 @@ public class EnemyLife
     public void TriggerDamage(Collider collider)
     {
         IGiveDamage damage = collider.gameObject.GetComponent<IGiveDamage>();
-        Debug.Log("TriggerDamage : " + damage);
         if(damage == null) return;
 
         if(Time.time - this.lastDamage > 1f) this.canTakeDamage = true;

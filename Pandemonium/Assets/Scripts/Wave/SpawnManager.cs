@@ -8,11 +8,12 @@ public class SpawnManager
     public static IEnumerator SpawnEnemy(Wave wave, List<Spawner> spawners)
     {
 
-        Spawner[] ActifSpawner = SelectAndActivateSpawner(spawners, wave.nbSpawner);
+        Spawner[] actifSpawner = SelectAndActivateSpawner(spawners, wave.nbSpawner);
 
         yield return new WaitForSeconds(wave.spawnRate);
 
         int nbEnemyWave = wave.nbEnemy;
+        bool isBossSpawned = false;
 
         while (nbEnemyWave > 0)
         {
@@ -21,8 +22,14 @@ public class SpawnManager
             // Spawn enemy on spawner
             int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), nbEnemyWave);
 
-            foreach (Spawner spawner in ActifSpawner)
+            foreach (Spawner spawner in actifSpawner)
             {
+                if(!isBossSpawned)
+                {
+                    SpawnRandomBoss(spawner, wave);
+                    isBossSpawned = true;
+                }
+                
                 for (int i = 0; i < nbEnemy; i++)
                 {
                     SpawnRandomEnemy(spawner, wave);
@@ -59,6 +66,19 @@ public class SpawnManager
         else
         {
             spawner.Spawn(GameManager.Instance.GetSkeletonPrefab());
+        }
+    }
+
+    private static void SpawnRandomBoss(Spawner spawner, Wave wave) {
+        int rand = Random.Range(0, 100);
+
+        if (rand < wave.bossProba)
+        {
+            spawner.Spawn(GameManager.Instance.GetBossPrefab());
+        }
+        else
+        {
+            spawner.Spawn(GameManager.Instance.GetBossPrefab());
         }
     }
 }
