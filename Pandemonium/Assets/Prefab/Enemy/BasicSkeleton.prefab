@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 9073818515607806899}
   - component: {fileID: 1546533170628477523}
   - component: {fileID: 1866254736185242500}
-  - component: {fileID: 2791447626779814108}
   - component: {fileID: 536725732297457687}
+  - component: {fileID: -7487130342621431152}
   m_Layer: 0
   m_Name: BasicSkeleton
   m_TagString: Enemy
@@ -195,26 +195,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2791447626779814108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171837862800594896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList:
-  - Layer: 0
-    OriginatingState: -806989707
-    DestinationState: 167739960
-    TransitionDuration: 0.25
-    TriggerNameHash: 1080829965
-    TransitionIndex: 0
-  m_Animator: {fileID: 1866254736185242500}
 --- !u!114 &536725732297457687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57be7a4f690d98e4593eed5e0a0b862c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7487130342621431152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171837862800594896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2888aba248a2b40ab6134298a308b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList:
+  - Layer: 0
+    OriginatingState: -1638686923
+    DestinationState: 167739960
+    TransitionDuration: 0.25
+    TriggerNameHash: 1080829965
+    TransitionIndex: 1
+  - Layer: 0
+    OriginatingState: -806989707
+    DestinationState: 167739960
+    TransitionDuration: 0.25
+    TriggerNameHash: 1080829965
+    TransitionIndex: 0
+  m_Animator: {fileID: 1866254736185242500}
 --- !u!1001 &19145235351735148
 PrefabInstance:
   m_ObjectHideFlags: 0

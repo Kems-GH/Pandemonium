@@ -39,7 +39,6 @@ public class EnemyLife
             this.enemy.Die();
         }
 
-        
         this.lastDamage = Time.time;
     }
 
