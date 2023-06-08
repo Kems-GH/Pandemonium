@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 7809888035577005429}
   - component: {fileID: 1385740660816282037}
   - component: {fileID: 3922379848666313038}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: SlideInteractor
   m_Icon: {fileID: 0}
