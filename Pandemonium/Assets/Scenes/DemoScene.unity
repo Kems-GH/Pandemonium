@@ -488,6 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joinCode: {fileID: 2132199633}
+  joinCodeUi: {fileID: 0}
   btnHost: {fileID: 0}
   btnClient: {fileID: 0}
   btnCancel: {fileID: 0}
@@ -901,7 +902,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -1858,6 +1860,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1826714387
       objectReference: {fileID: 0}
+    - target: {fileID: 6726375113602853890, guid: a750b9675dba4ff418653e5ecbe41ead, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 8345362479607719597, guid: a750b9675dba4ff418653e5ecbe41ead, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -2610,6 +2616,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 665412563078543564, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1435182264
+      objectReference: {fileID: 0}
     - target: {fileID: 4319425207471324541, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
       propertyPath: m_Name
       value: OVRInteraction
@@ -3342,6 +3352,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5377633801829490353, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+    - target: {fileID: 5377633801829490353, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
     m_RemovedComponents:
     - {fileID: 4654187575191838782, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 20a15a72b3e557e4eb4de64ea92e5e49, type: 3}

@@ -699,10 +699,10 @@ MonoBehaviour:
     minNbSpawn: 2
     maxNbSpawn: 5
     skeletonProba: 100
-  activator: {fileID: 2546741267688741302}
   endGameMenu: {fileID: 8240095913342170441}
   textEndGame: {fileID: 7913749769563559176}
-  <isWaveRunning>k__BackingField: 0
+  <isWaveRunning>k__BackingField:
+    m_InternalValue: 0
 --- !u!1 &5934591669043794132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1348,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1659,6 +1659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1127533485828258970, guid: f0fabe24d498b9340ba60b14ac1e3a2b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
     - target: {fileID: 4143081021198155064, guid: f0fabe24d498b9340ba60b14ac1e3a2b, type: 3}
       propertyPath: m_Name
       value: SkeletonHeadActiveWave
@@ -1669,10 +1673,5 @@ PrefabInstance:
 --- !u!4 &1516743753941691301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1091128831130685227, guid: f0fabe24d498b9340ba60b14ac1e3a2b, type: 3}
-  m_PrefabInstance: {fileID: 1885030825679381646}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2546741267688741302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4143081021198155064, guid: f0fabe24d498b9340ba60b14ac1e3a2b, type: 3}
   m_PrefabInstance: {fileID: 1885030825679381646}
   m_PrefabAsset: {fileID: 0}

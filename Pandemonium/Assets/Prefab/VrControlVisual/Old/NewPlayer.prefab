@@ -320,6 +320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2062296569476976083}
     m_Modifications:
+    - target: {fileID: 665412563078543564, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
     - target: {fileID: 4114863545347508782, guid: 5ea33c1713934ff458818b92ee6bf58b, type: 3}
       propertyPath: _ovrCameraRig
       value: 

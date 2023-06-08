@@ -78,6 +78,14 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3876384295718530214, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+    - target: {fileID: 3876384295718530214, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
     - target: {fileID: 6762055322657731694, guid: 45d3e99a452e91345bfbe22ffea929ae, type: 3}
       propertyPath: m_RootOrder
       value: 0
