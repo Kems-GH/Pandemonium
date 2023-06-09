@@ -24,7 +24,7 @@ public class SpawnManager
 
             foreach (Spawner spawner in actifSpawner)
             {
-                if(!isBossSpawned)
+                if(!isBossSpawned && wave.isBossWave)
                 {
                     SpawnRandomBoss(spawner, wave);
                     isBossSpawned = true;

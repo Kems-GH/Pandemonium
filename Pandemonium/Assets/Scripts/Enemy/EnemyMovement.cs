@@ -86,11 +86,11 @@ public class EnemyMovement
     private void AttackHeart()
     {
         if(isAttacking) return;
-        this.navAgent.isStopped = true;
         this.isAttacking = true;
         this.timeLastAttack = Time.time;
         this.enemy.SetTriggerAttackClientRpc();
         this.core.TakeDamage(this.enemy.damageInflicted);
+        this.StopMovement();
     }
 
     /**
