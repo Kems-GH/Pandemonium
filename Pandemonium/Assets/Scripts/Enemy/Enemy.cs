@@ -8,7 +8,9 @@ public abstract class Enemy : NetworkBehaviour
     private Animator animator;
     private EnemyLife life;
     private EnemyMovement movement;
+    private EnemyTrigger trigger;
     public Vector3 position { get; private set; }
+    private bool isDead = false;
 
     /**
      * Stats of the enemy
@@ -30,13 +32,12 @@ public abstract class Enemy : NetworkBehaviour
 
         this.life = new EnemyLife(this, maxHealth);
 
-        EnemyTrigger trigger = GetComponent<EnemyTrigger>();
+        trigger = GetComponent<EnemyTrigger>();
 
         trigger.OnTriggerEnterEvent += this.life.TriggerDamage;
 
         this.position = transform.position;
 
-        
         this.movement = new EnemyMovement(this, GetComponent<NavMeshAgent>());
     }
 
@@ -46,6 +47,7 @@ public abstract class Enemy : NetworkBehaviour
     public void Die()
     {
         if (!IsServer) return;
+        isDead = true;
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         StopAllCoroutines();
         CancelInvoke();
@@ -64,6 +66,8 @@ public abstract class Enemy : NetworkBehaviour
         if (!IsServer) return;
         this.position = transform.position;
         this.movement.Move();
+
+        if(isDead) trigger.OnTriggerEnterEvent -= this.life.TriggerDamage;
     }
 
     [ClientRpc]

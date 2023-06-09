@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 1168976419628005270, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
       propertyPath: _hand
       value: 
-      objectReference: {fileID: 3497369860702788781}
+      objectReference: {fileID: 6881866173103602713}
     - target: {fileID: 1417721054334719421, guid: 03f2c8a71c7bed74f8582431128a773b, type: 3}
       propertyPath: m_Layer
       value: 6
