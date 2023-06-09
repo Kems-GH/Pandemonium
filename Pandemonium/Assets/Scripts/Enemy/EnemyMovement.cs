@@ -30,7 +30,8 @@ public class EnemyMovement
             this.isAttacking = false;
         }
         
-        CheckNearPlayer();
+        if(!enemy.ignorePlayer) CheckNearPlayer();
+
         CheckNearHeart();
 
         if (!isChasingPlayer)
@@ -43,8 +44,7 @@ public class EnemyMovement
      * Will chase after the player
      */
     private void ChasePlayer(Vector3 player)
-    {
-        
+    {   
         navAgent.SetDestination(player);
     }
 
@@ -90,6 +90,7 @@ public class EnemyMovement
         this.timeLastAttack = Time.time;
         this.enemy.SetTriggerAttackClientRpc();
         this.core.TakeDamage(this.enemy.damageInflicted);
+        this.StopMovement();
     }
 
     /**
@@ -97,6 +98,7 @@ public class EnemyMovement
      */
     private void GoToHeart()
     {
+        this.navAgent.isStopped = false;
         this.enemy.SetSpeedWalkClientRpc(this.enemy.speed);
         navAgent.SetDestination(this.core.GetPosition());
     }

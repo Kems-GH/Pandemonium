@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2448504953831866579}
   - component: {fileID: 6674845883980446437}
   - component: {fileID: 1125154009433900572}
-  - component: {fileID: 6889033781214180542}
+  - component: {fileID: 7228409893233845673}
   m_Layer: 0
   m_Name: P_PROP_platform_grid_dungeon
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6889033781214180542
+--- !u!65 &7228409893233845673
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5381147650332800874}
   - component: {fileID: 4032599598278937948}
   - component: {fileID: 7262655365387874725}
-  - component: {fileID: 9216275518479285505}
+  - component: {fileID: 1288819837982777175}
   m_Layer: 0
   m_Name: P_PROP_skeleton_hand_R_dungeon
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &9216275518479285505
+--- !u!65 &1288819837982777175
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

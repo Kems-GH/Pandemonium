@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8453422892172968283}
   - component: {fileID: 579717411371957101}
   - component: {fileID: 6572749124744300436}
-  - component: {fileID: 1337368421763534405}
+  - component: {fileID: 3876784662767115690}
   m_Layer: 0
   m_Name: P_PROP_skeleton_bonepile_dungeon_01
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1337368421763534405
+--- !u!65 &3876784662767115690
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,5 +92,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.18, y: 0.27, z: 1.32}
-  m_Center: {x: 0.07, y: 0.11, z: -0.042292416}
+  m_Size: {x: 1.33, y: 0.29, z: 1.24}
+  m_Center: {x: 0.16765025, y: 0.14, z: -0.042292416}

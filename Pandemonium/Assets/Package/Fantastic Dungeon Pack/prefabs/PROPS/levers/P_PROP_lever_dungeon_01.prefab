@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 9110029555411364960}
   - component: {fileID: 8257964969559250550}
   - component: {fileID: 8130216039162236211}
-  - component: {fileID: 8649067861158349938}
+  - component: {fileID: 5995048198854443406}
   m_Layer: 0
   m_Name: SM_PROP_lever_handle_dungeon_01
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8649067861158349938
+--- !u!65 &5995048198854443406
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,5 +185,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 1.13709, z: 0.09}
+  m_Size: {x: 0.09, y: 1.13709, z: 0.07}
   m_Center: {x: -0.00070827454, y: 0.568545, z: 0}

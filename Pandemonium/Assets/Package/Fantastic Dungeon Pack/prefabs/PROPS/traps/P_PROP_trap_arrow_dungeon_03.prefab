@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 582656433872308831}
   - component: {fileID: 8452416815438573673}
   - component: {fileID: 2770150435276377232}
-  - component: {fileID: 8399788955536967411}
+  - component: {fileID: 6559429696531031712}
   m_Layer: 0
   m_Name: P_PROP_trap_arrow_dungeon_03
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8399788955536967411
+--- !u!65 &6559429696531031712
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +91,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1252892, y: 1.3983768, z: 0.08473771}
-  m_Center: {x: 0.012619892, y: 0.68566066, z: -0.0015535656}
+  m_Size: {x: 0.1252892, y: 1.398377, z: 0.0847377}
+  m_Center: {x: 0.012619892, y: 0.6856607, z: -0.0015535653}

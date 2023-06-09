@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7472569436318331733}
   - component: {fileID: 5244290483348224725}
   - component: {fileID: 4903705938973038877}
-  - component: {fileID: 6718489459692561887}
+  - component: {fileID: 2230425655318590692}
   m_Layer: 0
   m_Name: SM_PROP_lever_handle_dungeon_02
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6718489459692561887
+--- !u!65 &2230425655318590692
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6725203484525560173}
   - component: {fileID: 1825595264166701620}
   - component: {fileID: 990457478910051413}
-  - component: {fileID: 5081185793310882504}
+  - component: {fileID: 7138059696008643396}
   m_Layer: 0
   m_Name: SM_PROP_trap_floor_spikes_dungeon_05
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5081185793310882504
+--- !u!65 &7138059696008643396
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

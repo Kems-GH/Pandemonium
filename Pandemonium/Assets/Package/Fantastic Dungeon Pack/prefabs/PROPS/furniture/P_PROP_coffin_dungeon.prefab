@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7178937883728014956}
   - component: {fileID: 6695081825003373054}
   - component: {fileID: 5741563851888061635}
-  - component: {fileID: 3060084368032262254}
+  - component: {fileID: 7922069991909368011}
   m_Layer: 0
   m_Name: SM_PROP_coffin_dungeon_lid
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3060084368032262254
+--- !u!65 &7922069991909368011
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,8 +91,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0645604, y: 0.15419815, z: 2.2408543}
-  m_Center: {x: 0.00000008940697, y: 0.032862633, z: -0.02125156}
+  m_Size: {x: 1.0645607, y: 0.15419824, z: 2.2408543}
+  m_Center: {x: 0.0000000889173, y: 0.0328624, z: -0.021252034}
 --- !u!1 &7947863705607236446
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6347579818621966669}
   - component: {fileID: 2687563251795469179}
   - component: {fileID: 8534512482363006850}
-  - component: {fileID: 4997861621537110694}
+  - component: {fileID: 224056180407966195}
   m_Layer: 0
   m_Name: P_PROP_coffin_dungeon
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4997861621537110694
+--- !u!64 &224056180407966195
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

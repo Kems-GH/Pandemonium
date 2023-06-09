@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133799006904467875}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122851197639184}
@@ -849,10 +849,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.22
       objectReference: {fileID: 0}
+    - target: {fileID: 9043935959653546662, guid: 6ae50922505306c4eaccb0809233bc08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 9043935959653546663, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}
       propertyPath: m_Range
-      value: 7.21
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 9043935959653546663, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}
@@ -862,12 +867,7 @@ PrefabInstance:
     - target: {fileID: 9043935959653546663, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}
       propertyPath: m_Intensity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043935959653546662, guid: 6ae50922505306c4eaccb0809233bc08,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9043935959653546661, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}

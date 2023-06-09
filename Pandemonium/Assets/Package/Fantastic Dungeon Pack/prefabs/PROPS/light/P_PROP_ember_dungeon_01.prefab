@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2330181199770492509}
   - component: {fileID: 6705140539136812139}
   - component: {fileID: 1022871959833794706}
-  - component: {fileID: 8200720547292523664}
+  - component: {fileID: 3028811903347334597}
   m_Layer: 0
   m_Name: P_PROP_ember_dungeon_01
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588977561898839118}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8702180873366906966}
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8200720547292523664
+--- !u!64 &3028811903347334597
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 9043935959653546660, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.829
+      value: 0.218
       objectReference: {fileID: 0}
     - target: {fileID: 9043935959653546662, guid: 6ae50922505306c4eaccb0809233bc08,
         type: 3}

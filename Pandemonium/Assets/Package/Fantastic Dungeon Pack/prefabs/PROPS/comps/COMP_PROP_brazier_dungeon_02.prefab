@@ -80,16 +80,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6045880683699252651, guid: d20aa6777d8831347aed4a6d8ac42954,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 13.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6045880683699252651, guid: d20aa6777d8831347aed4a6d8ac42954,
-        type: 3}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d20aa6777d8831347aed4a6d8ac42954, type: 3}
 --- !u!4 &6429657395422562551 stripped

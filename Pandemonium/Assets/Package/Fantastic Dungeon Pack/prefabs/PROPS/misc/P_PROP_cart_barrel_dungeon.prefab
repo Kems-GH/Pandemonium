@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7889620549338600988}
   - component: {fileID: 8141858060602907291}
   - component: {fileID: 8090492779255048009}
-  - component: {fileID: 4306013704497621578}
+  - component: {fileID: 7119739434165085203}
   m_Layer: 0
   m_Name: SM_PROP_cart_barrel_wheel_L
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4306013704497621578
+--- !u!65 &7119739434165085203
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ GameObject:
   - component: {fileID: 147062606673642673}
   - component: {fileID: 9174252550097583751}
   - component: {fileID: 3201487026448908926}
-  - component: {fileID: 3961292689723546653}
-  - component: {fileID: 5765382893275046712}
-  - component: {fileID: 5272418464202397062}
+  - component: {fileID: 4492107053468170530}
+  - component: {fileID: 7126513039941748934}
+  - component: {fileID: 9060893305273490996}
   m_Layer: 0
   m_Name: P_PROP_cart_barrel_dungeon
   m_TagString: Untagged
@@ -177,7 +177,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3961292689723546653
+--- !u!65 &4492107053468170530
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,9 +188,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.4214368, z: 1.26}
-  m_Center: {x: 0.008994311, y: 0.7106457, z: -0.05}
---- !u!65 &5765382893275046712
+  m_Size: {x: 0.75, y: 1.4214368, z: 1.24}
+  m_Center: {x: 0.008994311, y: 0.7106457, z: 0.01}
+--- !u!65 &7126513039941748934
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,9 +201,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.19, z: 1.45}
-  m_Center: {x: -0.32, y: 0.4, z: 1.06}
---- !u!65 &5272418464202397062
+  m_Size: {x: 0.18, y: 0.18, z: 1.48}
+  m_Center: {x: 0.3, y: 0.41, z: 1.02}
+--- !u!65 &9060893305273490996
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,8 +214,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.19, z: 1.45}
-  m_Center: {x: 0.27, y: 0.4, z: 1.06}
+  m_Size: {x: 0.18, y: 0.18, z: 1.48}
+  m_Center: {x: -0.31, y: 0.41, z: 1.02}
 --- !u!1 &6890195234960934052
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 5538792408534223430}
   - component: {fileID: 58563577162914013}
   - component: {fileID: 7685926012981934757}
-  - component: {fileID: 6128978421364667465}
+  - component: {fileID: 4950695177309002996}
   m_Layer: 0
   m_Name: SM_PROP_cart_barrel_wheel_R
   m_TagString: Untagged
@@ -296,7 +296,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6128978421364667465
+--- !u!65 &4950695177309002996
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

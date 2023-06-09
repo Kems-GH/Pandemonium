@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7447907868815384906}
   - component: {fileID: 1875553540024097660}
   - component: {fileID: 5277030649202943877}
-  - component: {fileID: 4158065242118694393}
+  - component: {fileID: 7521869960635471652}
   m_Layer: 0
   m_Name: P_PROP_waterwheel_dungeon_01
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4158065242118694393
+--- !u!64 &7521869960635471652
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4304541374675105785, guid: 9cab99219b20c1d4ebbc8d1a1dbe62b1, type: 3}
+  m_Mesh: {fileID: 4304541374675105785, guid: 496842a46ae1ca24e8caf6a762f2fcbc, type: 3}
 --- !u!1 &6613054867139570677
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 6021692744412860221}
   - component: {fileID: 6980635889214621299}
   - component: {fileID: 1647859807525434987}
-  - component: {fileID: 3755096636491870649}
+  - component: {fileID: 2491689647644873489}
   m_Layer: 0
   m_Name: SM_PROP_waterwheel_pole_dungeon_01
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3755096636491870649
+--- !u!65 &2491689647644873489
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

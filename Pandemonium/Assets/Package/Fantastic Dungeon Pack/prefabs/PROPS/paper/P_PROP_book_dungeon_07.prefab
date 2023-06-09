@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6255497478463711107}
   - component: {fileID: 3140411295952625077}
   - component: {fileID: 8694324442465739084}
-  - component: {fileID: 7818293073831628170}
+  - component: {fileID: 6531255262015200776}
   m_Layer: 0
   m_Name: P_PROP_book_dungeon_07
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6959367681258067344}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7818293073831628170
+--- !u!65 &6531255262015200776
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6480273539185030901}
   - component: {fileID: 2645170766856031427}
   - component: {fileID: 8613417581048000570}
-  - component: {fileID: 2761241994987154161}
+  - component: {fileID: 3893704149200173224}
   m_Layer: 0
   m_Name: P_PROP_skeleton_pelvis_dungeon
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2761241994987154161
+--- !u!65 &3893704149200173224
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

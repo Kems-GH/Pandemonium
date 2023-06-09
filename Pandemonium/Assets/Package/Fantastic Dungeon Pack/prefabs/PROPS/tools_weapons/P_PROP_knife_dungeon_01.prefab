@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5367711830330581917}
   - component: {fileID: 3974136157172341163}
   - component: {fileID: 7213217031418602834}
-  - component: {fileID: 6957013630651896306}
+  - component: {fileID: 4672219800036610850}
   m_Layer: 0
   m_Name: P_PROP_knife_dungeon_01
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8946023117249237390}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6957013630651896306
+--- !u!65 &4672219800036610850
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

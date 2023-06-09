@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2812442350341624718}
   - component: {fileID: 6511303280141773240}
   - component: {fileID: 675613331966678337}
-  - component: {fileID: 2198310137591324593}
+  - component: {fileID: 8794663763835636551}
   m_Layer: 0
   m_Name: P_PROP_handcuff_dungeon
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2198310137591324593
+--- !u!65 &8794663763835636551
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

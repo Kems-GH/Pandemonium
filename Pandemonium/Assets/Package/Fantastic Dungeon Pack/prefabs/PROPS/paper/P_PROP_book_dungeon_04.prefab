@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2621001309246403189}
   - component: {fileID: 6414441378393622595}
   - component: {fileID: 736379330584900794}
-  - component: {fileID: 3710111104544143313}
+  - component: {fileID: 1511333761122309341}
   m_Layer: 0
   m_Name: P_PROP_book_dungeon_04
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3710111104544143313
+--- !u!65 &1511333761122309341
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

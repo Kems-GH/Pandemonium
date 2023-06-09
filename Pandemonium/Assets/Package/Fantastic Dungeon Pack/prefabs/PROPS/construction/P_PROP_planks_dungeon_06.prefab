@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7048398709884373656}
   - component: {fileID: 2057010296382681262}
   - component: {fileID: 5744199058281335895}
-  - component: {fileID: 8853878754793199647}
+  - component: {fileID: 7468872142020310468}
   m_Layer: 0
   m_Name: P_PROP_planks_dungeon_06
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8853878754793199647
+--- !u!65 &7468872142020310468
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

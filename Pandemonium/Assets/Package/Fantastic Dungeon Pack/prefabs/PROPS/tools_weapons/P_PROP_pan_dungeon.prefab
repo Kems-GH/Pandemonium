@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2295841767773188345}
   - component: {fileID: 7099767941325851343}
   - component: {fileID: 3583730851640571446}
-  - component: {fileID: 2194673204213636532}
+  - component: {fileID: 5425821224860824663}
   m_Layer: 0
   m_Name: P_PROP_pan_dungeon
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2992411280082911978}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2194673204213636532
+--- !u!65 &5425821224860824663
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

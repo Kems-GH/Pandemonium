@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4412953, g: 0.49009687, b: 0.57014954, a: 1}
+  m_IndirectSpecularColor: {r: 0.17627873, g: 0.22062418, b: 0.3029489, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1373,6 +1373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_chandelier_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133799006904467875, guid: 8f7666fd4a80dbc43a989e80fb3a940a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1393267131198926336, guid: 8f7666fd4a80dbc43a989e80fb3a940a,
         type: 3}
@@ -3018,6 +3023,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_ember_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588977561898839118, guid: c7c8e6bc05c46444d9c2cc99c0cd91e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330181199770492509, guid: c7c8e6bc05c46444d9c2cc99c0cd91e6,
         type: 3}
@@ -4741,6 +4751,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_chandelier_dungeon_02
       objectReference: {fileID: 0}
+    - target: {fileID: 6907867623575442217, guid: 3f780b5799ed5d6439fdb06e6ded7f78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7604034237954793786, guid: 3f780b5799ed5d6439fdb06e6ded7f78,
         type: 3}
       propertyPath: m_RootOrder
@@ -6380,7 +6395,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.9753538, b: 0.9103774, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3.11
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7229,6 +7244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_brazier_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637039728383428069, guid: b09823052f448da4b9957972fa61c488,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09823052f448da4b9957972fa61c488, type: 3}
@@ -9168,6 +9188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: COMP_PROP_brazier_dungeon_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1608881180404368231, guid: d20aa6777d8831347aed4a6d8ac42954,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2949682936944953149, guid: d20aa6777d8831347aed4a6d8ac42954,
         type: 3}
       propertyPath: m_IsActive
@@ -10415,6 +10440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_brazier_dungeon_02
       objectReference: {fileID: 0}
+    - target: {fileID: 3299118502030256018, guid: c709fe536eee7d449827611dd10275e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c709fe536eee7d449827611dd10275e3, type: 3}
 --- !u!4 &835209534 stripped
@@ -11460,6 +11490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_campfire_poles_dungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 2162064024421560955, guid: fc586411d5d46d44c941a4dd81cb58af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2907750989674741864, guid: fc586411d5d46d44c941a4dd81cb58af,
         type: 3}
       propertyPath: m_RootOrder
@@ -12353,6 +12388,11 @@ PrefabInstance:
     - target: {fileID: 2985747814493403932, guid: 6700376bb2fa14d49bd8554414c86c36,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216791829344538463, guid: 6700376bb2fa14d49bd8554414c86c36,
+        type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15723,6 +15763,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_lamp_wall_dungeon_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1320888539980580621, guid: 95bc24cd1543be34c863e02b6a952792,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2598547264271791390, guid: 95bc24cd1543be34c863e02b6a952792,
         type: 3}
       propertyPath: m_RootOrder
@@ -15736,7 +15781,7 @@ PrefabInstance:
     - target: {fileID: 2598547264271791390, guid: 95bc24cd1543be34c863e02b6a952792,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.84
+      value: 0.736
       objectReference: {fileID: 0}
     - target: {fileID: 2598547264271791390, guid: 95bc24cd1543be34c863e02b6a952792,
         type: 3}
@@ -15777,6 +15822,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213449102022040895, guid: 95bc24cd1543be34c863e02b6a952792,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213449102022040895, guid: 95bc24cd1543be34c863e02b6a952792,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213449102022040895, guid: 95bc24cd1543be34c863e02b6a952792,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95bc24cd1543be34c863e02b6a952792, type: 3}
@@ -16140,6 +16200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_torch_standing_dungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806556917065765174, guid: d7e7e04511647bf498d49c85544af79f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e7e04511647bf498d49c85544af79f, type: 3}
@@ -17249,25 +17314,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1327408910}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1327408912 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 98667774201867873, guid: f77123be3e8dfdc43b1dc338825c6d63,
-    type: 3}
-  m_PrefabInstance: {fileID: 1327408910}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1327408913
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327408912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.31537497, y: 0.039932434, z: 0.30814755}
-  m_Center: {x: 0.00058127195, y: 0.019966217, z: -0.00001616776}
 --- !u!1001 &1329991465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18738,6 +18784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_campfire_dungeon_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600682907998415300, guid: 8ea93ed62cb526f46a06d6066ed26dea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5996246538776048836, guid: 8ea93ed62cb526f46a06d6066ed26dea,
         type: 3}
@@ -21318,6 +21369,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: COMP_PROP_brazier_dungeon_03
       objectReference: {fileID: 0}
+    - target: {fileID: 7681162980337958704, guid: c4448e04ce08a784294c04b8c2b95bde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7681162980337958707, guid: c4448e04ce08a784294c04b8c2b95bde,
         type: 3}
       propertyPath: m_RootOrder
@@ -21801,6 +21857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_lamp_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5098355852052828651, guid: 1a3797194507e5e4d8040cc853c80946,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8114262198495372280, guid: 1a3797194507e5e4d8040cc853c80946,
         type: 3}
@@ -23560,6 +23621,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2947165753587784885, guid: da2878453be8dd54c87958e5b4d31f2b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947165753587784885, guid: da2878453be8dd54c87958e5b4d31f2b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947165753587784885, guid: da2878453be8dd54c87958e5b4d31f2b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.261
+      objectReference: {fileID: 0}
     - target: {fileID: 4786528513738902598, guid: da2878453be8dd54c87958e5b4d31f2b,
         type: 3}
       propertyPath: m_RootOrder
@@ -23624,6 +23700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_torch_wall_dungeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374007595148082773, guid: da2878453be8dd54c87958e5b4d31f2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2878453be8dd54c87958e5b4d31f2b, type: 3}
@@ -24195,11 +24276,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_cage_holder_dungeon
       objectReference: {fileID: 0}
-    - target: {fileID: 9059413431473190071, guid: 69b8f22fd6274d043a0356d1d9c25008,
-        type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69b8f22fd6274d043a0356d1d9c25008, type: 3}
 --- !u!4 &1929374850 stripped
@@ -24274,6 +24350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_lamp_dungeon_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798607158475919258, guid: b0b3c36367893b64686be69f567e314c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0b3c36367893b64686be69f567e314c, type: 3}
@@ -25160,6 +25241,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: COMP_PROP_campfire_dungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 3469592391429689629, guid: ea0e150ad0c7fe24893a249daaa04f3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6582368401352576950, guid: ea0e150ad0c7fe24893a249daaa04f3e,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -25794,6 +25880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_PROP_campfire_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874482817214650892, guid: 4787de20ed0ab9d42861c5a543536768,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4787de20ed0ab9d42861c5a543536768, type: 3}

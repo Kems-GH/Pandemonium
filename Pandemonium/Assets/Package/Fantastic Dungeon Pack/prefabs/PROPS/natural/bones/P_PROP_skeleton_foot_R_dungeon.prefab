@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5474254495583598078}
   - component: {fileID: 3937117813584908232}
   - component: {fileID: 7322847092305343281}
-  - component: {fileID: 2147921023793387486}
+  - component: {fileID: 5459556007839367007}
   m_Layer: 0
   m_Name: P_PROP_skeleton_foot_R_dungeon
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2147921023793387486
+--- !u!65 &5459556007839367007
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
