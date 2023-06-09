@@ -127,7 +127,10 @@ public class PlaceableObject : NetworkBehaviour
         if (this.nbGrab != 0) return;
         isPreview = false;
         if(this.waveManager.IsWaveRunning()) return;
-        trapZoneManager.PlaceTrap(zoneCollider.gameObject.GetComponent<TrapZone>());
+        TrapZone zone = zoneCollider.gameObject.GetComponent<TrapZone>();
+        if(!zone.isFree) return;
+
+        trapZoneManager.PlaceTrap(zone);
         ghostTrap.GetComponent<NetworkObject>().Despawn(true);
 
         GameObject newTrap = Instantiate(trap, zoneCollider.transform.position, Quaternion.identity);
