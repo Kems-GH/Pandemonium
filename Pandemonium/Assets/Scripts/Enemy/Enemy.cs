@@ -52,12 +52,11 @@ public abstract class Enemy : NetworkBehaviour
         this.movement.StopMovement();
         
         this.SetDeathClientRpc();
-        StartCoroutine(DestroyBones());
     }
 
-    private IEnumerator DestroyBones()
+    public void DestroyBones()
     {
-        yield return new WaitForSeconds(2f);
+        if (!IsServer) return;
         this.GetComponent<NetworkObject>().Despawn(true);
     }
 
@@ -78,7 +77,7 @@ public abstract class Enemy : NetworkBehaviour
     {
         this.animator.SetFloat("Speed", speed);
     }
-
+    
     [ClientRpc]
     public void SetDeathClientRpc()
     {
