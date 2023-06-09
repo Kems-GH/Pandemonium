@@ -1,123 +1,66 @@
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections.Generic;
-using Pandemonium.Assets.Scripts;
-using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class WaveManager : NetworkBehaviour
 {
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private List<Wave> waves;
-    [SerializeField] private GameObject activator;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private TMPro.TMP_Text textEndGame;
+    [field:SerializeField] public NetworkVariable<bool> isWaveRunning { get; set; } = new NetworkVariable<bool>(false);
 
     private int currentWave = 0;
     private int nbWave = 0;
-    public static WaveManager Instance;
+    private StartWaveTrigger startWaveTrigger;
 
     private void Awake() 
     {
-        // TODO: Change if we have other level
-        if (Instance == null) Instance = this;
-        else 
-        {
-            Debug.LogError("Multiple WaveManager in scene");
-            Destroy(this.gameObject);
-            return;
-        }
-
         this.nbWave = waves.Count;
+        startWaveTrigger = GetComponentInChildren<StartWaveTrigger>();
+        startWaveTrigger.OnTriggerEnterEvent += StartWave;
     }
 
     public void StartWave()
     {
         if (!IsServer) return;
-        this.DeactivateActivatorClientRpc();
+        isWaveRunning.Value = true;
+        this.DisplayActivatorClientRpc(false);
         if (currentWave < nbWave)
         {
             Wave wave = waves[currentWave];
-            StartCoroutine(SpawnEnemy(wave));
+            StartCoroutine(SpawnManager.SpawnEnemy(wave, spawners));
             currentWave++;
+            InvokeRepeating(nameof(CheckWaveFinished), 5f, 1f);
         }
-    }
-
-    [ClientRpc]
-    public void DeactivateActivatorClientRpc()
-    {
-        this.activator.SetActive(false);
-    }
-    [ClientRpc]
-    public void ActivateActivatorClientRpc()
-    {
-        this.activator.SetActive(true);
-    }
-    private IEnumerator SpawnEnemy(Wave wave)
-    {
-        if (!IsServer) yield break;
-
-        Spawner[] ActifSpawner = new Spawner[waves[currentWave].nbSpawner];
-
-        // Randomize spawner and select the number of spawner needed
-        Tools.ShuffleList(spawners);
-        spawners.CopyTo(0, ActifSpawner, 0, wave.nbSpawner < spawners.Count ? wave.nbSpawner : spawners.Count);
-
-        // Activate spawner
-        for(int i = 0; i < ActifSpawner.Length; i++)
-        {
-            ActifSpawner[i].ActivateClientRpc();
-        }
-        yield return new WaitForSeconds(wave.spawnRate);
-        int nbEnemyWave = wave.nbEnemy;
-        while(nbEnemyWave > 0)
-        {
-            yield return new WaitForSeconds(wave.spawnRate);
-            // Spawn enemy on spawner
-            int nbEnemy = Mathf.Min(Random.Range(wave.minNbSpawn, wave.maxNbSpawn), nbEnemyWave);
-            foreach (Spawner spawner in ActifSpawner)
-            {
-                for (int i = 0; i < nbEnemy; i++)
-                {
-                    int rand = Random.Range(0, 100);
-                    if (rand < wave.skeletonProba)
-                    {
-                        spawner.Spawn(GameManager.Instance.GetSkeletonPrefab());
-                    }
-                    else
-                    {
-                        spawner.Spawn(GameManager.Instance.GetSkeletonPrefab());
-                    }
-                }
-            }
-            nbEnemyWave -= nbEnemy;
-        }
-        InvokeRepeating(nameof(CheckWaveFinished), 1f, 1f);
     }
 
     private void CheckWaveFinished()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if(!isWaveRunning.Value) return;
+        if(WaveChecker.CheckWaveFinished())
         {
-            CancelInvoke(nameof(CheckWaveFinished));
             EndWave();
+            return;
         }
     }
 
     private void EndWave()
     {
         if (!IsServer) return;
+        isWaveRunning.Value = false;
+        StopAllCoroutines();
+        CancelInvoke(nameof(CheckWaveFinished));
 
         foreach (Spawner spawner in spawners)
         {
             spawner.DeactivateClientRpc();
         }
-        if (currentWave < nbWave)
-        {
-            this.ActivateActivatorClientRpc();
+        if (currentWave < nbWave) {
+            this.DisplayActivatorClientRpc(true);
         }
-        else
-        {
+        else {
             this.Victory();
         }
     }
@@ -125,6 +68,8 @@ public class WaveManager : NetworkBehaviour
     public void StopWave()
     {
         if (!IsServer) return;
+
+        isWaveRunning.Value = false;
 
         StopAllCoroutines();
         CancelInvoke(nameof(CheckWaveFinished));
@@ -137,14 +82,13 @@ public class WaveManager : NetworkBehaviour
     public void Defeat()
     {
         if (!IsServer) return;
-        WaveManager.Instance.StopWave();
+        this.StopWave();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)
         {
-            if (IsServer) enemy.GetComponent<NetworkObject>().Despawn(true);
-            else Destroy(enemy);
+            enemy.GetComponent<NetworkObject>().Despawn(true);
         }
 
         DisplayEndGameMenuClientRpc("Game Over");
@@ -163,6 +107,7 @@ public class WaveManager : NetworkBehaviour
         this.textEndGame.text = textEnd;
         this.endGameMenu.SetActive(true);
     }
+
     [ClientRpc]
     private void HideEndGameMenuClientRpc()
     {
@@ -170,16 +115,28 @@ public class WaveManager : NetworkBehaviour
         this.endGameMenu.SetActive(false);
     }
 
-    public void Restart()
+    [ServerRpc (RequireOwnership = false)]
+    public void RestartServerRpc()
     {
         this.currentWave = 0;
-        GameObject.FindGameObjectWithTag("Heart").GetComponent<Core>().ResetHealth();
+        GameObject.FindGameObjectWithTag("Core").GetComponent<Core>().ResetHealth();
         this.HideEndGameMenuClientRpc();
-        this.ActivateActivatorClientRpc();
+        this.DisplayActivatorClientRpc(true);
     }
 
     public void LoadLobby()
     {
         SceneManager.LoadScene("Lobby");
+    }
+
+    public bool IsWaveRunning()
+    {
+        return isWaveRunning.Value;
+    }
+
+    [ClientRpc]
+    public void DisplayActivatorClientRpc(bool display)
+    {
+        this.startWaveTrigger.Display(display);
     }
 }

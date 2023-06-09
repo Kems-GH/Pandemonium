@@ -3,188 +3,85 @@ using Unity.Netcode;
 using UnityEngine.AI;
 using System.Collections;
 
-public class Enemy : NetworkBehaviour
+public abstract class Enemy : NetworkBehaviour
 {
-    [SerializeField] private LayerMask layerMaskPlayer;
-    [SerializeField] private int damageInflicted;
-    [SerializeField] private int radiusAggro;
-    [SerializeField] private Animator animator;
-
-    private Collider[] collidersPlayer;
-    private NavMeshAgent navAgent;
-    private Transform heart;
-    private Core core;
-    private bool isChasingPlayer = false;
-
-    private bool canTakeDamage = true;
-
-    [SerializeField] protected  NetworkVariable<int> health;
-    protected virtual float distanceNearHeart { get; } = 2.1f;
-    protected virtual float speedAttack { get; } = 3f;
-    protected virtual float timeForFirstAttack { get; } = 0.1f;
-    protected virtual int goldEarnedAfterDeath { get; } = 0;
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (!IsServer) return;
-
-        int amountDamage = 0;
-
-        if (collider.CompareTag("Hand"))
-        {
-            amountDamage = (int)collider.gameObject.GetComponent<IWeapon>().GetAmountDamage();
-        } else if(collider.CompareTag("Trap"))
-        {
-            amountDamage = (int)collider.gameObject.GetComponent<ITrap>().GetAmountDamage();
-        } else {
-            return;
-        }
-
-        this.TakeDamage(amountDamage);
-    }
-
-    private void Update()
-    {
-        CheckNearPlayer();
-
-        if (!IsServer) return;
-        CheckNearHeart();
-
-        if (!isChasingPlayer)
-        {
-            StartCoroutine(GoToHeart());
-        }
-    }
-
-    private void Start() {
-        if (!IsServer) return;
-
-        heart = GameObject.FindGameObjectWithTag("Heart").transform;
-        navAgent = GetComponent<NavMeshAgent>();
-        this.health.Value = 100;
-
-        StartCoroutine(GoToHeart());
-    }
+    private Animator animator;
+    private EnemyLife life;
+    private EnemyMovement movement;
+    public Vector3 position { get; private set; }
 
     /**
-     * The Enemy take some damage
+     * Stats of the enemy
+     * Can be overrided by the child class
      */
-    public void TakeDamage(int damage)
-    {   
-        if(!this.canTakeDamage) return;
+    public abstract int maxHealth { get; }
+    public abstract float distanceNearHeart { get; }
+    public abstract float speedAttack { get; }
+    public abstract float timeForFirstAttack { get; }
+    public abstract int goldEarnedAfterDeath { get; }
+    public abstract int damageInflicted { get; }
+    public abstract int radiusAggro { get;}
+    public abstract int speed { get;}
 
-        Debug.Log(this + ": " + damage );
-        this.health.Value -= damage;
+    private void Start() {
+        this.animator = GetComponent<Animator>();
+        if (!IsServer) return;
 
-        this.canTakeDamage  = false;
-        StartCoroutine(Invulnerable());
+        this.life = new EnemyLife(this, maxHealth);
+
+        EnemyTrigger trigger = GetComponent<EnemyTrigger>();
+
+        trigger.OnTriggerEnterEvent += this.life.TriggerDamage;
+
+        this.position = transform.position;
+
         
-        if(health.Value <= 0)
-        {
-            Die();
-        }
-    }
-
-    private IEnumerator Invulnerable()
-    {
-        yield return new WaitForSeconds(0.5f);
-        this.canTakeDamage = true;
+        this.movement = new EnemyMovement(this, GetComponent<NavMeshAgent>());
     }
 
     /**
      * The Enemy die
      */
-    private void Die()
+    public void Die()
     {
         if (!IsServer) return;
         GoldManager.instance.AddGoldServerRpc(goldEarnedAfterDeath);
         StopAllCoroutines();
         CancelInvoke();
-        navAgent.isStopped = true;
+        this.movement.StopMovement();
         
-        this.animator.SetTrigger("Death");
+        this.SetDeathClientRpc();
         StartCoroutine(DestroyBones());
     }
 
     private IEnumerator DestroyBones()
     {
         yield return new WaitForSeconds(2f);
-        if (IsServer) this.GetComponent<NetworkObject>().Despawn(true);
-        else Destroy(this.gameObject);
+        this.GetComponent<NetworkObject>().Despawn(true);
     }
 
-    /**
-     * Will chase after the player
-     */
-    [ServerRpc(RequireOwnership = false)]
-    private void ChasePlayerServerRpc(Vector3 player)
-    {
-        navAgent.SetDestination(player);
-    }
-
-    /**
-     * Check if the Enemy is near a player
-     */
-    private void CheckNearPlayer()
-    {
-        collidersPlayer = Physics.OverlapSphere(this.transform.position, radiusAggro, layerMaskPlayer);
-
-        if (collidersPlayer.Length > 0)
-        {
-            isChasingPlayer = true;
-            // Will chase the nearest player
-            ChasePlayerServerRpc(collidersPlayer[0].transform.position);
-        }
-        else
-        {
-            isChasingPlayer = false;
-        }
-    }
-
-    /**
-     * Check if the Enemy is near the heart
-     */
-    private void CheckNearHeart()
-    {
-        if (isChasingPlayer)
-        {
-            if(IsInvoking(nameof(AttackHeart)))
-            {
-                CancelInvoke(nameof(AttackHeart));
-            }
-
-            return;
-        }
-
-
-        if (Vector3.Distance(this.heart.transform.position, this.transform.position) < distanceNearHeart)
-        {
-            this.core = this.heart.GetComponent<Core>();
-
-            if (!IsInvoking(nameof(AttackHeart)))
-            {
-                InvokeRepeating(nameof(AttackHeart), timeForFirstAttack, speedAttack);
-            }
-        }
-    }
-
-    /**
-     * The Enemy will inflict damage to the heart
-     */
-    private void AttackHeart()
-    {
+    private void Update() {
         if (!IsServer) return;
-        this.animator.SetBool("IsAttacking", true);
-        this.core.TakeDamage(damageInflicted);
+        this.position = transform.position;
+        this.movement.Move();
     }
 
-    /**
-     * The Enemy will go in the direction of the Heart
-     */
-    private IEnumerator GoToHeart()
+    [ClientRpc]
+    public void SetTriggerAttackClientRpc()
     {
-        yield return new WaitForSeconds(1f);
-        this.animator.SetInteger("Speed", 15);
-        navAgent.SetDestination(this.heart.transform.position);
+        this.animator.SetTrigger("Attack");
     }
+
+    [ClientRpc]
+    public void SetSpeedWalkClientRpc(int speed)
+    {
+        this.animator.SetInteger("Speed", speed);
+    }
+
+    [ClientRpc]
+    public void SetDeathClientRpc()
+    {
+        this.animator.SetTrigger("Death");
+    }
+
 }
