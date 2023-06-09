@@ -18,5 +18,8 @@ public class Wave
     [Tooltip("The probability to spawn a normal skeleton")]
     [Range(0, 100)]
     public int skeletonProba = 100;
+    [Tooltip("The probability to spawn a normal boss")]
+    [Range(0, 100)]
+    public int bossProba = 100;
 
 }
