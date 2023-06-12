@@ -27,7 +27,7 @@ public class GameManager : NetworkBehaviour {
 
     private void OnDisconnectedFromServer()
     {
-        StartSession.instance.CancelSession();
+        SessionManager.Instance.CancelSession();
     }
 
     public GameObject GetSkeletonPrefab(){return skeletonPrefab;}
