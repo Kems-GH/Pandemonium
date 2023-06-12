@@ -124,7 +124,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6584415696885373002, guid: 524054644971d5a47aedffdff4bd95a4, type: 3}
   m_PrefabInstance: {fileID: 7070551411665560946}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7324749166235973460
+--- !u!114 &1127533485828258970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,6 +133,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4143081021198155064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ec8182851ac4d43be2da0f4eb73f90, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

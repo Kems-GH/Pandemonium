@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2834498371434780947}
   - component: {fileID: 8388693362693170666}
   - component: {fileID: 4308880418737979462}
-  - component: {fileID: 5650393412151801122}
   m_Layer: 0
   m_Name: P_PROP_torch_standing_dungeon
   m_TagString: Untagged
@@ -100,22 +99,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.46807083, y: 1.8422133, z: 0.4121627}
   m_Center: {x: -0.0046474487, y: 0.9142695, z: 0.014158025}
---- !u!208 &5650393412151801122
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806556917065765174}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.18, y: 0.92100006, z: 0.18}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.007, y: 0.91400003, z: 0.016}
-  m_TimeToStationary: 0.5
 --- !u!1001 &8261062941340771072
 PrefabInstance:
   m_ObjectHideFlags: 0
