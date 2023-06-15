@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform HeadPrefab;
     [SerializeField] private GameObject skeletonPrefab;
+    [SerializeField] private GameObject bossPrefab;
     public static GameManager Instance;
 
     private void Awake() {
@@ -30,4 +31,5 @@ public class GameManager : NetworkBehaviour {
     }
 
     public GameObject GetSkeletonPrefab(){return skeletonPrefab;}
+    public GameObject GetBossPrefab(){return bossPrefab;}
 }

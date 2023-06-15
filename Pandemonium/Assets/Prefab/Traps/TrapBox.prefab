@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8774703229482622491}
   - component: {fileID: -6310289893955546310}
   - component: {fileID: -6550810548993636630}
+  - component: {fileID: 2715631644707760466}
   m_Layer: 0
   m_Name: TrapBox
   m_TagString: Untagged
@@ -207,8 +208,8 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
+      - m_Target: {fileID: 2715631644707760466}
+        m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnGrab
         m_Mode: 1
         m_Arguments:
@@ -222,8 +223,8 @@ MonoBehaviour:
   _whenUnselect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
+      - m_Target: {fileID: 2715631644707760466}
+        m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnRelease
         m_Mode: 1
         m_Arguments:
@@ -236,19 +237,7 @@ MonoBehaviour:
         m_CallState: 2
   _whenMove:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6550810548993636630}
-        m_TargetAssemblyTypeName: PlaceableObject, Assembly-CSharp
-        m_MethodName: OnDrag
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _whenCancel:
     m_PersistentCalls:
       m_Calls: []
