@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 2678828305153471054}
   m_Layer: 5
   m_Name: Code
-  m_TagString: Untagged
+  m_TagString: JoinCodeUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

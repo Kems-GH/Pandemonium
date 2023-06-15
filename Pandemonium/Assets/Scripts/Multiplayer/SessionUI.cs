@@ -6,17 +6,21 @@ using UnityEngine;
 
 public class SessionUI : NetworkBehaviour
 {
+    private const string JOIN_CODE_TAG = "JoinCode";
+    private const string JOIN_CODE_UI_TAG = "JoinCodeUI";
+
     private TMPro.TMP_Text joinCode;
     private TMPro.TMP_InputField joinCodeUi;
     
     private TouchScreenKeyboard overlayKeyboard;
 
     private void Start() {
-        joinCode = GameObject.Find("JoinCode").GetComponent<TMPro.TMP_Text>();
-        joinCodeUi = GameObject.Find("JoinCodeInput").GetComponent<TMPro.TMP_InputField>();
+        joinCode = GameObject.FindGameObjectWithTag(JOIN_CODE_TAG).GetComponent<TMPro.TMP_Text>();
+        joinCodeUi = GameObject.FindGameObjectWithTag(JOIN_CODE_UI_TAG).GetComponent<TMPro.TMP_InputField>();
     }
 
     public async void displayJoinCode(){
+        SessionManager.Instance.HideButtons();
         Allocation allocation = SessionManager.Instance.GetAllocation();
         joinCode.text = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
     }

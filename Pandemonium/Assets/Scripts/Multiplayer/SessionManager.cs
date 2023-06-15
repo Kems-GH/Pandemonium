@@ -10,6 +10,9 @@ using System;
 public class SessionManager : NetworkBehaviour
 {
     [SerializeField] private SessionUI sessionUI;
+    [SerializeField] private GameObject btnHost;
+    [SerializeField] private GameObject btnJoin;
+    [SerializeField] private GameObject btnCancel;
 
     private const int MAX_PLAYERS = 4;
 
@@ -112,6 +115,7 @@ public class SessionManager : NetworkBehaviour
 
         NetworkManager.Singleton.Shutdown();
         this.createMultiplayerRelay();
+        this.ShowButtons();
     }
 
     private void OnDisconnectedFromServer()
@@ -122,5 +126,17 @@ public class SessionManager : NetworkBehaviour
     public Allocation GetAllocation()
     {
         return allocation;
+    }
+
+    public void HideButtons() {
+        btnHost.SetActive(false);
+        btnJoin.SetActive(false);
+        btnCancel.SetActive(true);
+    }
+
+    public void ShowButtons() {
+        btnHost.SetActive(true);
+        btnJoin.SetActive(true);
+        btnCancel.SetActive(false);
     }
 }

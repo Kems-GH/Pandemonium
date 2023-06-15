@@ -14,6 +14,8 @@ public class UpdateNumberGold : MonoBehaviour
 
     void Update()
     {
+        if(!manager) return;
+        
         this.numberGold.text = manager.GetNbGold().ToString();
     }
 }

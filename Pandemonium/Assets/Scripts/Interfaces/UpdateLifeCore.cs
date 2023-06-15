@@ -14,6 +14,8 @@ public class UpdateLifeCore : MonoBehaviour
 
     void Update()
     {
+        if(!core) return;
+        
         this.lifeValue.text = this.core.GetLife() + " %";
     }
 }

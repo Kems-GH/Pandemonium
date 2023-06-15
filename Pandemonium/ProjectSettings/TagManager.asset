@@ -18,6 +18,9 @@ TagManager:
   - TextDeplacement
   - TeleportInteractor
   - SlideInteractor
+  - Heart
+  - JoinCode
+  - JoinCodeUI
   layers:
   - Default
   - TransparentFX
