@@ -10,6 +10,9 @@ public class GameManager : NetworkBehaviour {
 
     private void Awake() {
         Instance = this;
+
+        GameObject playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn");
+        GameObject.FindGameObjectWithTag("SlideInteractor").transform.position = playerSpawn.transform.position;
     }
 
     public override void OnNetworkSpawn() {

@@ -21,6 +21,7 @@ TagManager:
   - Heart
   - JoinCode
   - JoinCodeUI
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
