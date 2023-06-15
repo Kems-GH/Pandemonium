@@ -18,7 +18,6 @@ public class SessionManager : NetworkBehaviour
 
     private UnityTransport transport;
     private Allocation allocation;
-    private TouchScreenKeyboard overlayKeyboard;
 
     public static SessionManager Instance { get; private set; }
 
@@ -27,7 +26,7 @@ public class SessionManager : NetworkBehaviour
 
         else 
         {
-            Debug.LogError("There is more than one StartSession in the scene");
+            Debug.LogError("There is more than one SessionManager in the scene");
             Destroy(this.gameObject);
             return;
         }
@@ -40,20 +39,6 @@ public class SessionManager : NetworkBehaviour
         }
         await Authenticate();
         this.createMultiplayerRelay();
-    }
-
-    private void Update()
-    {
-        if(!sessionUI.IsOverlayKeyboardNull())
-        {
-            overlayKeyboard = sessionUI.GetOverlayKeyboard();
-            sessionUI.SetJoinCodeUI(overlayKeyboard.text);
-            if (overlayKeyboard.status == TouchScreenKeyboard.Status.Done)
-            {
-                overlayKeyboard = null;
-                JoinSession();
-            }
-        }
     }
 
     public async void createMultiplayerRelay(){

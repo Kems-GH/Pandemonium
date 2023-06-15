@@ -19,6 +19,20 @@ public class SessionUI : NetworkBehaviour
         joinCodeUi = GameObject.FindGameObjectWithTag(JOIN_CODE_UI_TAG).GetComponent<TMPro.TMP_InputField>();
     }
 
+    private void Update()
+    {
+        if(overlayKeyboard != null)
+        {
+            joinCode.text = overlayKeyboard.text;
+            joinCodeUi.text = overlayKeyboard.text;
+            if (overlayKeyboard.status == TouchScreenKeyboard.Status.Done)
+            {
+                overlayKeyboard = null;
+                SessionManager.Instance.JoinSession();
+            }
+        }
+    }
+
     public async void displayJoinCode(){
         SessionManager.Instance.HideButtons();
         Allocation allocation = SessionManager.Instance.GetAllocation();
@@ -40,19 +54,9 @@ public class SessionUI : NetworkBehaviour
         return joinCodeUi.text;
     }
 
-    public TouchScreenKeyboard GetOverlayKeyboard()
-    {
-        return overlayKeyboard;
-    }
-
-    public bool IsOverlayKeyboardNull()
-    {
-        return overlayKeyboard == null;
-    }
-
     public bool IsJoinCodeEmpty()
     {
-        return joinCodeUi.text == "";
+        return joinCode.text == "";
     }
 
     public bool IsJoinCodeUIEmpty()
@@ -66,7 +70,7 @@ public class SessionUI : NetworkBehaviour
 
     public void SetJoinCode(string code)
     {
-        joinCodeUi.text = code;
+        joinCode.text = code;
     }
 
     public void SetJoinCodeUI(string code)

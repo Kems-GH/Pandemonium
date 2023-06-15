@@ -2,6 +2,10 @@ using UnityEngine;
 using Unity.Netcode;
 public class NetworkInitPlayer : NetworkBehaviour
 {
+    private void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start() {
 
         if (IsOwner) return;
