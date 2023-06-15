@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6219784051731036438}
   - component: {fileID: 3101319997501096736}
   - component: {fileID: 8662273044637925337}
-  - component: {fileID: 6208482658638263436}
+  - component: {fileID: 4500318218462441143}
   m_Layer: 0
   m_Name: P_PROP_skeleton_ribs_dungeon_01
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6208482658638263436
+--- !u!65 &4500318218462441143
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1460145250954793832}
   - component: {fileID: 7572940081605732702}
   - component: {fileID: 4189743529664615847}
-  - component: {fileID: 578230784744478993}
+  - component: {fileID: 8984961790251231085}
   m_Layer: 0
   m_Name: P_PROP_cage_dungeon_02
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &578230784744478993
+--- !u!65 &8984961790251231085
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8302794874506970056}
   - component: {fileID: 9076517294648860142}
   - component: {fileID: 3157524753972976957}
-  - component: {fileID: 6125571189458199146}
+  - component: {fileID: 7152059405839877957}
   m_Layer: 0
   m_Name: SM_PROP_cage_door_02_dungeon
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6125571189458199146
+--- !u!65 &7152059405839877957
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

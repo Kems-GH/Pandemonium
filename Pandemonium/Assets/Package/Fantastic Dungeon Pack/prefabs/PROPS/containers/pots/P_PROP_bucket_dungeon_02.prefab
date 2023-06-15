@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8048612284630423172}
   - component: {fileID: 1362739684348980402}
   - component: {fileID: 4743950595457093707}
-  - component: {fileID: 7758745768469251406}
+  - component: {fileID: 400803951488410339}
   m_Layer: 0
   m_Name: P_PROP_bucket_dungeon_02
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7758745768469251406
+--- !u!65 &400803951488410339
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

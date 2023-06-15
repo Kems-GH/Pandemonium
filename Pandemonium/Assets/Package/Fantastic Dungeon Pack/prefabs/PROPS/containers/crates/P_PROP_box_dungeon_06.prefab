@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7363210453433630204}
   - component: {fileID: 1978318673820354506}
   - component: {fileID: 5208675964419996467}
-  - component: {fileID: 451668564934651583}
+  - component: {fileID: 8529386230032804190}
   m_Layer: 0
   m_Name: P_PROP_box_dungeon_06
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &451668564934651583
+--- !u!65 &8529386230032804190
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +91,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7313558, y: 0.8526242, z: 1.8020303}
+  m_Size: {x: 1.41, y: 0.8526242, z: 1.46}
   m_Center: {x: -0.13930339, y: 0.41984797, z: -0.05633208}

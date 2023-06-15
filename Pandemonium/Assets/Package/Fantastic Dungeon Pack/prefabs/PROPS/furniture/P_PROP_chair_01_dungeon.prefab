@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4845110540543738986}
   - component: {fileID: 1153417620412151955}
   - component: {fileID: 562015893936194900}
-  - component: {fileID: 4646929821858584121}
   m_Layer: 0
   m_Name: P_PROP_chair_01_dungeon
   m_TagString: Untagged
@@ -30,7 +29,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,12 +52,9 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,7 +66,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -84,7 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &562015893936194900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,19 +91,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4915217, y: 0.48700738, z: 0.5389893}
   m_Center: {x: 0.013471767, y: 0.23756182, z: 0.02315703}
---- !u!208 &4646929821858584121
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593654065872079951}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.27400002, y: 0.53000003, z: 0.32200003}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.033, y: 0.527, z: -0.011000001}
-  m_TimeToStationary: 0.5

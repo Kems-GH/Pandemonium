@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 9169140304572462065}
   - component: {fileID: 172353093920164295}
   - component: {fileID: 5861676062534464830}
-  - component: {fileID: 812997116827040889}
+  - component: {fileID: 6429475585168829771}
   m_Layer: 0
   m_Name: P_PROP_cookingpot_dungeon_01
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &812997116827040889
+--- !u!65 &6429475585168829771
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

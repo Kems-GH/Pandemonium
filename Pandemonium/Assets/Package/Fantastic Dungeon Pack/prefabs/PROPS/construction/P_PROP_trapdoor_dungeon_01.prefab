@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7088402997765277928}
   - component: {fileID: 1726504836861463257}
   - component: {fileID: 6327761536262953580}
-  - component: {fileID: 5056313464958775012}
+  - component: {fileID: 8553156702989550341}
   m_Layer: 0
   m_Name: SM_PROP_trapdoor_door_dungeon_01
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5056313464958775012
+--- !u!65 &8553156702989550341
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5407653019757590716}
   - component: {fileID: 3913858398805230218}
   - component: {fileID: 7308313127051656819}
-  - component: {fileID: 8632765459235424723}
+  - component: {fileID: 4279958421208533117}
   m_Layer: 0
   m_Name: P_PROP_trapdoor_dungeon_01
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8632765459235424723
+--- !u!64 &4279958421208533117
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8449809683864647196}
   - component: {fileID: 583435626261990442}
   - component: {fileID: 6567460980055126227}
-  - component: {fileID: 7842750949661348284}
+  - component: {fileID: 4024875121328577263}
   m_Layer: 0
   m_Name: P_PROP_chain_small_dungeon_02
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7842750949661348284
+--- !u!65 &4024875121328577263
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

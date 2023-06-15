@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5039045659764655008}
   - component: {fileID: 4086260108918536598}
   - component: {fileID: 7748942887047120239}
-  - component: {fileID: 8289899156020020228}
+  - component: {fileID: 4098014241850111187}
   m_Layer: 0
   m_Name: P_PROP_wallbracket_dungeon_01
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8289899156020020228
+--- !u!65 &4098014241850111187
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

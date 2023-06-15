@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7211786700290883853}
   - component: {fileID: 1823517444287150907}
   - component: {fileID: 5364603127116679106}
-  - component: {fileID: 4184997838144132304}
+  - component: {fileID: 7755691730351562952}
   m_Layer: 0
   m_Name: P_PROP_skeleton_bone_dungeon_04
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4184997838144132304
+--- !u!65 &7755691730351562952
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

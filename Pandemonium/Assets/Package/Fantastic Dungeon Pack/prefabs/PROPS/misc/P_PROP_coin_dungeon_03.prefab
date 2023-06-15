@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5115774000498687077}
   - component: {fileID: 4298096395566974547}
   - component: {fileID: 7537177003399838378}
-  - component: {fileID: 2624780776510748798}
+  - component: {fileID: 3997477111009733161}
   m_Layer: 0
   m_Name: P_PROP_coin_dungeon_03
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2624780776510748798
+--- !u!65 &3997477111009733161
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

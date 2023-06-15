@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1594215147384805630}
   - component: {fileID: 7729527736198505160}
   - component: {fileID: 4069079154944892465}
-  - component: {fileID: 5889914333334977554}
+  - component: {fileID: 3171868940996287449}
   m_Layer: 0
   m_Name: P_PROP_cage_dungeon_03
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5889914333334977554
+--- !u!65 &3171868940996287449
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

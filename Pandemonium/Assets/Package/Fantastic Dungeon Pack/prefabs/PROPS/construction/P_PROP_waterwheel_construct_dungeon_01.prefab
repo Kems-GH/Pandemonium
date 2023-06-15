@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3677696912274207788}
   - component: {fileID: 5643796914100538906}
   - component: {fileID: 2120705108435235555}
-  - component: {fileID: 7070770913518472968}
+  - component: {fileID: 2287998562712735889}
   m_Layer: 0
   m_Name: P_PROP_waterwheel_construct_dungeon_01
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7070770913518472968
+--- !u!65 &2287998562712735889
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
