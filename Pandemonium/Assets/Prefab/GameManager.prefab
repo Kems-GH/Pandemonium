@@ -63,4 +63,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeadPrefab: {fileID: 2574522016291621555, guid: 12c67ad927a20294a96dc33abed3911f, type: 3}
   skeletonPrefab: {fileID: 7171837862800594896, guid: ec122be3a36ef4246b2b2f4cda39fa39, type: 3}
-  isSolo: 1
+  bossPrefab: {fileID: 2052755654135292466, guid: 5fd0fda84fcbafb4891845ad4a8f3f69, type: 3}
