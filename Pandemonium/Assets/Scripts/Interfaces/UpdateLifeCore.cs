@@ -10,15 +10,11 @@ public class UpdateLifeCore : MonoBehaviour
     {
         this.lifeValue = GetComponent<TMP_Text>();
         this.core = FindObjectOfType<Core>();
-
-        if(core == null) {
-            Debug.LogError("Core not found");
-            Destroy(this);
-        }
     }
 
     void Update()
     {        
+        if(core == null) return;
         this.lifeValue.text = this.core.GetLife() + " %";
     }
 }
