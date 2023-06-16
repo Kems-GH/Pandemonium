@@ -5,6 +5,8 @@ using TMPro;
 public class Core : NetworkBehaviour
 {
     private NetworkVariable<int> health = new NetworkVariable<int>(100);
+    private WaveManager waveManager;
+    private Vector3 position;
 
     public void TakeDamage(int damage)
     {
@@ -14,12 +16,22 @@ public class Core : NetworkBehaviour
 
         if(health.Value <= 0)
         {
-            WaveManager.Instance.Defeat();
+            this.waveManager.Defeat();
         }
     }
 
     public void ResetHealth()
     {
         health.Value = 100;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return this.position;
+    }
+
+    public int GetLife()
+    {
+        return health.Value;
     }
 }
