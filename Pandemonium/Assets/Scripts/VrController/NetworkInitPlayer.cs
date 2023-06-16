@@ -14,8 +14,6 @@ public class NetworkInitPlayer : NetworkBehaviour
         // except for the NetworkObject and NetworkTransform
         foreach (var component in GetComponentsInChildren<MonoBehaviour>())
         {
-            Debug.Log("toDisabel : " + component.GetType().Name);
-
             if (component is NetworkBehaviour)
             {
                 continue;
