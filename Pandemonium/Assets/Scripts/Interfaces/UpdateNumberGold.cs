@@ -9,18 +9,12 @@ public class UpdateNumberGold : MonoBehaviour
     void Awake()
     {
         this.numberGold = GetComponent<TMP_Text>();
-        manager = FindObjectOfType<GoldManager>();
-
-        if(manager == null)
-        {
-            Debug.LogError("GoldManager not found");
-            Destroy(this);
-        }
-    
+        manager = FindObjectOfType<GoldManager>();   
     }
 
     void Update()
     {
+        if(manager == null) return;
         this.numberGold.text = manager.GetNbGold().ToString();
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -8774703229482622491}
   - component: {fileID: -6310289893955546310}
   - component: {fileID: -6550810548993636630}
-  - component: {fileID: 2715631644707760466}
+  - component: {fileID: 247807141547927530}
   m_Layer: 0
   m_Name: TrapBox
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672684713477931870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.931619, y: 0.99, z: -0.36601514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,8 +53,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4080305, y: 0.19264248, z: 0.41398805}
-  m_Center: {x: 0.013903141, y: 0.046321258, z: -0.0757449}
+  m_Size: {x: 0.39604664, y: 0.14845067, z: 0.40125555}
+  m_Center: {x: 0.011656284, y: 0.06841716, z: -0.08211115}
 --- !u!54 &-4741234981918195528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2715631644707760466}
+      - m_Target: {fileID: 247807141547927530}
         m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnGrab
         m_Mode: 1
@@ -223,7 +223,7 @@ MonoBehaviour:
   _whenUnselect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2715631644707760466}
+      - m_Target: {fileID: 247807141547927530}
         m_TargetAssemblyTypeName: TrapBoxTrigger, Assembly-CSharp
         m_MethodName: OnRelease
         m_Mode: 1
@@ -254,6 +254,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trap: {fileID: 3759176188220078939, guid: 5f94a5059b2432e45b1151c2377a6405, type: 3}
+--- !u!114 &247807141547927530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672684713477931870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef083f97366e4d4681b37911ac8118a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7003589760289856987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,9 +317,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3471995687745109686, guid: 7e124641c6107844e862fdde447d7952, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743262975603860662, guid: 7e124641c6107844e862fdde447d7952, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743262975603860662, guid: 7e124641c6107844e862fdde447d7952, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5377520098384131921, guid: 7e124641c6107844e862fdde447d7952, type: 3}
       propertyPath: m_Name
       value: BoxTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298001324740116690, guid: 7e124641c6107844e862fdde447d7952, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e124641c6107844e862fdde447d7952, type: 3}
