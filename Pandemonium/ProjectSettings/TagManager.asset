@@ -18,6 +18,10 @@ TagManager:
   - TextDeplacement
   - TeleportInteractor
   - SlideInteractor
+  - Heart
+  - JoinCode
+  - JoinCodeUI
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

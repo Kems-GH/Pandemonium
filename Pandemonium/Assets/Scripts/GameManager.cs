@@ -10,6 +10,9 @@ public class GameManager : NetworkBehaviour {
 
     private void Awake() {
         Instance = this;
+
+        GameObject playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn");
+        GameObject.FindGameObjectWithTag("SlideInteractor").transform.position = playerSpawn.transform.position;
     }
 
     public override void OnNetworkSpawn() {
@@ -27,7 +30,7 @@ public class GameManager : NetworkBehaviour {
 
     private void OnDisconnectedFromServer()
     {
-        StartSession.instance.CancelSession();
+        SessionManager.Instance.CancelSession();
     }
 
     public GameObject GetSkeletonPrefab(){return skeletonPrefab;}

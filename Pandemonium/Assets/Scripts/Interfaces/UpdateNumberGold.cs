@@ -10,6 +10,13 @@ public class UpdateNumberGold : MonoBehaviour
     {
         this.numberGold = GetComponent<TMP_Text>();
         manager = FindObjectOfType<GoldManager>();
+
+        if(manager == null)
+        {
+            Debug.LogError("GoldManager not found");
+            Destroy(this);
+        }
+    
     }
 
     void Update()
