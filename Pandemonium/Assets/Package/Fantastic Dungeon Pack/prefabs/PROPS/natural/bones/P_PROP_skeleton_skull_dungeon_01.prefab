@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1180176573354086511}
   - component: {fileID: 4853857012821912726}
   - component: {fileID: 998274083999744117}
-  - component: {fileID: 4996937025778905441}
   m_Layer: 0
   m_Name: P_PROP_skeleton_skull_dungeon_01
   m_TagString: Untagged
@@ -98,15 +97,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2316726, y: 0.22384362, z: 0.27113062}
   m_Center: {x: 0.00008327004, y: 0.1084038, z: -0.024755258}
---- !u!114 &4996937025778905441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6584415696885373002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67597b7ce88be2c4d9f1db73203ceff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
