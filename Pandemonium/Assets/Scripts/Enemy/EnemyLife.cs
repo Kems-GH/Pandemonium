@@ -26,7 +26,7 @@ public class EnemyLife
     /**
      * The Enemy take some damage
      */
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {   
         if(!this.canTakeDamage) return;
         

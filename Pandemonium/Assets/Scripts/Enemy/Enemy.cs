@@ -88,4 +88,10 @@ public abstract class Enemy : NetworkBehaviour
         this.animator.SetTrigger("Death");
     }
 
+    public void TakeDamage(int damage)
+    {
+        if (!IsServer) return;
+        this.life.TakeDamage(damage);
+    }
+
 }

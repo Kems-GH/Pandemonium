@@ -22,6 +22,7 @@ TagManager:
   - JoinCode
   - JoinCodeUI
   - PlayerSpawn
+  - Props
   layers:
   - Default
   - TransparentFX

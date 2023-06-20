@@ -18015,7 +18015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.945593
+      value: -16.417
       objectReference: {fileID: 0}
     - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18023,7 +18023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.653809
+      value: 13.952
       objectReference: {fileID: 0}
     - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18056,6 +18056,10 @@ PrefabInstance:
     - target: {fileID: 3424613362252761352, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
       propertyPath: m_Name
       value: P_PROP_barrel_dungeon_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655509790028767071, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3848022470
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
@@ -18480,6 +18484,7 @@ Transform:
   - {fileID: 218183763}
   - {fileID: 1642749760}
   - {fileID: 586352331}
+  - {fileID: 1100758997}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21529,6 +21534,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 571544297}
     m_Modifications:
+    - target: {fileID: 216520303262865145, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2233737856
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303371805227, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 632725161
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303585275059, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3872185697
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303648942339, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3435288865
+      objectReference: {fileID: 0}
     - target: {fileID: 7583192634559845384, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
       propertyPath: m_Name
       value: COMP_PROP_barrel_shelf_dungeon
@@ -34907,6 +34928,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3832702914301817292, guid: cd8973a8f0d4af840bad81707910ada4, type: 3}
   m_PrefabInstance: {fileID: 1100647833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1100758996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 571544297}
+    m_Modifications:
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_RootOrder
+      value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.945593
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07628162
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.653809
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424613362252761352, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: m_Name
+      value: P_PROP_barrel_dungeon_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655509790028767071, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1031640927
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+--- !u!4 &1100758997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1863912373077097243, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+  m_PrefabInstance: {fileID: 1100758996}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1102523534
 PrefabInstance:
@@ -48377,6 +48464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_barrel_dungeon_01
       objectReference: {fileID: 0}
+    - target: {fileID: 7655509790028767071, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1110692297
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b5542219847af45a941b2a7189f52f, type: 3}
 --- !u!4 &1737057916 stripped
@@ -49820,6 +49911,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 571544297}
     m_Modifications:
+    - target: {fileID: 216520303262865145, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2902365827
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303371805227, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2378671657
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303585275059, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3195034622
+      objectReference: {fileID: 0}
+    - target: {fileID: 216520303648942339, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 111852253
+      objectReference: {fileID: 0}
     - target: {fileID: 7583192634559845384, guid: 1abbeba7113ea184d98a16804747f1bb, type: 3}
       propertyPath: m_Name
       value: COMP_PROP_barrel_shelf_dungeon
