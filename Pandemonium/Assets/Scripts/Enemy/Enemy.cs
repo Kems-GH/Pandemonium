@@ -11,6 +11,7 @@ public abstract class Enemy : NetworkBehaviour
     private EnemyTrigger trigger;
     public Vector3 position { get; private set; }
     private bool isDead = false;
+    private float timeStopMovement = 0.5f;
 
     /**
      * Stats of the enemy
@@ -85,7 +86,19 @@ public abstract class Enemy : NetworkBehaviour
     [ClientRpc]
     public void SetDeathClientRpc()
     {
-        this.animator.SetTrigger("Death");
+        this.animator.SetBool("Death", true);
+    }
+
+    [ClientRpc]
+    public void SetTriggerDamageClientRpc()
+    {
+        this.animator.SetTrigger("Damage");
+    }
+
+    public void StopMovementTimer()
+    {
+        if (!IsServer) return;
+        StartCoroutine(this.movement.StopMovementTimer(this.timeStopMovement));
     }
 
 }
