@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -107,5 +108,12 @@ public class EnemyMovement
     {
         this.enemy.SetSpeedWalkClientRpc(0);
         navAgent.isStopped = true;
+    }
+
+    public IEnumerator StopMovementTimer(float time)
+    {
+        navAgent.isStopped = true;
+        yield return new WaitForSeconds(time);
+        navAgent.isStopped = false;
     }
 }

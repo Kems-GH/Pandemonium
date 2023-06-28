@@ -29,8 +29,10 @@ public class EnemyLife
     private void TakeDamage(int damage)
     {   
         if(!this.canTakeDamage) return;
-        
         this.canTakeDamage = false;
+        enemy.SetTriggerDamageClientRpc();
+        enemy.StopMovementTimer();
+
         this._currentHealth -= damage;
 
         if(this._currentHealth <= 0)
