@@ -86,6 +86,7 @@ public class PlaceableObject : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void OnGrabServerRpc()
     {
+        GameObject.FindObjectOfType<TrapSpawn>().ResetSpawn();
         StopCoroutine(nameof(ReplaceTrapBox));
         this.nbGrab++;
     }
@@ -142,7 +143,7 @@ public class PlaceableObject : NetworkBehaviour
     private IEnumerator ReplaceTrapBox()
     {
         yield return new WaitForSeconds(10f);
-        this.transform.position = basePosition;
-        this.transform.rotation = baseRotation;
+        this.GetComponent<NetworkObject>().Despawn(true);
+        GameManager.Instance.AddTrapCount();
     }
 }

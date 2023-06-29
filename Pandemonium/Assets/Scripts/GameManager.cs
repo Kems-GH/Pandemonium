@@ -1,12 +1,13 @@
 using Unity.Netcode;
 using UnityEngine;
 
-
 public class GameManager : NetworkBehaviour {
     [SerializeField] private Transform HeadPrefab;
     [SerializeField] private GameObject skeletonPrefab;
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private NetworkVariable<int> trapCount = new NetworkVariable<int>(0);
     public static GameManager Instance;
+
 
     private void Awake() {
         Instance = this;
@@ -35,4 +36,8 @@ public class GameManager : NetworkBehaviour {
 
     public GameObject GetSkeletonPrefab(){return skeletonPrefab;}
     public GameObject GetBossPrefab(){return bossPrefab;}
+
+    public void AddTrapCount(){trapCount.Value++;}
+    public void RemoveTrapCount(){trapCount.Value--;}
+    public int GetTrapCount(){return trapCount.Value;}
 }
