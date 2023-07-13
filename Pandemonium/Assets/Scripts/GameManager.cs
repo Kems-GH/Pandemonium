@@ -8,7 +8,6 @@ public class GameManager : NetworkBehaviour {
     [SerializeField] private NetworkVariable<int> trapCount = new NetworkVariable<int>(0);
     public static GameManager Instance;
 
-
     private void Awake() {
         Instance = this;
 

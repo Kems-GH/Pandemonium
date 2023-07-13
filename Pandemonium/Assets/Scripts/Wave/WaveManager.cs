@@ -126,7 +126,7 @@ public class WaveManager : NetworkBehaviour
 
     public void LoadLobby()
     {
-        NetworkManager.SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
+        if(IsServer) NetworkManager.SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
     }
 
     public bool IsWaveRunning()

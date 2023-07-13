@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 600590410015747312}
   - component: {fileID: 638277037886622241}
   - component: {fileID: 4114863545347508782}
+  - component: {fileID: 2378932781431388425}
   m_Layer: 6
   m_Name: OVRInteraction
   m_TagString: Untagged
@@ -124,6 +125,18 @@ MonoBehaviour:
   RightHand: {fileID: 0}
   LeftController: {fileID: 0}
   RightController: {fileID: 0}
+--- !u!114 &2378932781431388425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319425207471324541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3d0487e64364742ac3debcbf073199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &859814265447156690
 PrefabInstance:
   m_ObjectHideFlags: 0

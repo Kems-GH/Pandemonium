@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 7809888035577005429}
   - component: {fileID: 1385740660816282037}
   - component: {fileID: 3922379848666313038}
+  - component: {fileID: 4141606003478254634}
   m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: SlideInteractor
@@ -845,6 +846,18 @@ MonoBehaviour:
   RotationAngle: 45
   Speed: 5
   CameraRig: {fileID: 8371098856195265799}
+--- !u!114 &4141606003478254634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371098856202363113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3d0487e64364742ac3debcbf073199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8371098856202363115
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class ChangeScene : NetworkBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Hand")
+        if(other.gameObject.tag == "Hand" && IsServer)
         {
             NetworkManager.SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
         }
